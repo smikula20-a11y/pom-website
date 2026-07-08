@@ -31,6 +31,7 @@ export const nav = {
   links: [
     { label: 'Funktionen', href: '#funktionen' },
     { label: "So funktioniert's", href: '#so-funktionierts' },
+    { label: 'Preise', href: '#preise' },
     { label: 'Über', href: '#gruender' },
   ],
   login: { label: 'Anmelden', href: links.appLogin },
@@ -167,6 +168,93 @@ export const finalCta = {
     'Kostenlos mit BASIC starten — PRO schaltet KI, Verkauf und deinen Markenauftritt frei.',
   note: 'Kein Verkaufsdruck. Wir schauen gemeinsam, ob POM zu deiner Praxis passt.',
 } as const
+
+/* ---------------- Preise (Zahlen aus Notion, NICHT aus dem Dump) ----------------
+ * BASIC gratis · PRO €49/Monat (Toggle jährlich = 2 Monate gratis) · FM €15/Monat lifetime.
+ * §8: keine „Provision", keine Video-Anzahl. */
+export interface PriceFeature {
+  t: string
+  ok: boolean
+  highlight?: boolean
+}
+export interface PricePlan {
+  name: string
+  badge?: string
+  note?: string
+  price?: string
+  interval?: string
+  toggle?: {
+    monthly: { price: string; interval: string; note?: string }
+    yearly: { price: string; interval: string; note?: string; save?: string }
+  }
+  features: PriceFeature[]
+  cta: { label: string; href: string; variant: 'primary' | 'secondary'; external?: boolean }
+  featured?: boolean
+}
+
+export const pricing: {
+  eyebrow: string
+  heading: string
+  sub: string
+  footnote: string
+  toggleLabels: { monthly: string; yearly: string }
+  plans: PricePlan[]
+} = {
+  eyebrow: 'Preise',
+  heading: 'Starte kostenlos. Wachse, wenn du bereit bist.',
+  sub: 'Kein Risiko, keine Kreditkarte für den Start.',
+  footnote: 'Jederzeit kündbar · Keine versteckten Kosten.',
+  toggleLabels: { monthly: 'Monatlich', yearly: 'Jährlich' },
+  plans: [
+    {
+      name: 'Basic',
+      price: '€0',
+      interval: '/ Monat',
+      note: 'Zum Reinschnuppern',
+      features: [
+        { t: 'Zugang zur App & Übungsbibliothek', ok: true },
+        { t: 'Pläne per QR & PDF teilen', ok: true },
+        { t: 'Professionelle Übungsvideos', ok: true },
+        { t: 'KI-Planassistent', ok: false },
+        { t: 'Verkauf & automatische Honorarnote', ok: false },
+        { t: 'Dein Logo & Branding', ok: false },
+      ],
+      cta: { label: 'Kostenlos starten', href: links.appRegister, variant: 'secondary', external: true },
+    },
+    {
+      name: 'Pro',
+      badge: '★ Empfohlen',
+      featured: true,
+      toggle: {
+        monthly: { price: '€49', interval: '/ Monat' },
+        yearly: { price: '€490', interval: '/ Jahr', note: '≈ €41 / Monat', save: '2 Monate gratis' },
+      },
+      features: [
+        { t: 'Unbegrenzte Pläne & Übungen', ok: true },
+        { t: 'KI-Planassistent', ok: true, highlight: true },
+        { t: 'Vorlagen & Entwürfe', ok: true },
+        { t: 'Dein Logo in App & PDF', ok: true },
+        { t: 'Verkauf als Selbstzahler-Leistung — Umsatz gehört dir', ok: true },
+        { t: 'PDF ohne Wasserzeichen', ok: true },
+      ],
+      cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'primary', external: true },
+    },
+    {
+      name: 'Founding Member',
+      badge: '⚡ Limitiert · 10 Plätze',
+      price: '€15',
+      interval: '/ Monat',
+      note: 'Lifetime-Preis · bleibt für immer',
+      features: [
+        { t: 'Alles aus PRO', ok: true },
+        { t: 'Dauerhaft nur €15 / Monat', ok: true, highlight: true },
+        { t: 'Preis gilt für immer', ok: true },
+        { t: 'Direkter Draht zur Entwicklung', ok: true },
+      ],
+      cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'secondary', external: true },
+    },
+  ],
+}
 
 export const footer = {
   company: 'Place of Motion',

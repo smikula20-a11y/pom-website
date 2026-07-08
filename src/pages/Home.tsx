@@ -1,4 +1,5 @@
 import { Hero } from '../sections/Hero'
+import { Pricing } from '../sections/Pricing'
 import {
   Audience,
   DemoEmbed,
@@ -21,6 +22,7 @@ export default function Home() {
       <HowItWorks />
       <Honorar />
       <Audience />
+      <Pricing />
       <SocialProof />
       <Founder />
       <FinalCta />
