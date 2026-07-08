@@ -1,0 +1,259 @@
+/* ============================================================
+ * Place of Motion — Wurzel-Website
+ * Design tokens portiert 1:1 aus dem Claude-Design-Handoff
+ * (_ds/tokens/*) und deckungsgleich mit Messaging-Brief §11.
+ * ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
+
+/* Tailwind v4 theme: nur was wir als Utilities brauchen. Der Rest
+ * lebt als CSS-Variablen in :root (siehe unten) und wird via
+ * inline-style / arbitrary values genutzt. */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --color-olive: #8ba83a;
+  --color-olive-hover: #6b8429;
+  --color-olive-700: #7a9633;
+  --color-ink: #1a1a1a;
+  --color-ink-2: #2a2a2a;
+  --color-stone-bg: #f5f5f3;
+  --color-stone-200: #e8e8e4;
+  --color-stone-300: #e5e5e0;
+  --color-stone-500: #9a9a94;
+  --color-stone-600: #71716b;
+}
+
+/* ---- Full design-system variables (authoritative) ---- */
+:root {
+  color-scheme: light;
+
+  /* Brand: Olive */
+  --pom-olive: #8ba83a;
+  --pom-olive-hover: #6b8429;
+  --pom-olive-700: #7a9633;
+  --pom-olive-tint: #f0f5e6;
+  --pom-olive-tint-line: #d4e4a0;
+  --pom-olive-a10: rgba(139, 168, 58, 0.1);
+  --pom-olive-a20: rgba(139, 168, 58, 0.2);
+  --pom-olive-a30: rgba(139, 168, 58, 0.3);
+  --pom-olive-card: #f2f3ec;
+  --pom-olive-card-2: #f4f5f0;
+  --pom-olive-card-text: #7a8a5a;
+
+  /* Ink / dark surfaces */
+  --pom-ink: #1a1a1a;
+  --pom-ink-2: #2a2a2a;
+  --pom-slate-900: #0f172a;
+  --pom-slate-800: #1e293b;
+
+  /* Slate (cool neutral) */
+  --pom-slate-50: #f8fafc;
+  --pom-slate-100: #f1f5f9;
+  --pom-slate-200: #e2e8f0;
+  --pom-slate-300: #cbd5e1;
+  --pom-slate-400: #94a3b8;
+  --pom-slate-500: #64748b;
+  --pom-slate-600: #475569;
+  --pom-slate-700: #334155;
+
+  /* Stone (warm neutral — patient view) */
+  --pom-stone-bg: #f5f5f3;
+  --pom-stone-100: #f7f7f5;
+  --pom-stone-150: #f0f0ed;
+  --pom-stone-200: #e8e8e4;
+  --pom-stone-300: #e5e5e0;
+  --pom-stone-400: #c4c4be;
+  --pom-stone-500: #9a9a94;
+  --pom-stone-600: #71716b;
+
+  /* Pure */
+  --pom-white: #ffffff;
+  --pom-surface: #fdfdfd;
+
+  /* Semantic */
+  --pom-success: #059669;
+  --pom-success-bg: #ecfdf5;
+  --pom-success-line: #bbf7d0;
+
+  /* Semantic aliases */
+  --color-primary: var(--pom-olive);
+  --color-primary-hover: var(--pom-olive-hover);
+  --color-primary-tint: var(--pom-olive-a10);
+  --text-heading: var(--pom-slate-700);
+  --text-body: var(--pom-slate-600);
+  --text-muted: var(--pom-slate-400);
+  --text-on-dark: var(--pom-white);
+  --surface-page: var(--pom-slate-50);
+  --surface-card: var(--pom-white);
+  --border-hairline: var(--pom-slate-100);
+  --border-default: var(--pom-slate-200);
+  --border-focus: var(--pom-olive);
+  --surface-page-warm: var(--pom-stone-bg);
+  --text-body-warm: var(--pom-stone-600);
+  --text-muted-warm: var(--pom-stone-500);
+
+  /* Fonts / weights */
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* Type scale */
+  --text-eyebrow: 10px;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+  --tracking-widest: 0.14em;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-pill: 999px;
+  --radius-button: 8px;
+  --radius-highlight: 12px;
+  --radius-card: var(--radius-2xl);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+  --shadow-primary: 0 10px 20px -6px rgba(139, 168, 58, 0.3);
+  --shadow-primary-sm: 0 4px 12px rgba(139, 168, 58, 0.25);
+  /* FIXED interaction values — brand spec §11 (do not alter) */
+  --shadow-btn-primary-hover: 0 8px 20px rgba(139, 168, 58, 0.4);
+  --shadow-card-hover-olive: 0 8px 24px rgba(139, 168, 58, 0.15);
+  --shadow-frame: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 20px 60px rgba(0, 0, 0, 0.1);
+  --ring-focus: 0 0 0 3px rgba(139, 168, 58, 0.15);
+
+  /* Layout */
+  --container-max: 1280px;
+}
+
+/* ---- Base element defaults ---- */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--text-body);
+  background: var(--pom-stone-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-tight);
+  color: var(--pom-ink);
+  margin: 0;
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover {
+  color: var(--color-primary-hover);
+}
+::selection {
+  background: var(--pom-olive-a20);
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Reduced motion: respect user preference (Accessibility, §11) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Brand utility classes ---- */
+.pom-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--text-muted);
+  line-height: 1;
+}
+.pom-h1 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--pom-ink);
+  margin: 0;
+}
+.pom-h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--pom-ink);
+  margin: 0;
+}
+.pom-h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--pom-ink);
+  margin: 0;
+}
+.pom-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+/* Full-bleed olive section band (use once or twice per page). */
+.pom-band-olive {
+  background: var(--pom-olive);
+  color: var(--pom-white);
+}
+.pom-band-olive-gradient {
+  background: linear-gradient(135deg, var(--pom-olive) 0%, var(--pom-olive-hover) 100%);
+  color: var(--pom-white);
+}
+.pom-band-olive h1, .pom-band-olive h2, .pom-band-olive h3,
+.pom-band-olive-gradient h1, .pom-band-olive-gradient h2, .pom-band-olive-gradient h3 {
+  color: var(--pom-white);
+}
+.pom-band-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow);
+  font-weight: var(--fw-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+}

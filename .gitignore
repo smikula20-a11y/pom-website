@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+.vercel/
+*.tsbuildinfo
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Content source that must NEVER be committed (Joomla DB dump etc.)
+*.sql
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+Thumbs.db
+
+# Design handoff reference (kept out of repo; source of truth is Notion + this ZIP)
+_design-ref/
