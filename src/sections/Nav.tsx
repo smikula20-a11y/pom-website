@@ -42,9 +42,9 @@ export function Nav() {
         {/* Sektionslinks: inline auf Desktop, im Burger-Menü auf Mobile. */}
         <div className="nav__links nav__links--inline">
           {nav.links.map((l) => (
-            <a key={l.href} href={l.href}>
+            <Link key={l.href} to={`/${l.href}`}>
               {l.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -73,9 +73,9 @@ export function Nav() {
       {/* Mobiles Dropdown mit den Sektionslinks. */}
       <div id="nav-mobile-menu" className="nav__mobile-menu" data-open={open}>
         {nav.links.map((l) => (
-          <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+          <Link key={l.href} to={`/${l.href}`} onClick={() => setOpen(false)}>
             {l.label}
-          </a>
+          </Link>
         ))}
       </div>
     </header>
