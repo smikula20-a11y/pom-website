@@ -377,6 +377,44 @@ a.press-item:hover { color: var(--pom-ink); }
 .nav__links a:hover { color: var(--pom-olive); }
 .nav__linkgroup { display: flex; align-items: center; gap: 28px; }
 
+/* Burger-Button + mobiles Menü — Basiszustand versteckt, aktiviert unter 1024px. */
+.nav__burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #e5e5e0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--pom-stone-600);
+  cursor: pointer;
+}
+.nav__burger:hover { color: var(--pom-olive); border-color: var(--pom-olive); }
+.nav__mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  padding: 8px 24px 16px;
+  background: rgba(245, 245, 243, 0.98);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid #e5e5e0;
+}
+.nav__mobile-menu a {
+  padding: 13px 4px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--pom-stone-600);
+  border-bottom: 1px solid #ececec;
+}
+.nav__mobile-menu a:last-child { border-bottom: none; }
+.nav__mobile-menu a:hover { color: var(--pom-olive); }
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 420px;
@@ -441,14 +479,20 @@ a.press-item:hover { color: var(--pom-ink); }
   .split { grid-template-columns: 1fr; gap: 40px; }
   .nav__hide-mobile { display: none; }
 }
-/* Anmelden-Button ab ~1024px ausblenden, damit die Nav bei 900-1024px nicht
- * überläuft (der Zusatz-Button macht sie sonst zu breit → Wortmarke/Links
- * überlappen). Darunter bleiben Links + primärer CTA. */
+/* Unter 1024px: Sektionslinks wandern ins Burger-Menü; die beiden Aktions-
+ * Buttons (Anmelden + Erstgespräch) bleiben dauerhaft im Header sichtbar. */
 @media (max-width: 1024px) {
-  .nav__hide-md { display: none; }
+  .nav__links--inline { display: none; }
+  .nav__burger { display: inline-flex; }
+  .nav__mobile-menu[data-open='true'] { display: flex; }
 }
 @media (max-width: 560px) {
   .nav__links { font-size: 13px; }
+  /* Enger schnüren, damit Logo + Anmelden + Erstgespräch + Burger passen. */
+  .nav { padding: 12px 14px; }
+  .nav__linkgroup { gap: 6px; }
+  .nav__burger { width: 38px; height: 38px; }
+  .nav__cta-suffix { display: none; } /* "buchen" weg → nur "Erstgespräch" */
 }
 /* ---- Footer (Brand · Produkt · Rechtliches · Kontakt) ---- */
 .footer-grid {
