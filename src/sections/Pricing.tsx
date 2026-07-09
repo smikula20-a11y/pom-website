@@ -18,13 +18,11 @@ function PlanCard({
   let amount = plan.price
   let interval = plan.interval
   let note = plan.note
-  let save: string | undefined
   if (plan.toggle) {
     const t = yearly ? plan.toggle.yearly : plan.toggle.monthly
     amount = t.price
     interval = t.interval
     note = t.note
-    save = yearly ? plan.toggle.yearly.save : undefined
   }
 
   return (
@@ -43,6 +41,9 @@ function PlanCard({
           </button>
           <button type="button" className={yearly ? 'active' : ''} onClick={() => setYearly(true)}>
             {pricing.toggleLabels.yearly}
+            {plan.toggle.yearly.save && (
+              <span className="price-toggle-badge">{plan.toggle.yearly.save}</span>
+            )}
           </button>
         </div>
       )}
@@ -51,10 +52,14 @@ function PlanCard({
         <span className="price-amount">{amount}</span>{' '}
         <span className="price-interval">{interval}</span>
       </div>
-      <div className="price-note">
-        {note}
-        {save && <span className="price-save-pill">{save}</span>}
-      </div>
+      <div className="price-note">{note}</div>
+
+      {plan.scarcity && (
+        <div className="price-scarcity">
+          <span className="price-scarcity__total">{plan.scarcity.total} Plätze</span>
+          <span className="price-scarcity__left">Nur noch {plan.scarcity.left} frei</span>
+        </div>
+      )}
 
       <hr className="price-hr" />
 
@@ -83,7 +88,8 @@ function PlanCard({
 }
 
 export function Pricing() {
-  const [yearly, setYearly] = useState(false)
+  // Jahres-Abrechnung als Default (rabattiert, catchy).
+  const [yearly, setYearly] = useState(true)
   return (
     <section id="preise" style={{ background: 'var(--pom-stone-bg)' }}>
       <Container className="section">

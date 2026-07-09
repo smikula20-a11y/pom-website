@@ -5,7 +5,7 @@ import { nav } from '../content/site'
 export function Nav() {
   return (
     <header className="nav">
-      <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 14 }} aria-label="Place of Motion — Startseite">
+      <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 14 }} aria-label="Place of Motion - Startseite">
         <img src="/logos/pom-app-logo.svg" alt="" style={{ height: 40, display: 'block' }} />
         <img
           src="/logos/pom-slate-wortmark.svg"
@@ -22,8 +22,11 @@ export function Nav() {
             </a>
           ))}
         </div>
-        <Button href={nav.login.href} variant="secondary" size="sm" external>
+        <Button href={nav.login.href} variant="secondary" size="sm" external className="nav__hide-md">
           {nav.login.label}
+        </Button>
+        <Button href={nav.cta.href} variant="primary" size="sm" external>
+          {nav.cta.label}
         </Button>
       </nav>
     </header>

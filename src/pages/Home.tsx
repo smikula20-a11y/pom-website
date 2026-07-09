@@ -1,8 +1,8 @@
 import { Hero } from '../sections/Hero'
 import { Pricing } from '../sections/Pricing'
+import { FlowLoop } from '../components/FlowLoop'
 import {
   Audience,
-  DemoEmbed,
   Features,
   FinalCta,
   Founder,
@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <DemoEmbed />
       <Problem />
+      <FlowLoop />
       <Features />
       <HowItWorks />
       <Honorar />

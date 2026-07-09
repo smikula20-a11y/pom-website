@@ -1,8 +1,8 @@
 /* ============================================================
- * Inhalts-Layer — eine Wahrheit fuer die Wurzel-Website.
+ * Inhalts-Layer - eine Wahrheit fuer die Wurzel-Website.
  * Copy woertlich aus Notion „Messaging-Brief Website-Wurzel".
  * KEINE Abo-Preise auf der Seite (Pricing nicht final, keine
- * Preistabelle — §8). Das „39 €" in der Honorarnote ist ein
+ * Preistabelle - §8). Das „39 €" in der Honorarnote ist ein
  * pricing-neutrales Beispiel, kein Website-Preis.
  * ============================================================ */
 
@@ -28,84 +28,93 @@ export const cta = {
 } as const
 
 export const nav = {
+  /** Nur die internen Sektions-Anker als Textlinks. */
   links: [
     { label: 'Funktionen', href: '#funktionen' },
     { label: "So funktioniert's", href: '#so-funktionierts' },
     { label: 'Preise', href: '#preise' },
-    { label: 'Über', href: '#gruender' },
   ],
+  // Login = Sekundär-Aktion (Outline), Booking = Primär-CTA (Fill).
   login: { label: 'Anmelden', href: links.appLogin },
+  cta: { label: 'Erstgespräch buchen', href: links.calendly },
 } as const
 
 export const hero = {
   eyebrow: 'Digitale Trainingspläne für deine Praxis',
   headline: 'Dein Einkommen hört auf, wenn du aufhörst zu behandeln.',
   subhead:
-    'Erstelle digitale Trainingspläne für deine Patienten — per QR-Code aufs Handy, mit Video pro Übung.',
+    'Erstelle digitale Trainingspläne für deine Patienten - per QR-Code aufs Handy, mit Video pro Übung.',
   microcopy: 'Keine Kreditkarte · In 2 Minuten startklar.',
   annotation: ['Dein Logo.', 'Dein Name.'],
 } as const
 
+/** Flow-Loop (Produkt in Aktion) - animierte CSS-Sequenz statt Live-iframe.
+ *  Die echte Demo lädt erst bei Klick auf die Facade (Performance/Fokus, §Handoff). */
 export const demo = {
-  eyebrow: 'Sieh es in Aktion',
-  heading: 'In 38 Sekunden vom Plan zum QR-Code.',
+  eyebrow: "So läuft's · live",
+  indicator: 'In Bewegung',
+  // Schritt-Legende unter der Karte (letzter Schritt = Ergebnis, nicht 4. Station).
+  legend: ['Plan erstellen', 'QR teilen', 'Patient trainiert', 'Verkauft'],
+  facade: { lead: 'Lieber selbst ausprobieren?', cta: 'Live-Demo ansehen' },
   src: links.demo,
-  caption: 'Kurze Produkt-Demo — kein Ton nötig.',
+  title: 'Place of Motion - Produkt-Demo',
 } as const
 
 export const problem = {
   eyebrow: 'Das Problem',
-  heading: 'Deine Arbeit endet an der Praxistür — deine Wirkung sollte es nicht.',
+  heading: 'Deine Arbeit endet an der Praxistür - deine Wirkung sollte es nicht.',
+  // Jede Karte fuehrt mit einer kurzen, fett gesetzten Schmerz-Ueberschrift
+  // (hohe Lesbarkeit statt ausgegraut) + Beleg-Satz (Wortlaut aus dem Brief).
   bullets: [
-    'Patienten gehen motiviert raus, nach 3 Tagen wieder passiv.',
-    'Übungszettel werden vergessen, verlegt oder falsch umgesetzt.',
-    'Nach Therapieende fällt der Patient weg — dein Wissen bleibt in der Praxis.',
+    { title: 'Motivation hält nicht', body: 'Patienten gehen motiviert raus, nach 3 Tagen wieder passiv.' },
+    { title: 'Zettel verschwinden', body: 'Übungszettel werden vergessen, verlegt oder falsch umgesetzt.' },
+    { title: 'Wissen bleibt zurück', body: 'Nach Therapieende fällt der Patient weg - dein Wissen bleibt in der Praxis.' },
   ],
 } as const
 
-/** „Was POM kann" — Gratis-Kern zuerst, PRO getaggt. KEINE Video-Anzahl (§8). */
+/** „Was POM kann" - Gratis-Kern zuerst, PRO getaggt. KEINE Video-Anzahl (§8). */
 export const features = {
   eyebrow: 'Was POM kann',
   heading: 'Alles, um Patienten auch zwischen den Terminen zu begleiten.',
   items: [
-    { title: 'Plan per QR teilen', body: 'Ein Scan in der Praxis — kein Login, keine App-Installation.', pro: false },
+    { title: 'Plan per QR teilen', body: 'Ein Scan in der Praxis - kein Login, keine App-Installation.', pro: false },
     { title: 'Professionelle Übungsvideos', body: 'Klare Videos pro Übung, damit zuhause richtig trainiert wird.', pro: false },
     { title: 'PDF pro Patient', body: 'Jeder Plan auch als sauberes PDF zum Mitgeben.', pro: false },
-    { title: 'Zeit sparen mit KI-Entwurf', body: 'Ein Entwurf in Sekunden — du bleibst der fachliche Kopf.', pro: true },
-    { title: 'Zusatzeinkommen', body: 'Verkaufe Pläne als Selbstzahler-Leistung — der Umsatz gehört dir.', pro: true },
-    { title: 'Dein Branding', body: 'Dein Logo, dein Name — der Plan sieht aus wie aus deiner Praxis.', pro: true },
+    { title: 'Zeit sparen mit KI-Entwurf', body: 'Ein Entwurf in Sekunden - du bleibst der fachliche Kopf.', pro: true },
+    { title: 'Zusatzeinkommen', body: 'Verkaufe Pläne als Selbstzahler-Leistung - der Umsatz gehört dir.', pro: true },
+    { title: 'Dein Branding', body: 'Dein Logo, dein Name - der Plan sieht aus wie aus deiner Praxis.', pro: true },
   ],
 } as const
 
-/** So funktioniert's — Olive-Band. Copy aus dem Design-Handoff (deckt §6). */
+/** So funktioniert's - Olive-Band. Copy aus dem Design-Handoff (deckt §6). */
 export const howItWorks = {
   eyebrow: "So funktioniert's",
-  heading: 'Vom Plan zur Honorarnote — in drei Schritten.',
+  heading: 'Vom Plan zur Honorarnote - in drei Schritten.',
   steps: [
     {
       n: 1,
       title: 'Plan erstellen',
-      body: 'Übungen aus der Bibliothek zusammenstellen — mit Dosierung, Hinweisen und Video pro Übung.',
+      body: 'Übungen aus der Bibliothek zusammenstellen - mit Dosierung, Hinweisen und Video pro Übung.',
     },
     {
       n: 2,
       title: 'QR-Code teilen',
-      body: 'Der Patient scannt den Code in der Praxis — kein Login, keine App-Installation.',
+      body: 'Der Patient scannt den Code in der Praxis - kein Login, keine App-Installation.',
     },
     {
       n: 3,
       title: 'Patient trainiert',
-      body: 'Zuhause, am Handy, mit Video pro Übung — dein Plan arbeitet weiter, auch ohne Termin.',
+      body: 'Zuhause, am Handy, mit Video pro Übung - dein Plan arbeitet weiter, auch ohne Termin.',
     },
   ],
 } as const
 
-/** Honorarnote — realisiert die Zusatzeinkommen-Korrektur (§8): 100 % Umsatz
+/** Honorarnote - realisiert die Zusatzeinkommen-Korrektur (§8): 100 % Umsatz
  *  beim Therapeuten, POM erstellt nur die Honorarnote. KEINE „Provision". */
 export const honorar = {
   eyebrow: 'Und dein Umsatz?',
-  heading: 'Verkauft statt verschenkt — mit automatischer Honorarnote.',
-  body: 'Vergib einen Plan kostenlos oder verkauft — bar, Karte oder Überweisung. Die Honorarnote erstellt sich automatisch in deinem Namen. Der Umsatz gehört dir, der Plan wird zur Einnahme.',
+  heading: 'Verkauft statt verschenkt - mit automatischer Honorarnote.',
+  body: 'Vergib einen Plan kostenlos oder verkauft - bar, Karte oder Überweisung. Die Honorarnote erstellt sich automatisch in deinem Namen. Der Umsatz gehört dir, der Plan wird zur Einnahme.',
   cta: { label: 'So verdienst du mit', href: '#final-cta' },
   // Beispiel-Beleg (pricing-neutral, KEIN Abo-Preis).
   mock: {
@@ -119,7 +128,7 @@ export const honorar = {
 
 export const audience = {
   eyebrow: 'Für wen',
-  heading: 'Ehrlich: für wen POM gebaut ist — und für wen nicht.',
+  heading: 'Ehrlich: für wen POM gebaut ist - und für wen nicht.',
   fitHeading: 'Geeignet, wenn du …',
   fit: [
     'Patienten zwischen und nach den Einheiten begleiten willst.',
@@ -135,11 +144,15 @@ export const audience = {
 } as const
 
 /** Sarah-Testimonial (Freigabe 23.06.2026: voller Name + Verlinkung OK).
- *  Traegt Usability/Regional-Trust — NICHT den Einkommens-Winkel. */
+ *  Traegt Usability/Regional-Trust - NICHT den Einkommens-Winkel.
+ *  quote + support = das Originalzitat WORTGETREU, nur am Satzende getrennt
+ *  fuer das Pull-Quote-Layout (grosser Kernsatz + kleinerer Beleg). */
 export const testimonial = {
   eyebrow: 'Aus der Praxis',
   quote:
-    'Stefan hat mir vor kurzem sein Tool vorgestellt. Ich bin schon lange auf der Suche nach einem geeigneten Programm. Stefan hat wirklich alles gut durchdacht und die leichte und rasche Bedienbarkeit haben mich sofort überzeugt. Die Pläne sind wirklich schnell erstellt und sie kommen bei meinen PatientInnen gut an. Seit meinem Kauf wurde das Repertoire an Übungen erweitert und er ist offen für neue Vorschläge. Für den Kauf war für mich noch entscheidend, dass ich ein regionales Unternehmen unterstütze. Ich freue mich auf eine weitere Zusammenarbeit!',
+    'Stefan hat mir vor kurzem sein Tool vorgestellt. Ich bin schon lange auf der Suche nach einem geeigneten Programm. Stefan hat wirklich alles gut durchdacht und die leichte und rasche Bedienbarkeit haben mich sofort überzeugt.',
+  support:
+    'Die Pläne sind wirklich schnell erstellt und sie kommen bei meinen PatientInnen gut an. Seit meinem Kauf wurde das Repertoire an Übungen erweitert und er ist offen für neue Vorschläge. Für den Kauf war für mich noch entscheidend, dass ich ein regionales Unternehmen unterstütze. Ich freue mich auf eine weitere Zusammenarbeit!',
   name: 'Sarah Arbeiter',
   role: 'Physiotherapeutin · Gruppenpraxis · Founding Member',
 } as const
@@ -149,23 +162,23 @@ export const founder = {
   eyebrow: 'Warum es das gibt',
   heading: 'Aus der Praxis, für die Praxis.',
   paragraph:
-    'Ich baue an digitaler Physiotherapie, seit ich 2018 meine Praxis in Klagenfurt eröffnet habe. Die Idee wurde 2019 in MeinBezirk und der Kleinen Zeitung porträtiert und an der FH Kärnten (Gründergarage) vorgestellt. Als einer der ersten ÖGK-Vertragstherapeuten Kärntens (ORF, 2022) kenne ich beide Welten — Kassenabrechnung und Selbstzahler. Place of Motion ist die konsequente Weiterentwicklung: aus der Praxis, für die Praxis.',
+    'Ich baue an digitaler Physiotherapie, seit ich 2018 meine Praxis in Klagenfurt eröffnet habe. Die Idee wurde 2019 in MeinBezirk und der Kleinen Zeitung porträtiert und an der FH Kärnten (Gründergarage) vorgestellt. Als einer der ersten ÖGK-Vertragstherapeuten Kärntens (ORF, 2022) kenne ich beide Welten - Kassenabrechnung und Selbstzahler. Place of Motion ist die konsequente Weiterentwicklung: aus der Praxis, für die Praxis.',
   signature: 'Stefan Mikula, Gründer',
-  pressLabel: 'Bekannt aus',
+  pressLabel: 'Berichtet in',
   press: [
-    { label: 'ORF Kärnten', year: '2022', href: links.press.orf },
-    { label: 'MeinBezirk', year: '2019', href: links.press.meinbezirk },
-    { label: 'Kleine Zeitung', year: '2019', href: links.press.kleineZeitung },
-    { label: 'FH Kärnten · Gründergarage', year: '', href: '' },
+    { label: 'ORF Kärnten', href: links.press.orf },
+    { label: 'MeinBezirk', href: links.press.meinbezirk },
+    { label: 'Kleine Zeitung', href: links.press.kleineZeitung },
+    { label: 'FH Kärnten · Gründergarage', href: '' },
   ],
 } as const
 
 export const finalCta = {
   eyebrow: 'Bereit?',
-  heading: 'Sieh dir POM in einem kurzen Erstgespräch an.',
+  heading: 'Aus deinem Wissen wird ein Produkt.',
   // Transparenz-Zeile STATT Preistabelle (§8).
   transparency:
-    'Kostenlos mit BASIC starten — PRO schaltet KI, Verkauf und deinen Markenauftritt frei.',
+    'Kostenlos mit BASIC starten - PRO schaltet KI, Verkauf und deinen Markenauftritt frei.',
   note: 'Kein Verkaufsdruck. Wir schauen gemeinsam, ob POM zu deiner Praxis passt.',
 } as const
 
@@ -190,6 +203,8 @@ export interface PricePlan {
   features: PriceFeature[]
   cta: { label: string; href: string; variant: 'primary' | 'secondary'; external?: boolean }
   featured?: boolean
+  /** Verknappung: Gesamt-Plätze (durchgestrichen) + noch freie. */
+  scarcity?: { total: number; left: number }
 }
 
 export const pricing: {
@@ -227,21 +242,24 @@ export const pricing: {
       featured: true,
       toggle: {
         monthly: { price: '€49', interval: '/ Monat' },
-        yearly: { price: '€490', interval: '/ Jahr', note: '≈ €41 / Monat', save: '2 Monate gratis' },
+        // Jahres-Default: Prozent-Rabatt als Toggle-Badge (save), Anker-Preis
+        // in der Note. Kein zweites „Empfohlen" - das bleibt dem Plan.
+        yearly: { price: '€490', interval: '/ Jahr', note: '≈ 41 €/Monat · 2 Monate gratis', save: '-17 %' },
       },
       features: [
         { t: 'Unbegrenzte Pläne & Übungen', ok: true },
         { t: 'KI-Planassistent', ok: true, highlight: true },
         { t: 'Vorlagen & Entwürfe', ok: true },
         { t: 'Dein Logo in App & PDF', ok: true },
-        { t: 'Verkauf als Selbstzahler-Leistung — Umsatz gehört dir', ok: true },
+        { t: 'Verkauf als Selbstzahler-Leistung - Umsatz gehört dir', ok: true },
         { t: 'PDF ohne Wasserzeichen', ok: true },
       ],
       cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'primary', external: true },
     },
     {
       name: 'Founding Member',
-      badge: '⚡ Limitiert · 10 Plätze',
+      badge: '⚡ Founding Member',
+      scarcity: { total: 10, left: 5 },
       price: '€15',
       interval: '/ Monat',
       note: 'Lifetime-Preis · bleibt für immer',
@@ -258,7 +276,7 @@ export const pricing: {
 
 export const footer = {
   company: 'Place of Motion',
-  tagline: 'Digitale Trainingspläne für Physiotherapeut:innen.',
+  tagline: 'Digitale Trainingspläne für deine Praxis. Erstellen, teilen, verkaufen.',
   address: {
     name: 'Place of Motion',
     street: 'Feistritz 34',
@@ -271,5 +289,23 @@ export const footer = {
   legal: [
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },
+    { label: 'AGB', href: '/agb' },
   ],
+} as const
+
+/** Rechtliche Stammdaten fuers Impressum (AT: ECG §5, MedienG §25, GewO).
+ *  Leere Strings = vor Veroeffentlichung von Stefan zu ergaenzen; die Seite
+ *  zeigt dann einen sichtbaren Platzhalter. Nicht-leere Werte sind sinnvolle
+ *  Defaults fuer ein Kaerntner IT-Einzelunternehmen und sollten bestaetigt werden. */
+export const impressum = {
+  legalForm: 'Einzelunternehmen',
+  uid: '', // keine UID - Kleinunternehmer (siehe kleinunternehmer)
+  kleinunternehmer: true, // § 6 Abs. 1 Z 27 UStG: keine USt, keine UID
+  gisa: '', // GISA-Zahl des Gewerbes (wird nachgereicht)
+  gewerbe: 'Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik',
+  gewerbebehoerde: 'Bezirkshauptmannschaft Feldkirchen',
+  chamber: 'Wirtschaftskammer Kärnten',
+  berufsrecht: 'Gewerbeordnung (GewO), abrufbar über ris.bka.gv.at',
+  berufsrechtUrl: 'https://www.ris.bka.gv.at',
+  datenschutzStand: 'Juli 2026',
 } as const

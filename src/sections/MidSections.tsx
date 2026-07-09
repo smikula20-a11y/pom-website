@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import {
   Check,
   ClipboardList,
@@ -17,7 +17,6 @@ import { HonorarNote } from '../components/HonorarNote'
 import {
   audience,
   cta,
-  demo,
   features,
   finalCta,
   founder,
@@ -49,57 +48,21 @@ function H2({ children, onOlive = false }: { children: ReactNode; onOlive?: bool
 
 const featureIcons = [QrCode, Video, FileText, Sparkles, Wallet, Palette]
 
-/* ---------------- Demo ---------------- */
-export function DemoEmbed() {
-  return (
-    <section id="demo" style={{ background: '#fff' }}>
-      <Container className="section">
-        <Reveal>
-          <Eyebrow>{demo.eyebrow}</Eyebrow>
-          <H2>{demo.heading}</H2>
-          <div
-            style={{
-              marginTop: 36,
-              borderRadius: 24,
-              overflow: 'hidden',
-              boxShadow: 'var(--shadow-xl)',
-              border: '1px solid var(--pom-stone-300)',
-              background: '#000',
-              aspectRatio: '16 / 9',
-            }}
-          >
-            <iframe
-              src={demo.src}
-              title="Place of Motion — Produkt-Demo"
-              loading="lazy"
-              allow="fullscreen; autoplay; picture-in-picture"
-              style={{ width: '100%', height: '100%', border: 0, display: 'block' }}
-            />
-          </div>
-          <p style={{ marginTop: 14, fontSize: 13, color: 'var(--pom-stone-500)', fontWeight: 500 }}>
-            {demo.caption}
-          </p>
-        </Reveal>
-      </Container>
-    </section>
-  )
-}
-
 /* ---------------- Problem ---------------- */
 export function Problem() {
   return (
-    <section style={{ background: 'var(--pom-stone-bg)' }}>
+    <section style={{ background: '#fff' }}>
       <Container className="section">
         <Reveal>
-          <Eyebrow>{problem.eyebrow}</Eyebrow>
+          <Eyebrow tone="muted">{problem.eyebrow}</Eyebrow>
           <H2>{problem.heading}</H2>
         </Reveal>
         <div className="grid-3" style={{ marginTop: 44 }}>
           {problem.bullets.map((b, i) => (
-            <Reveal key={b} delay={i * 0.08}>
+            <Reveal key={b.title} delay={i * 0.08}>
               <div
                 style={{
-                  background: '#fff',
+                  background: '#f8f8f6',
                   border: '1px solid var(--pom-stone-300)',
                   borderRadius: 20,
                   padding: '28px 26px',
@@ -108,19 +71,36 @@ export function Problem() {
               >
                 <div
                   style={{
-                    width: 34,
-                    height: 34,
-                    borderRadius: 10,
-                    background: 'var(--pom-olive-a10)',
                     display: 'grid',
                     placeItems: 'center',
+                    width: 36,
+                    height: 36,
+                    borderRadius: 10,
+                    background: 'var(--pom-olive-a10)',
+                    color: 'var(--pom-olive-hover)',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 16,
+                    fontWeight: 800,
+                    letterSpacing: '-0.02em',
                     marginBottom: 16,
                   }}
                 >
-                  <X size={18} color="var(--pom-olive-hover)" strokeWidth={2.5} />
+                  {String(i + 1).padStart(2, '0')}
                 </div>
-                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
-                  {b}
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 18,
+                    fontWeight: 700,
+                    letterSpacing: '-0.01em',
+                    color: '#1a1a1a',
+                    margin: '0 0 8px',
+                  }}
+                >
+                  {b.title}
+                </h3>
+                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
+                  {b.body}
                 </p>
               </div>
             </Reveal>
@@ -148,10 +128,10 @@ export function Features() {
                 <div
                   className="pom-card-hover"
                   style={{
-                    background: 'var(--pom-surface)',
+                    background: '#f8f8f6',
                     border: '1px solid var(--pom-stone-300)',
-                    borderRadius: 20,
-                    padding: '26px 24px',
+                    borderRadius: 24,
+                    padding: '28px 26px',
                     height: '100%',
                   }}
                 >
@@ -386,28 +366,41 @@ function AudienceCard({
 export function SocialProof() {
   return (
     <section style={{ background: '#fff' }}>
-      <Container className="section" style={{ maxWidth: 860 }}>
+      <Container className="section" style={{ maxWidth: 820, textAlign: 'center' }}>
         <Reveal>
           <Eyebrow>{testimonial.eyebrow}</Eyebrow>
           <blockquote
             style={{
-              margin: '18px 0 0',
+              margin: '10px 0 0',
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(20px, 2.6vw, 26px)',
-              fontWeight: 600,
-              lineHeight: 1.45,
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(22px, 2.8vw, 30px)',
+              fontWeight: 700,
+              lineHeight: 1.35,
+              letterSpacing: '-0.02em',
               color: '#1a1a1a',
               textWrap: 'pretty',
             }}
           >
             „{testimonial.quote}"
           </blockquote>
-          <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 14 }}>
+          <p
+            style={{
+              margin: '26px auto 0',
+              maxWidth: 560,
+              fontFamily: 'var(--font-sans)',
+              fontSize: 15.5,
+              lineHeight: 1.7,
+              color: 'var(--pom-slate-500)',
+              textWrap: 'pretty',
+            }}
+          >
+            {testimonial.support}
+          </p>
+          <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
             <div
               style={{
-                width: 46,
-                height: 46,
+                width: 48,
+                height: 48,
                 borderRadius: 999,
                 background: 'var(--pom-olive)',
                 color: '#fff',
@@ -421,7 +414,7 @@ export function SocialProof() {
             >
               SA
             </div>
-            <div>
+            <div style={{ textAlign: 'left' }}>
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: '#1a1a1a' }}>
                 {testimonial.name}
               </div>
@@ -462,35 +455,24 @@ export function Founder() {
             <div className="pom-eyebrow" style={{ color: 'var(--pom-stone-500)', marginBottom: 14 }}>
               {founder.pressLabel}
             </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-              {founder.press.map((p) => {
-                const label = p.year ? `${p.label} · ${p.year}` : p.label
-                const chipStyle: CSSProperties = {
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: 'var(--pom-slate-600)',
-                  background: '#fff',
-                  border: '1px solid var(--pom-stone-300)',
-                  padding: '8px 14px',
-                  borderRadius: 999,
-                }
-                return p.href ? (
+            <div className="press-bar">
+              {founder.press.map((p) =>
+                p.href ? (
                   <a
                     key={p.label}
                     href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={chipStyle}
+                    className="press-item"
                   >
-                    {label}
+                    {p.label}
                   </a>
                 ) : (
-                  <span key={p.label} style={chipStyle}>
-                    {label}
+                  <span key={p.label} className="press-item">
+                    {p.label}
                   </span>
-                )
-              })}
+                ),
+              )}
             </div>
           </div>
         </Reveal>

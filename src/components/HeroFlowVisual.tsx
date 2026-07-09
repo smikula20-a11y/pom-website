@@ -1,20 +1,24 @@
 /**
- * HeroFlowVisual — statischer Nachbau der POM-Patienten-Ansicht (Phone-Mock).
+ * HeroFlowVisual - statischer Nachbau der POM-Patienten-Ansicht (Phone-Mock).
  * Verifiziert gegen das App-Repo place-of-motion (QRPlanView/PatientPlanView),
- * Look aus dem Claude-Design-Handoff. Kein Supabase/Vimeo — rein statisch.
+ * Look aus dem Claude-Design-Handoff. Kein Supabase/Vimeo - rein statisch.
  */
-
-function PlayTriangle({ size = 16, color = '#1a1a1a' }: { size?: number; color?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  )
-}
 
 export function HeroFlowVisual() {
   return (
     <div style={{ position: 'relative', justifySelf: 'start' }}>
+      {/* Mobile-only: „Dein Logo. Dein Name." mit Pfeil ÜBER dem Phone (Design 3a). */}
+      <div className="hero-annotation-mobile" aria-hidden="true">
+        <div className="hero-annotation-mobile__text">
+          Dein Logo.
+          <br />
+          Dein Name.
+        </div>
+        <svg width="54" height="48" viewBox="0 0 38 34" fill="none">
+          <path d="M35 3 C26 16 18 24 6 28" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" />
+          <path d="M12 29.5 6 28l3.5-5" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
       <div
         style={{
           width: 300,
@@ -127,28 +131,12 @@ export function HeroFlowVisual() {
         {/* Exercise cards */}
         <div style={{ padding: '12px 16px 20px', display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div style={{ border: '1.5px solid #e5e5e0', borderRadius: 18, overflow: 'hidden' }}>
-            <div
-              style={{
-                aspectRatio: '16 / 9',
-                background: '#e8e8e4',
-                display: 'grid',
-                placeItems: 'center',
-                position: 'relative',
-              }}
-            >
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 999,
-                  background: 'rgba(255,255,255,.92)',
-                  display: 'grid',
-                  placeItems: 'center',
-                  boxShadow: '0 4px 12px rgba(0,0,0,.12)',
-                }}
-              >
-                <PlayTriangle />
-              </div>
+            <div style={{ aspectRatio: '16 / 9', position: 'relative', overflow: 'hidden' }}>
+              <img
+                src="/exercise-thumb.jpg"
+                alt="Übungsvideo - Vorgebeugtes Y-Heben"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
               <span
                 style={{
                   position: 'absolute',
@@ -163,6 +151,7 @@ export function HeroFlowVisual() {
                   color: '#1a1a1a',
                   padding: '4px 8px',
                   borderRadius: 999,
+                  backdropFilter: 'blur(4px)',
                 }}
               >
                 Video
@@ -177,7 +166,7 @@ export function HeroFlowVisual() {
                   color: '#1a1a1a',
                 }}
               >
-                Brücke mit Ausstrecken
+                Vorgebeugtes Y-Heben
               </div>
               <div
                 style={{
@@ -188,7 +177,7 @@ export function HeroFlowVisual() {
                   marginTop: 3,
                 }}
               >
-                3×10-12 · Rückenlage
+                3×10-15 · Stand
               </div>
             </div>
           </div>

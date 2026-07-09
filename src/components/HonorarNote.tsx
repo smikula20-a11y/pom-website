@@ -1,7 +1,7 @@
 import { honorar } from '../content/site'
 
 /**
- * HonorarNote — statischer Beleg-Mock (aus dem Design-Handoff).
+ * HonorarNote - statischer Beleg-Mock (aus dem Design-Handoff).
  * Betrag ist ein pricing-neutrales Beispiel, KEIN Abo-Preis (§8).
  */
 export function HonorarNote() {

@@ -4,7 +4,6 @@
  * (_ds/tokens/*) und deckungsgleich mit Messaging-Brief §11.
  * ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 
 /* Tailwind v4 theme: nur was wir als Utilities brauchen. Der Rest
@@ -326,6 +325,27 @@ img {
 .pom-card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .pom-card-hover:hover { transform: scale(1.03); box-shadow: var(--shadow-card-hover-olive); }
 
+/* „Berichtet in" — ruhiger Text-Presse-Balken (Graustufen, verlinkt auf die
+ * echten Artikel). Kein Logo (Markenrecht) — die Namen sind die Wortmarken. */
+.press-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px 28px;
+}
+.press-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--pom-stone-500);
+  transition: color 0.15s ease;
+}
+a.press-item:hover { color: var(--pom-ink); }
+
 /* ============================================================
  * LAYOUT
  * ============================================================ */
@@ -374,6 +394,33 @@ img {
   white-space: nowrap;
 }
 
+/* Mobile-Variante: über dem Phone, Pfeil zeigt nach unten aufs Branding. */
+.hero-annotation-mobile {
+  display: none;
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  height: 82px;
+  margin: 0 auto -4px;
+}
+.hero-annotation-mobile__text {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: #1a1a1a;
+}
+.hero-annotation-mobile svg {
+  position: absolute;
+  left: 30px;
+  bottom: -2px;
+}
+
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
 .split { display: grid; grid-template-columns: 1fr 380px; gap: 72px; align-items: center; }
@@ -388,16 +435,297 @@ img {
   .nav__linkgroup { gap: 16px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-grid .hero-visual { justify-self: center; }
+  .hero-annotation-mobile { display: block; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   .nav__hide-mobile { display: none; }
 }
+/* Anmelden-Button ab ~1024px ausblenden, damit die Nav bei 900-1024px nicht
+ * überläuft (der Zusatz-Button macht sie sonst zu breit → Wortmarke/Links
+ * überlappen). Darunter bleiben Links + primärer CTA. */
+@media (max-width: 1024px) {
+  .nav__hide-md { display: none; }
+}
 @media (max-width: 560px) {
   .nav__links { font-size: 13px; }
 }
-@media (max-width: 720px) {
-  .footer-grid { grid-template-columns: 1fr !important; }
+/* ---- Footer (Brand · Produkt · Rechtliches · Kontakt) ---- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+.footer-heading {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 16px;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.footer-links a { color: rgba(255, 255, 255, 0.75); }
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 520px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+ * FLOW-LOOP — animierte Produkt-Sequenz (7s), Design 3a §4
+ *   Desktop: horizontale Reihe + gestrichelte Konnektoren + Punkt.
+ *   Mobile (<880px): vertikaler Stack, Punkte entfallen.
+ *   Reduced-Motion: Endzustand eingefroren.
+ * ============================================================ */
+.flow-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flow-editor {
+  width: 252px;
+  flex: none;
+  background: #f7f7f5;
+  border: 1px solid #e5e5e0;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+  overflow: hidden;
+}
+
+/* Konnektor: gestrichelte Linie + Pfeil + wandernder Punkt */
+.flow-connector {
+  position: relative;
+  flex: 1;
+  min-width: 60px;
+  height: 2px;
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+}
+.flow-connector__line {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(90deg, rgba(139, 168, 58, 0.35) 0 6px, transparent 6px 12px);
+}
+.flow-connector__arrow {
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.flow-dot {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #8ba83a;
+  box-shadow: 0 0 0 4px rgba(139, 168, 58, 0.2);
+  opacity: 0;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+.flow-dot--1 { animation-name: flowDotOne; }
+.flow-dot--2 { animation-name: flowDotTwo; }
+
+/* QR-Scan-Linie */
+.flow-scan {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 12px;
+  height: 2px;
+  background: #8ba83a;
+  box-shadow: 0 0 10px 2px rgba(139, 168, 58, 0.6);
+  border-radius: 2px;
+  opacity: 0;
+  animation: flowScan 7s ease-in-out infinite;
+}
+
+.flow-row { animation: flowRowIn 7s ease-in-out infinite; }
+.flow-pop { animation: flowPop 7s ease-in-out infinite; }
+
+/* Payoff-Honorarnote (absolut über der Reihe) */
+.flow-note {
+  position: absolute;
+  right: -8px;
+  bottom: -14px;
+  width: 196px;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  box-shadow: 0 18px 44px rgba(26, 26, 26, 0.2);
+  padding: 16px 18px;
+  animation: flowNote 7s ease-in-out infinite;
+}
+.flow-stamp {
+  position: absolute;
+  top: 11px;
+  right: 14px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #059669;
+  border: 2px solid #059669;
+  border-radius: 6px;
+  padding: 3px 8px;
+  transform: rotate(-9deg);
+  animation: flowStamp 7s ease-in-out infinite;
+}
+
+.flow-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 1px solid #f0f0ed;
+}
+
+@keyframes flowDotOne {
+  0%, 15% { left: 2%; opacity: 0; }
+  18% { opacity: 1; }
+  28% { opacity: 1; }
+  31%, 100% { left: 96%; opacity: 0; }
+}
+@keyframes flowDotTwo {
+  0%, 50% { left: 2%; opacity: 0; }
+  53% { opacity: 1; }
+  61% { opacity: 1; }
+  64%, 100% { left: 96%; opacity: 0; }
+}
+@keyframes flowScan {
+  0%, 33% { transform: translateY(0); opacity: 0; }
+  37% { opacity: 0.9; }
+  46% { transform: translateY(96px); opacity: 0.9; }
+  49%, 100% { opacity: 0; }
+}
+@keyframes flowRowIn {
+  0%, 4% { opacity: 0; transform: translateX(-10px); }
+  11% { opacity: 1; transform: none; }
+  90% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: translateX(-10px); }
+}
+@keyframes flowPop {
+  0%, 63% { opacity: 0; transform: scale(0.9); }
+  70% { opacity: 1; transform: scale(1); }
+  92% { opacity: 1; transform: scale(1); }
+  97%, 100% { opacity: 0; transform: scale(0.9); }
+}
+@keyframes flowNote {
+  0%, 73% { opacity: 0; transform: translateY(26px) scale(0.95); }
+  80% { opacity: 1; transform: translateY(0) scale(1); }
+  95% { opacity: 1; transform: translateY(0) scale(1); }
+  99%, 100% { opacity: 0; transform: translateY(26px) scale(0.95); }
+}
+@keyframes flowStamp {
+  0%, 82% { opacity: 0; transform: scale(1.5) rotate(-9deg); }
+  87% { opacity: 1; transform: scale(1) rotate(-9deg); }
+  95% { opacity: 1; transform: scale(1) rotate(-9deg); }
+  99%, 100% { opacity: 0; transform: scale(1) rotate(-9deg); }
+}
+/* Mobile: Punkt wandert vertikal (top statt left) durch die Konnektoren. */
+@keyframes flowDotDownOne {
+  0%, 15% { top: 0; opacity: 0; }
+  18% { opacity: 1; }
+  28% { opacity: 1; }
+  31%, 100% { top: 100%; opacity: 0; }
+}
+@keyframes flowDotDownTwo {
+  0%, 50% { top: 0; opacity: 0; }
+  53% { opacity: 1; }
+  61% { opacity: 1; }
+  64%, 100% { top: 100%; opacity: 0; }
+}
+
+/* Mobile: vertikaler Stack — Konnektoren drehen, Punkte weg, Payoff statisch. */
+@media (max-width: 880px) {
+  .flow-card { padding: 28px 20px 24px; }
+  .flow-track { flex-direction: column; }
+  .flow-connector {
+    flex: none;
+    width: 2px;
+    height: 48px;
+    margin: 2px 0;
+    align-self: center;
+  }
+  .flow-connector__line {
+    /* Saubere, an den Enden weich auslaufende Linie statt schraffierter Striche. */
+    background: linear-gradient(
+      180deg,
+      rgba(139, 168, 58, 0) 0%,
+      rgba(139, 168, 58, 0.4) 22%,
+      rgba(139, 168, 58, 0.4) 78%,
+      rgba(139, 168, 58, 0) 100%
+    );
+  }
+  .flow-connector__arrow {
+    right: auto;
+    top: auto;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%) rotate(90deg) scale(1.3);
+  }
+  /* Punkt wandert vertikal nach unten (statt auf Mobile versteckt). */
+  .flow-dot {
+    display: block;
+    left: 50%;
+    top: 0;
+    margin-left: -5px;
+    margin-top: -5px;
+  }
+  .flow-dot--1 { animation-name: flowDotDownOne; }
+  .flow-dot--2 { animation-name: flowDotDownTwo; }
+  .flow-note {
+    /* relative (nicht static): hält den absolut positionierten „Verkauft"-
+     * Stempel an der Karte statt an .flow-track. */
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 14px;
+    align-self: center;
+  }
+  .flow-legend { gap: 10px 16px; }
+}
+
+/* Live-Demo-Facade nur auf Mobile — am Desktop bringt die Smartphone-Demo
+ * nichts, dort zeigt die Loop bereits alles. */
+@media (min-width: 881px) {
+  .flow-facade { display: none; }
+}
+
+/* Reduced-Motion: alles im Endzustand einfrieren, nichts verschwindet. */
+@media (prefers-reduced-motion: reduce) {
+  .flow-anim { animation: none !important; }
+  .flow-dot, .flow-scan { opacity: 0 !important; }
+  .flow-row, .flow-pop, .flow-note { opacity: 1 !important; transform: none !important; }
+  .flow-stamp { opacity: 1 !important; transform: rotate(-9deg) !important; }
 }
 
 /* ============================================================
@@ -437,7 +765,9 @@ img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  align-items: start;
+  /* stretch: alle Karten auf gleiche Höhe; .price-features (flex:1) schiebt
+   * die CTA-Buttons auf eine gemeinsame Unterkante. */
+  align-items: stretch;
 }
 .price-card {
   position: relative;
@@ -527,9 +857,21 @@ img {
   color: var(--pom-slate-500);
   padding: 6px 12px;
   border-radius: 999px;
+  white-space: nowrap;
   transition: background 0.15s ease, color 0.15s ease;
 }
 .price-toggle button.active { background: #fff; color: var(--pom-olive-hover); box-shadow: var(--shadow-sm); }
+.price-toggle-badge {
+  margin-left: 6px;
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--pom-olive-hover);
+  background: var(--pom-olive-tint);
+  border: 1px solid var(--pom-olive-tint-line);
+  border-radius: 999px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
 .price-save-pill {
   display: inline-block;
   background: var(--pom-olive-tint);
@@ -539,6 +881,28 @@ img {
   padding: 3px 8px;
   border-radius: 999px;
   margin-left: 8px;
+}
+
+/* Founding-Member-Verknappung: Gesamtzahl durchgestrichen + freie Plätze betont. */
+.price-scarcity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+}
+.price-scarcity__total {
+  color: var(--pom-slate-400);
+  text-decoration: line-through;
+}
+.price-scarcity__left {
+  font-weight: 800;
+  color: var(--pom-olive-hover);
+  background: var(--pom-olive-tint);
+  border: 1px solid var(--pom-olive-tint-line);
+  padding: 3px 10px;
+  border-radius: 999px;
 }
 
 @media (max-width: 900px) {
