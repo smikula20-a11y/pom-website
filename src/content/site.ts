@@ -301,7 +301,7 @@ export const impressum = {
   legalForm: 'Einzelunternehmen',
   uid: '', // keine UID - Kleinunternehmer (siehe kleinunternehmer)
   kleinunternehmer: true, // § 6 Abs. 1 Z 27 UStG: keine USt, keine UID
-  gisa: '', // GISA-Zahl des Gewerbes (wird nachgereicht)
+  gisa: '39738837', // GISA-Zahl (BH Feldkirchen, GISA-Auszug 10.07.2026)
   gewerbe: 'Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik',
   gewerbebehoerde: 'Bezirkshauptmannschaft Feldkirchen',
   chamber: 'Wirtschaftskammer Kärnten',

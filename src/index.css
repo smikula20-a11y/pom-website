@@ -352,6 +352,11 @@ a.press-item:hover { color: var(--pom-ink); }
 .section { padding: 88px 64px; }
 .section--tight { padding: 64px 64px; }
 
+/* Sticky-Nav-Offset: Anker-Sprünge (z. B. /#preise) landen mit der Section-
+ * Überschrift sauber unter der Nav statt darunter verdeckt. Der mobile Wert
+ * ist größer, weil das Section-Padding dort kleiner ist (56px statt 88px). */
+section[id] { scroll-margin-top: 8px; }
+
 .nav {
   position: sticky;
   top: 0;
@@ -469,6 +474,7 @@ a.press-item:hover { color: var(--pom-ink); }
 }
 @media (max-width: 900px) {
   .section, .section--tight { padding: 56px 24px; }
+  section[id] { scroll-margin-top: 40px; }
   .nav { padding: 14px 24px; }
   .nav__linkgroup { gap: 16px; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
