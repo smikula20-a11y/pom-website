@@ -259,7 +259,8 @@ export const pricing: {
     {
       name: 'Founding Member',
       badge: '⚡ Founding Member',
-      scarcity: { total: 10, left: 5 },
+      // Stand 11.07.2026: 4 FM vergeben (Quelle: Notion STAND) -> 6 frei.
+      scarcity: { total: 10, left: 6 },
       price: '€15',
       interval: '/ Monat',
       note: 'Lifetime-Preis · bleibt für immer',
