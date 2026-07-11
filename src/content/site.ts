@@ -1,8 +1,8 @@
 /* ============================================================
  * Inhalts-Layer - eine Wahrheit fuer die Wurzel-Website.
  * Copy woertlich aus Notion „Messaging-Brief Website-Wurzel".
- * KEINE Abo-Preise auf der Seite (Pricing nicht final, keine
- * Preistabelle - §8). Das „39 €" in der Honorarnote ist ein
+ * Preistabelle: PRO €49 ENTSCHIEDEN 11.07.2026 (Stefan; Notion
+ * STAMM §3.2 = Master). Das „39 €" in der Honorarnote ist ein
  * pricing-neutrales Beispiel, kein Website-Preis.
  * ============================================================ */
 
@@ -259,8 +259,8 @@ export const pricing: {
     {
       name: 'Founding Member',
       badge: '⚡ Founding Member',
-      // Stand 11.07.2026: 4 FM vergeben (Quelle: Notion STAND) -> 6 frei.
-      scarcity: { total: 10, left: 6 },
+      // Stand 11.07.2026: 5 FM vergeben (Stefan) -> 5 frei.
+      scarcity: { total: 10, left: 5 },
       price: '€15',
       interval: '/ Monat',
       note: 'Lifetime-Preis · bleibt für immer',
