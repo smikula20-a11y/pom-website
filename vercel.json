@@ -1,5 +1,58 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "redirects": [],
+  "redirects": [
+    { "source": "/start", "destination": "/", "permanent": true },
+    { "source": "/startseite", "destination": "/", "permanent": true },
+    { "source": "/start-system", "destination": "/", "permanent": true },
+    { "source": "/start/:path*", "destination": "/", "permanent": true },
+
+    { "source": "/leistungen", "destination": "/", "permanent": true },
+    { "source": "/leistungen/therapeuten", "destination": "/", "permanent": true },
+    { "source": "/fuer-therapeuten", "destination": "/", "permanent": true },
+    { "source": "/partner-werden", "destination": "/", "permanent": true },
+
+    { "source": "/leistungen/patienten", "destination": "/", "permanent": true },
+    { "source": "/fuer-patienten", "destination": "/", "permanent": true },
+    { "source": "/patienten", "destination": "/", "permanent": true },
+
+    { "source": "/ueber", "destination": "/#gruender", "permanent": true },
+    { "source": "/ueber/mein-ansatz", "destination": "/#gruender", "permanent": true },
+    { "source": "/mein-ansatz", "destination": "/#gruender", "permanent": true },
+    { "source": "/ueber/team", "destination": "/#gruender", "permanent": true },
+    { "source": "/ueber/praxis-place-of-motion", "destination": "/#gruender", "permanent": true },
+    { "source": "/praxis-place-of-motion", "destination": "/#gruender", "permanent": true },
+    { "source": "/ueber/faq", "destination": "/", "permanent": true },
+
+    { "source": "/kontakt", "destination": "/#kontakt", "permanent": true },
+    { "source": "/termin", "destination": "/#final-cta", "permanent": true },
+
+    { "source": "/online", "destination": "/", "permanent": true },
+    { "source": "/online-kurse-uebungsplaene", "destination": "/", "permanent": true },
+    { "source": "/online-kurse-uebungsplaene/:path*", "destination": "/", "permanent": true },
+    { "source": "/online-programme", "destination": "/", "permanent": true },
+
+    { "source": "/joomla", "destination": "/", "permanent": true },
+    { "source": "/joomla/:path*", "destination": "/", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+
+    { "source": "/about-us", "destination": "/#gruender", "permanent": true },
+    { "source": "/services", "destination": "/", "permanent": true },
+    { "source": "/services-2", "destination": "/", "permanent": true },
+    { "source": "/doctor", "destination": "/", "permanent": true },
+    { "source": "/appointments", "destination": "/#final-cta", "permanent": true },
+    { "source": "/contact", "destination": "/#kontakt", "permanent": true },
+    { "source": "/faq", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
