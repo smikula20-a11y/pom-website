@@ -24,3 +24,19 @@ export const seiten = {
 } as const
 
 export type Seitenpfad = keyof typeof seiten
+
+/** Für unbekannte Adressen (404.html, nicht im Index). */
+export const nichtGefunden = {
+  title: 'Seite nicht gefunden | Place of Motion',
+  description: 'Diese Seite gibt es auf placeofmotion.com nicht.',
+} as const
+
+/** Firmen-Steckbrief für Suchmaschinen (schema.org), nur auf der Startseite. */
+export const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Place of Motion',
+  url: `${SITE_URL}/`,
+  logo: `${SITE_URL}/logos/pom-olive-icon.svg`,
+  email: 'office@placeofmotion.com',
+} as const
