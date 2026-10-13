@@ -3,6 +3,7 @@ import { MotionConfig } from 'motion/react'
 import { Nav } from './sections/Nav'
 import { Footer } from './sections/Footer'
 import { ScrollToTop } from './components/ScrollToTop'
+import { Seitentitel } from './components/Seitentitel'
 import Home from './pages/Home'
 import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <ScrollToTop />
+      <Seitentitel />
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
