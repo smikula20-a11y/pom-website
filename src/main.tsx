@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 // Selbst gehostete Schriften (lokal gebundelt, kein Google-CDN / keine
 // IP-Uebermittlung an Google). Familien-Namen sind exakt „Inter"/„Outfit".
@@ -18,10 +18,16 @@ import '@fontsource/outfit/900.css'
 import App from './App'
 import './index.css'
 
-createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const app = (
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
+
+// Gebaute Seiten kommen fertig gerendert (scripts/prerender.mjs) und werden nur
+// übernommen; im Dev-Server ist #root leer und wird neu aufgebaut.
+if (root.hasChildNodes()) hydrateRoot(root, app)
+else createRoot(root).render(app)
