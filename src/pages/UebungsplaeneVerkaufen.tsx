@@ -94,11 +94,6 @@ const fragen: { frage: string; antwort: string }[] = [
     antwort:
       'In der App wählst du deinen Steuerstatus: Heilbehandlung (umsatzsteuerfrei nach § 6 Abs. 1 Z 19 UStG), Kleinunternehmer oder umsatzsteuerpflichtig. Der passende Hinweis steht dann auf dem Beleg. Welcher Status für dich gilt, klärst du mit deiner Steuerberatung. Place of Motion erstellt den Beleg in deinem Namen, die steuerliche Verantwortung liegt bei dir.',
   },
-  {
-    frage: 'Darf ich Pläne auch an Kassenpatient:innen verkaufen?',
-    antwort:
-      'Als Privatleistung auf ausdrücklichen Wunsch der Patientin oder des Patienten und mit schriftlicher Aufklärung und Zustimmung. Was genau gilt, regelt dein Vertrag mit der Kasse.',
-  },
 ]
 
 /* ---------------- Bilder (nachgebaut aus der App, erfundene Daten) ---------------- */
