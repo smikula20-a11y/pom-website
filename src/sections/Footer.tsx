@@ -15,7 +15,7 @@ export function Footer() {
               alt="place of motion"
               style={{ height: 26, marginBottom: 16 }}
             />
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.65, maxWidth: 260, color: 'rgba(255,255,255,.6)' }}>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, maxWidth: 260, color: 'rgba(255,255,255,.6)' }}>
               {footer.tagline}
             </p>
           </div>

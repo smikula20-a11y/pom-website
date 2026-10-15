@@ -55,7 +55,7 @@ export function Hero() {
                 gap: 8,
                 marginTop: 22,
                 fontFamily: 'var(--font-sans)',
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 500,
                 color: '#9a9a94',
               }}

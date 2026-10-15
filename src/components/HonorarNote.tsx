@@ -10,8 +10,8 @@ export function HonorarNote() {
     <div
       style={{
         justifySelf: 'center',
-        width: 340,
-        maxWidth: '100%',
+        width: '100%',
+        maxWidth: 340,
         background: '#fff',
         border: '1px solid #f1f5f9',
         borderRadius: 24,

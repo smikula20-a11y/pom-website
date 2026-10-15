@@ -350,8 +350,8 @@ export default function UebungsplaeneVerkaufen() {
                       </div>
                       <span style={{ fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 900, color: 'rgba(255,255,255,.35)' }}>{i + 1}</span>
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#fff', margin: 0 }}>{s.titel}</h3>
-                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,.88)' }}>{s.text}</p>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 20, fontWeight: 700, color: '#fff', margin: 0 }}>{s.titel}</h3>
+                    <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,.88)' }}>{s.text}</p>
                   </div>
                 </Reveal>
               )
@@ -407,7 +407,7 @@ export default function UebungsplaeneVerkaufen() {
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, margin: '22px 0 4px' }}>
                 <span className="verkaufen-pro">PRO</span>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 900, letterSpacing: '-0.03em', color: '#1a1a1a' }}>49 €</span>
-                <span style={{ fontSize: 15, color: 'var(--pom-slate-500)' }}>/ Monat</span>
+                <span style={{ fontSize: 16, color: 'var(--pom-slate-500)' }}>/ Monat</span>
               </div>
               <p className="verkaufen-text" style={{ textAlign: 'center', margin: '10px auto 24px' }}>
                 Verkaufen ist im Tarif PRO enthalten: 49 € im Monat oder 490 € im Jahr. Mit BASIC
