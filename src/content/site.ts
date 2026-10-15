@@ -287,6 +287,8 @@ export const footer = {
     phoneHref: 'tel:+436509946090',
     email: 'office@placeofmotion.com',
   },
+  /** Unterseiten im Fußbereich (Spalte Produkt), interne Links. */
+  pages: [{ label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' }],
   legal: [
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },

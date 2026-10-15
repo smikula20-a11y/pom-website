@@ -99,7 +99,7 @@ export function Problem() {
                 >
                   {b.title}
                 </h3>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
+                <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
                   {b.body}
                 </p>
               </div>
@@ -159,7 +159,7 @@ export function Features() {
                       <span
                         style={{
                           fontFamily: 'var(--font-sans)',
-                          fontSize: 10,
+                          fontSize: 11,
                           fontWeight: 900,
                           letterSpacing: '.1em',
                           textTransform: 'uppercase',
@@ -177,7 +177,7 @@ export function Features() {
                   <h3 className="pom-h3" style={{ marginBottom: 8 }}>
                     {f.title}
                   </h3>
-                  <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
+                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
                     {f.body}
                   </p>
                 </div>
@@ -240,7 +240,7 @@ export function HowItWorks() {
                   >
                     {s.n} · {s.title}
                   </div>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,.85)' }}>
+                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,.85)' }}>
                     {s.body}
                   </p>
                 </div>
@@ -388,7 +388,7 @@ export function SocialProof() {
               margin: '26px auto 0',
               maxWidth: 560,
               fontFamily: 'var(--font-sans)',
-              fontSize: 15.5,
+              fontSize: 16.5,
               lineHeight: 1.7,
               color: 'var(--pom-slate-500)',
               textWrap: 'pretty',
@@ -418,7 +418,7 @@ export function SocialProof() {
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: '#1a1a1a' }}>
                 {testimonial.name}
               </div>
-              <div style={{ fontSize: 13, color: 'var(--pom-stone-500)', fontWeight: 500 }}>
+              <div style={{ fontSize: 14, color: 'var(--pom-stone-500)', fontWeight: 500 }}>
                 {testimonial.role}
               </div>
             </div>
@@ -521,7 +521,7 @@ export function FinalCta() {
               {cta.secondary.label}
             </Button>
           </div>
-          <p style={{ marginTop: 18, fontSize: 13, color: 'rgba(255,255,255,.75)', fontWeight: 500 }}>
+          <p style={{ marginTop: 18, fontSize: 15, color: 'rgba(255,255,255,.75)', fontWeight: 500 }}>
             {finalCta.note}
           </p>
         </Reveal>

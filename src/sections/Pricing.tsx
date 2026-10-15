@@ -119,7 +119,7 @@ export function Pricing() {
           ))}
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 12, color: 'var(--pom-slate-400)' }}>
+        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--pom-slate-400)' }}>
           {pricing.footnote}
         </p>
       </Container>
