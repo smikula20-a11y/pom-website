@@ -9,6 +9,11 @@ export const seiten = {
     description:
       'Erstelle digitale Trainingspläne für deine Patienten — per QR-Code aufs Handy, mit Video pro Übung. Kostenlos starten, optional verkaufen. Für Physiotherapeut:innen.',
   },
+  '/uebungsplaene-verkaufen': {
+    title: 'Übungspläne als Selbstzahlerleistung verkaufen | Place of Motion',
+    description:
+      'Heimübungspläne als Selbstzahlerleistung anbieten: Preis selbst festlegen, bar, mit Karte oder per Überweisung kassieren, Beleg in deinem Namen.',
+  },
   '/impressum': {
     title: 'Impressum | Place of Motion',
     description: 'Impressum von Place of Motion: Anbieter, Kontakt und Firmendaten.',

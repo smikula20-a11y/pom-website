@@ -959,3 +959,85 @@ section[id] { scroll-margin-top: 8px; }
   .price-grid { grid-template-columns: 1fr; }
   .price-card--featured { margin-top: 12px; }
 }
+
+/* ============================================================
+ * UNTERSEITE /uebungsplaene-verkaufen
+ * ============================================================ */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.verkaufen-split { grid-template-columns: minmax(0, 1fr) 360px; }
+.verkaufen-split--bild-links { grid-template-columns: 360px minmax(0, 1fr); }
+.verkaufen-bild { width: 100%; max-width: 360px; margin-inline: auto; }
+.verkaufen-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.2vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--pom-ink);
+  margin: 0;
+  text-wrap: balance;
+}
+.verkaufen-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: balance;
+}
+.verkaufen-lead { font-size: 18px; line-height: 1.65; color: var(--pom-slate-600); margin: 20px 0 28px; max-width: 560px; }
+.verkaufen-text { font-size: 16px; line-height: 1.7; color: var(--pom-slate-600); margin: 18px 0 0; max-width: 560px; }
+.verkaufen-hinweis { font-size: 14px; color: var(--pom-slate-500); margin: 22px 0 0; }
+.verkaufen-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+.verkaufen-schritt {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 24px;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+.verkaufen-liste { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.verkaufen-liste li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; line-height: 1.55; color: var(--pom-slate-600); }
+.verkaufen-haken {
+  flex: 0 0 24px; height: 24px; margin-top: 1px; border-radius: 999px;
+  background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line);
+  color: var(--pom-olive-hover); display: grid; place-items: center;
+}
+.verkaufen-preis {
+  max-width: 640px; margin-inline: auto; text-align: center;
+  background: #f8f8f6; border: 1px solid var(--pom-stone-300); border-radius: 28px;
+  padding: 44px 32px;
+}
+.verkaufen-preis .verkaufen-h2 { text-align: center; }
+.verkaufen-pro {
+  align-self: center; font-size: 11px; font-weight: 900; letter-spacing: .1em;
+  color: var(--pom-olive-hover); background: var(--pom-olive-tint);
+  border: 1px solid var(--pom-olive-tint-line); padding: 4px 10px; border-radius: 999px;
+}
+.verkaufen-fragen { display: grid; gap: 12px; margin-top: 32px; }
+.verkaufen-fragen details { background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 18px; padding: 0 22px; }
+.verkaufen-fragen summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 18px 0;
+}
+.verkaufen-fragen summary::-webkit-details-marker { display: none; }
+.verkaufen-fragen summary h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--pom-ink); margin: 0; }
+.verkaufen-pfeil { flex: 0 0 auto; color: var(--pom-olive-hover); transition: transform .2s ease; }
+.verkaufen-fragen details[open] .verkaufen-pfeil { transform: rotate(180deg); }
+.verkaufen-fragen details p { margin: 0 0 18px; font-size: 15.5px; line-height: 1.7; color: var(--pom-slate-600); }
+@media (max-width: 1080px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .verkaufen-split, .verkaufen-split--bild-links { grid-template-columns: minmax(0, 1fr); }
+  /* Am Handy steht der Text vor dem Bild. */
+  .verkaufen-split--bild-links > :first-child { order: 2; }
+}
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: 1fr; }
+  .verkaufen-preis { padding: 32px 20px; }
+}

@@ -24,10 +24,16 @@ export function Footer() {
           <div>
             <div className="footer-heading">Produkt</div>
             <nav className="footer-links">
+              {/* Anker mit "/" davor, damit sie auch von Unterseiten zur Startseite führen. */}
               {nav.links.map((l) => (
-                <a key={l.href} href={l.href}>
+                <a key={l.href} href={`/${l.href}`}>
                   {l.label}
                 </a>
+              ))}
+              {footer.pages.map((l) => (
+                <Link key={l.href} to={l.href}>
+                  {l.label}
+                </Link>
               ))}
               <a href={nav.cta.href} target="_blank" rel="noopener noreferrer">
                 {nav.cta.label}
