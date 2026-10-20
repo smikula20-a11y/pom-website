@@ -288,7 +288,10 @@ export const footer = {
     email: 'office@placeofmotion.com',
   },
   /** Unterseiten im Fußbereich (Spalte Produkt), interne Links. */
-  pages: [{ label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' }],
+  pages: [
+    { label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' },
+    { label: 'Für Kliniken', href: '/kliniken' },
+  ],
   legal: [
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },

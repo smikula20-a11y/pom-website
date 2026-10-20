@@ -1,8 +1,5 @@
-import type { ReactNode } from 'react'
 import {
   Banknote,
-  Check,
-  ChevronDown,
   ClipboardList,
   CreditCard,
   Download,
@@ -12,8 +9,10 @@ import {
   Receipt,
   Wallet,
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
+import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { FinalCta } from '../sections/MidSections'
 import { links } from '../content/site'
 
@@ -22,13 +21,6 @@ import { links } from '../content/site'
  *  invoiceGenerator (Barbeleg/Honorarnote, Nummer JJJJ-NNN, Steuerhinweise), InvoicesView (Status),
  *  Dashboard (Kachel „Umsatz (Monat)“). Namen und Beträge in den Bildern sind erfunden. */
 
-function H2({ children, onOlive = false }: { children: ReactNode; onOlive?: boolean }) {
-  return (
-    <h2 className="verkaufen-h2" style={{ color: onOlive ? '#fff' : '#1a1a1a' }}>
-      {children}
-    </h2>
-  )
-}
 
 const schritte = [
   {
@@ -122,7 +114,7 @@ function VergabeBild() {
     { icon: Landmark, label: 'Überweisung', aktiv: false },
   ]
   return (
-    <div className="verkaufen-bild" style={{ ...karte, padding: '24px 24px 22px' }}>
+    <div className="unterseite-bild" style={{ ...karte, padding: '24px 24px 22px' }}>
       <div style={{ ...kleinLabel, marginBottom: 10 }}>Plan vergeben</div>
       <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
         Rücken aktiv
@@ -176,7 +168,7 @@ function VergabeBild() {
 function BelegBild() {
   const zeile = { display: 'flex', justifyContent: 'space-between', gap: 12 } as const
   return (
-    <div className="verkaufen-bild" style={{ ...karte, padding: '24px 26px' }}>
+    <div className="unterseite-bild" style={{ ...karte, padding: '24px 26px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
         <div style={{ width: 34, height: 34, borderRadius: 10, background: 'var(--pom-olive-a10)', display: 'grid', placeItems: 'center' }}>
           <FileText size={17} color="var(--pom-olive-hover)" strokeWidth={2.2} />
@@ -230,7 +222,7 @@ function VerkaeufeBild() {
     { nr: '2026-012', name: 'Eva Probe', status: 'Bezahlt' },
   ]
   return (
-    <div className="verkaufen-bild" style={{ ...karte, padding: '22px 22px 18px' }}>
+    <div className="unterseite-bild" style={{ ...karte, padding: '22px 22px 18px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--pom-olive-tint)', border: '1px solid var(--pom-olive-tint-line)', borderRadius: 16, padding: '14px 16px', marginBottom: 16 }}>
         <div>
           <div style={{ ...kleinLabel, color: 'var(--pom-olive-hover)' }}>Umsatz (Monat)</div>
@@ -277,20 +269,6 @@ function VerkaeufeBild() {
   )
 }
 
-function Haekchenliste({ punkte }: { punkte: string[] }) {
-  return (
-    <ul className="verkaufen-liste">
-      {punkte.map((p) => (
-        <li key={p}>
-          <span className="verkaufen-haken" aria-hidden="true">
-            <Check size={14} strokeWidth={3} />
-          </span>
-          {p}
-        </li>
-      ))}
-    </ul>
-  )
-}
 
 export default function UebungsplaeneVerkaufen() {
   return (
@@ -298,16 +276,16 @@ export default function UebungsplaeneVerkaufen() {
       {/* 1 · Kopf */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
-          <div className="split verkaufen-split">
+          <div className="split unterseite-split">
             <div>
               <Eyebrow>Selbstzahlerleistung mit PRO</Eyebrow>
-              <h1 className="verkaufen-h1">Übungspläne als Selbstzahlerleistung verkaufen</h1>
-              <p className="verkaufen-lead">
+              <h1 className="unterseite-h1">Übungspläne als Selbstzahlerleistung verkaufen</h1>
+              <p className="unterseite-lead">
                 Mit Place of Motion gibst du einen Heimübungsplan kostenlos oder gegen Bezahlung an deine
                 Patient:innen weiter. Du legst den Preis selbst fest, kassierst bar, mit Karte oder per
                 Überweisung, und die App erstellt den Beleg in deinem Namen. Das Geld geht direkt an dich.
               </p>
-              <div className="verkaufen-knoepfe">
+              <div className="unterseite-knoepfe">
                 <Button href={links.calendly} external>
                   Erstgespräch buchen
                 </Button>
@@ -315,8 +293,9 @@ export default function UebungsplaeneVerkaufen() {
                   Preise ansehen
                 </Button>
               </div>
-              <p className="verkaufen-hinweis">
-                Therapiezentren und Reha-Einrichtungen verkaufen über die Kasse des Hauses.
+              <p className="unterseite-hinweis">
+                Für Häuser mit mehreren Therapeut:innen läuft der Verkauf über die eigene Kasse, mehr dazu unter{' '}
+                <Link to="/kliniken">Für Kliniken</Link>.
               </p>
             </div>
             <Reveal delay={0.1}>
@@ -332,13 +311,13 @@ export default function UebungsplaeneVerkaufen() {
           <div className="pom-band-eyebrow" style={{ marginBottom: 14 }}>
             In vier Schritten
           </div>
-          <H2 onOlive>So funktioniert's</H2>
+          <UnterseiteH2 onOlive>So funktioniert's</UnterseiteH2>
           <div className="grid-4" style={{ marginTop: 44 }}>
             {schritte.map((s, i) => {
               const Icon = s.icon
               return (
                 <Reveal key={s.titel} delay={i * 0.08} style={{ height: '100%' }}>
-                  <div className="verkaufen-schritt">
+                  <div className="unterseite-schritt">
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(255,255,255,.92)', display: 'grid', placeItems: 'center' }}>
                         <Icon size={20} color="var(--pom-olive-hover)" strokeWidth={2.5} />
@@ -358,12 +337,12 @@ export default function UebungsplaeneVerkaufen() {
       {/* 3 · Beleg */}
       <section style={{ background: '#fff' }}>
         <Container className="section">
-          <div className="split verkaufen-split">
+          <div className="split unterseite-split">
             <Reveal>
               <Eyebrow>Der Beleg</Eyebrow>
-              <H2>Was auf dem Beleg steht</H2>
+              <UnterseiteH2>Was auf dem Beleg steht</UnterseiteH2>
               <Haekchenliste punkte={belegInhalt} />
-              <p className="verkaufen-text">
+              <p className="unterseite-text">
                 Bei Bar- und Kartenzahlung heißt der Beleg „Barbeleg“, bei Überweisung „Honorarnote“. Als
                 Leistung steht standardmäßig „Physiotherapeutische Beratung inkl. digitalem Heimübungsplan“.
                 Den Text kannst du in deinen Praxisdaten ändern.
@@ -379,13 +358,13 @@ export default function UebungsplaeneVerkaufen() {
       {/* 4 · Überblick über die Verkäufe */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
-          <div className="split verkaufen-split verkaufen-split--bild-links">
+          <div className="split unterseite-split unterseite-split--bild-links">
             <Reveal delay={0.1}>
               <VerkaeufeBild />
             </Reveal>
             <Reveal>
               <Eyebrow>Überblick</Eyebrow>
-              <H2>Überblick über deine Verkäufe</H2>
+              <UnterseiteH2>Überblick über deine Verkäufe</UnterseiteH2>
               <Haekchenliste punkte={verkaeufe} />
             </Reveal>
           </div>
@@ -396,19 +375,19 @@ export default function UebungsplaeneVerkaufen() {
       <section style={{ background: '#fff' }}>
         <Container className="section">
           <Reveal>
-            <div className="verkaufen-preis">
+            <div className="unterseite-preis">
               <Eyebrow style={{ textAlign: 'center' }}>Preis</Eyebrow>
-              <H2>Was es kostet</H2>
+              <UnterseiteH2>Was es kostet</UnterseiteH2>
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, margin: '22px 0 4px' }}>
-                <span className="verkaufen-pro">PRO</span>
+                <span className="unterseite-pro">PRO</span>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 900, letterSpacing: '-0.03em', color: '#1a1a1a' }}>49 €</span>
                 <span style={{ fontSize: 16, color: 'var(--pom-slate-500)' }}>/ Monat</span>
               </div>
-              <p className="verkaufen-text" style={{ textAlign: 'center', margin: '10px auto 24px' }}>
+              <p className="unterseite-text" style={{ textAlign: 'center', margin: '10px auto 24px' }}>
                 Verkaufen ist im Tarif PRO enthalten: 49 € im Monat oder 490 € im Jahr. Mit BASIC
                 (kostenlos) vergibst du Pläne kostenlos.
               </p>
-              <div className="verkaufen-knoepfe" style={{ justifyContent: 'center' }}>
+              <div className="unterseite-knoepfe" style={{ justifyContent: 'center' }}>
                 <Button href={links.calendly} external>
                   Erstgespräch buchen
                 </Button>
@@ -424,23 +403,7 @@ export default function UebungsplaeneVerkaufen() {
       {/* 6 · Häufige Fragen (Antworten stehen im HTML, auch zugeklappt lesbar für Suchmaschinen) */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
-          <div style={{ maxWidth: 780, marginInline: 'auto' }}>
-            <Eyebrow style={{ textAlign: 'center' }}>Fragen</Eyebrow>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <H2>Häufige Fragen</H2>
-            </div>
-            <div className="verkaufen-fragen">
-              {fragen.map((f) => (
-                <details key={f.frage}>
-                  <summary>
-                    <h3>{f.frage}</h3>
-                    <ChevronDown className="verkaufen-pfeil" size={20} strokeWidth={2.4} aria-hidden="true" />
-                  </summary>
-                  <p>{f.antwort}</p>
-                </details>
-              ))}
-            </div>
-          </div>
+          <HaeufigeFragen fragen={fragen} />
         </Container>
       </section>
 
