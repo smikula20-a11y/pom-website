@@ -7,7 +7,6 @@ import {
   Lock,
   Mail,
   Phone,
-  Play,
   QrCode,
   Receipt,
   Server,
@@ -16,6 +15,7 @@ import {
   Video,
 } from 'lucide-react'
 import { Button } from '../components/Button'
+import { HeroFlowVisual } from '../components/HeroFlowVisual'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { footer, links } from '../content/site'
@@ -45,7 +45,7 @@ const imHaus = [
   {
     icon: ClipboardList,
     titel: 'Gemeinsame Patientenliste',
-    text: 'Das ganze Team sieht dieselben Patient:innen. Bei jedem Plan steht, wann und von wem er vergeben wurde. Mit „Nur meine“ sieht jede nur die eigenen.',
+    text: 'Das ganze Team sieht dieselben Patient:innen. Bei jedem Plan steht, wann und von wem er vergeben wurde.',
   },
   {
     icon: LayoutTemplate,
@@ -238,40 +238,6 @@ function AusdruckBild() {
   )
 }
 
-/** Patientenansicht am Handy: Logoband, Übung mit Video (lädt erst beim Antippen), Dosierung, Hinweise. */
-function HandyBild() {
-  return (
-    <div className="unterseite-bild" style={{ maxWidth: 300 }}>
-      <div style={{ background: '#1a1a1a', borderRadius: 38, padding: 10, boxShadow: '0 12px 40px rgba(26,26,26,.18)' }}>
-        <div style={{ background: '#fff', borderRadius: 30, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '14px 0 10px', borderBottom: '1px solid #f1f5f9' }}>
-            <div style={{ border: '1.5px dashed #cbd5c0', borderRadius: 8, padding: '5px 12px', fontSize: 11, fontWeight: 700, color: 'var(--pom-olive-hover)' }}>
-              Ihr Logo
-            </div>
-          </div>
-          <div style={{ padding: '14px 16px 18px' }}>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 16, fontWeight: 800, color: '#1a1a1a', marginBottom: 12 }}>Schulter mobil</div>
-            <div style={{ aspectRatio: '16 / 10', borderRadius: 14, background: '#eef0ea', display: 'grid', placeItems: 'center', marginBottom: 12 }}>
-              <div style={{ width: 44, height: 44, borderRadius: 999, background: 'var(--pom-olive)', display: 'grid', placeItems: 'center' }}>
-                <Play size={20} color="#fff" fill="#fff" />
-              </div>
-            </div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#1a1a1a', marginBottom: 10 }}>Wandrutschen</div>
-            <div style={{ background: 'var(--pom-olive-tint)', border: '1px solid var(--pom-olive-tint-line)', borderRadius: 10, padding: '8px 10px', marginBottom: 8 }}>
-              <div style={{ ...kleinLabel, color: 'var(--pom-olive-hover)', fontSize: 9, marginBottom: 6 }}>Dosierung</div>
-              <Textzeilen breiten={['70%']} />
-            </div>
-            <div style={{ border: '1px solid #eef0ea', borderRadius: 10, padding: '8px 10px' }}>
-              <div style={{ ...kleinLabel, fontSize: 9, marginBottom: 6 }}>Hinweise</div>
-              <Textzeilen breiten={['95%', '75%']} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 /** Vier Vertrauenspunkte statt Anbieterliste. Bewusst kein Siegel-Bild: es gibt kein Zertifikat. */
 function DatenschutzBild() {
   return (
@@ -359,7 +325,9 @@ export default function Kliniken() {
         <Container className="section">
           <div className="split unterseite-split unterseite-split--bild-links">
             <Reveal delay={0.1}>
-              <HandyBild />
+              <div className="unterseite-bild" style={{ maxWidth: 300 }}>
+                <HeroFlowVisual kuerzel="IH" name="Ihr Haus" zusatz="Therapie" mitHinweis={false} />
+              </div>
             </Reveal>
             <Reveal>
               <Eyebrow>Für Patient:innen</Eyebrow>
