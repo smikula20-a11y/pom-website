@@ -222,35 +222,37 @@ function Hantel() {
   )
 }
 
-/** Abschnitt 3: Patientenansicht am Handy wie PatientPlanView der App (Stefan 21.10.2026: „zusammengeklappt
- *  richtig“): dunkler Kopf mit Logo, Tage, Übungen als Zeilen (Nummer, Startbild, Titel, Dosierung, Pfeil);
- *  die erste ist aufgeklappt mit Video, Dosierung, Anleitung und Hinweisen. */
+/** Abschnitt 3: Patientenansicht wie PatientPlanView der App (Stefan 21.10.2026: „zusammengeklappt richtig“),
+ *  im kompakten Kartenformat des Handys auf der Startseite (HeroFlowVisual, ohne Rahmen, etwas höher):
+ *  dunkler Kopf mit Logo, Tag, Übungen als Zeilen (Nummer, Startbild, Titel, Dosierung, Pfeil); die erste ist
+ *  aufgeklappt mit Video, Dosierung und Hinweisen nebeneinander und der Anleitung. */
 function HandyUebung() {
-  const zeile = { display: 'flex', alignItems: 'center', gap: 11, padding: '11px 11px 11px 12px' } as const
+  const zeile = { display: 'flex', alignItems: 'center', gap: 9, padding: '9px 9px 9px 10px' } as const
   const nummer = (offen: boolean) =>
     ({
-      width: 22,
-      height: 22,
-      borderRadius: 7,
+      width: 20,
+      height: 20,
+      borderRadius: 6,
       flex: 'none',
       display: 'grid',
       placeItems: 'center',
-      fontSize: 10,
+      fontSize: 9.5,
       fontWeight: 700,
       background: offen ? '#1a1a1a' : '#f0f0ed',
       color: offen ? '#fff' : '#9a9a94',
     }) as const
-  const daumen = { width: 42, height: 42, borderRadius: 10, objectFit: 'cover', flex: 'none' } as const
-  const titel = { fontSize: 12.5, fontWeight: 600, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } as const
+  const daumen = { width: 36, height: 36, borderRadius: 9, objectFit: 'cover', flex: 'none' } as const
+  const titel = { fontSize: 12, fontWeight: 600, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } as const
   const pfeil = (offen: boolean) =>
-    ({ width: 24, height: 24, borderRadius: 999, background: offen ? '#f0f0ed' : '#f7f7f5', display: 'grid', placeItems: 'center', flex: 'none' }) as const
-  const karte = { background: '#fff', borderRadius: 15, border: '1.5px solid rgba(0,0,0,.05)', overflow: 'hidden' } as const
-  const boxLabel = { fontSize: 8.5, fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 4 } as const
+    ({ width: 22, height: 22, borderRadius: 999, background: offen ? '#f0f0ed' : '#f7f7f5', display: 'grid', placeItems: 'center', flex: 'none' }) as const
+  const karte = { background: '#fff', borderRadius: 14, border: '1.5px solid rgba(0,0,0,.05)', overflow: 'hidden' } as const
+  const box = { borderRadius: 9, padding: '7px 10px' } as const
+  const boxLabel = { fontSize: 8, fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 3 } as const
   return (
     <div className="unterseite-bild" style={{ maxWidth: 300 }}>
       <div style={{ width: 300, maxWidth: '100%', background: '#f5f5f3', borderRadius: 32, boxShadow: 'var(--shadow-frame)', overflow: 'hidden' }}>
-        <div style={{ background: 'linear-gradient(135deg,#1a1a1a,#2a2a2a)', padding: '18px 16px 20px', color: '#fff' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <div style={{ background: 'linear-gradient(135deg,#1a1a1a,#2a2a2a)', padding: '16px 16px 15px', color: '#fff' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 30, height: 30, borderRadius: 8, border: '1.5px dashed rgba(255,255,255,.5)', background: 'rgba(255,255,255,.1)', display: 'grid', placeItems: 'center', fontSize: 7.5, fontWeight: 800, letterSpacing: '.04em' }}>
                 LOGO
@@ -260,56 +262,57 @@ function HandyUebung() {
                 <div style={{ fontSize: 9.5, color: 'rgba(255,255,255,.4)' }}>Dein Therapeut</div>
               </div>
             </div>
-            <div style={{ width: 26, height: 26, borderRadius: 7, background: 'rgba(255,255,255,.08)', display: 'grid', placeItems: 'center' }}>
-              <LogOut size={12} color="rgba(255,255,255,.45)" />
+            <div style={{ width: 24, height: 24, borderRadius: 7, background: 'rgba(255,255,255,.08)', display: 'grid', placeItems: 'center' }}>
+              <LogOut size={11} color="rgba(255,255,255,.45)" />
             </div>
           </div>
-          <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: '#8BA83A', marginBottom: 4 }}>
+          <div style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: '1px', textTransform: 'uppercase', color: '#8BA83A', marginBottom: 3 }}>
             Dein Trainingsplan
           </div>
-          <div style={{ fontSize: 19, fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.15 }}>Schulter kräftigen</div>
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,.4)', marginTop: 4 }}>1 Trainingstag · 2 Übungen</div>
+          <div style={{ fontSize: 17, fontWeight: 700, letterSpacing: '-0.01em', lineHeight: 1.15 }}>Schulter kräftigen</div>
         </div>
-        <div style={{ padding: '14px 14px 0' }}>
-          <span style={{ display: 'inline-block', padding: '7px 15px', borderRadius: 10, background: '#8BA83A', color: '#fff', fontSize: 12, fontWeight: 600, boxShadow: '0 4px 12px rgba(139,168,58,.25)' }}>
+        <div style={{ padding: '11px 12px 0' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: 9, background: '#8BA83A', color: '#fff', fontSize: 11.5, fontWeight: 600, boxShadow: '0 4px 12px rgba(139,168,58,.25)' }}>
             Tag 1
           </span>
         </div>
-        <div style={{ padding: '12px 14px 18px', display: 'grid', gap: 10 }}>
+        <div style={{ padding: '10px 12px 14px', display: 'grid', gap: 8 }}>
           <div style={karte}>
             <div style={zeile}>
               <span style={nummer(true)}>1</span>
               <img src="/bilder/vorgebeugt-start.jpg" alt="" style={daumen} />
               <div style={{ ...titel, flex: 1, minWidth: 0 }}>Vorgebeugtes Y-Heben mit Kurzhanteln</div>
               <span style={pfeil(true)}>
-                <ChevronDown size={13} color="#9a9a94" style={{ transform: 'rotate(180deg)' }} />
+                <ChevronDown size={12} color="#9a9a94" style={{ transform: 'rotate(180deg)' }} />
               </span>
             </div>
-            <div style={{ padding: '0 12px 14px' }}>
-              <div style={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 11, overflow: 'hidden', background: '#1a1a1a' }}>
+            <div style={{ padding: '0 10px 10px' }}>
+              <div style={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 10, overflow: 'hidden', background: '#1a1a1a' }}>
                 <img
                   src="/exercise-thumb.jpg"
                   alt="Übungsvideo - Vorgebeugtes Y-Heben mit Kurzhanteln"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center' }}>
-                  <span style={{ width: 44, height: 44, borderRadius: 999, background: 'rgba(255,255,255,.95)', display: 'grid', placeItems: 'center', boxShadow: '0 6px 20px rgba(0,0,0,.28)' }}>
-                    <Play size={18} color="#1a1a1a" fill="#1a1a1a" style={{ marginLeft: 2 }} />
+                  <span style={{ width: 40, height: 40, borderRadius: 999, background: 'rgba(255,255,255,.95)', display: 'grid', placeItems: 'center', boxShadow: '0 6px 20px rgba(0,0,0,.28)' }}>
+                    <Play size={16} color="#1a1a1a" fill="#1a1a1a" style={{ marginLeft: 2 }} />
                   </span>
                 </span>
               </div>
-              <div style={{ background: '#f2f3ec', borderRadius: 10, padding: '9px 12px', marginTop: 10 }}>
-                <div style={{ ...boxLabel, color: '#6f7f50' }}>Dosierung</div>
-                <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a1a' }}>3 × 10–15</div>
+              <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
+                <div style={{ ...box, flex: 'none', background: '#f2f3ec' }}>
+                  <div style={{ ...boxLabel, color: '#6f7f50' }}>Dosierung</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a1a' }}>3 × 10–15</div>
+                </div>
+                <div style={{ ...box, flex: 1, background: '#f4f5f0' }}>
+                  <div style={{ ...boxLabel, color: '#77856a' }}>Hinweise</div>
+                  <div style={{ fontSize: 11, lineHeight: 1.4, color: '#1a1a1a' }}>Rücken gerade, Kopf in Verlängerung</div>
+                </div>
               </div>
-              <p style={{ fontSize: 11, lineHeight: 1.65, color: '#6b6b65', margin: '10px 0 0' }}>
+              <p style={{ fontSize: 10.5, lineHeight: 1.55, color: '#6b6b65', margin: '8px 0 0' }}>
                 Du hebst die fast gestreckten Arme schräg nach vorne oben, bis sie mit dem Oberkörper ein Y bilden,
                 und senkst sie kontrolliert wieder ab.
               </p>
-              <div style={{ background: '#f4f5f0', borderRadius: 10, padding: '9px 12px', marginTop: 10 }}>
-                <div style={{ ...boxLabel, color: '#77856a' }}>Hinweise</div>
-                <div style={{ fontSize: 11.5, lineHeight: 1.5, color: '#1a1a1a' }}>Rücken gerade, Kopf in Verlängerung</div>
-              </div>
             </div>
           </div>
           <div style={{ ...karte, ...zeile }}>
@@ -317,12 +320,12 @@ function HandyUebung() {
             <img src="/bilder/vorgebeugt-start.jpg" alt="" style={daumen} />
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={titel}>Vorgebeugtes Seitheben mit Kurzhanteln</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 600, color: '#7a9530', marginTop: 3 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 10.5, fontWeight: 600, color: '#7a9530', marginTop: 2 }}>
                 <Hantel />3 × 12
               </div>
             </div>
             <span style={pfeil(false)}>
-              <ChevronDown size={13} color="#9a9a94" />
+              <ChevronDown size={12} color="#9a9a94" />
             </span>
           </div>
         </div>
