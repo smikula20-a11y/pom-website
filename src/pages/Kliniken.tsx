@@ -1,5 +1,8 @@
+import { useEffect, useRef } from 'react'
 import {
   Building2,
+  ChevronDown,
+  ChevronUp,
   ClipboardList,
   GraduationCap,
   Image as ImageIcon,
@@ -7,7 +10,7 @@ import {
   Lock,
   Mail,
   Phone,
-  QrCode,
+  Play,
   Receipt,
   Server,
   ShieldCheck,
@@ -15,7 +18,6 @@ import {
   Video,
 } from 'lucide-react'
 import { Button } from '../components/Button'
-import { HeroFlowVisual } from '../components/HeroFlowVisual'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { footer, links } from '../content/site'
@@ -156,7 +158,7 @@ const fragen = [
   },
 ]
 
-/* ---------------- Bilder (nachgebaut aus der App, Übungsnamen aus der Bibliothek) ---------------- */
+/* ---------------- Bilder (nachgebaut aus der App, Übungen und Fotos aus der Bibliothek) ---------------- */
 
 const karte = {
   background: '#fff',
@@ -174,64 +176,130 @@ const kleinLabel = {
   color: '#94a3b8',
 } as const
 
-/** Platzhalter für Start- und Endbild einer Übung. */
-function Vorschaubild() {
+/** Kopf der Seite: kurzer Film ohne Ton (7 s): Ausdruck, QR-Code scannen, Plan am Handy, Video.
+ *  Gebaut mit HyperFrames in C:\Users\smiku\claude code\pom-videos\videos\kliniken-kopf (Stefan 21.10.2026).
+ *  Spielt einmal, sobald er zur Hälfte zu sehen ist (am Handy steht er unter dem Text), und bleibt auf dem
+ *  letzten Bild stehen. Poster = erstes Bild. Bei „Bewegung reduzieren“ oder wenn das Gerät nicht abspielt
+ *  (z. B. Stromsparmodus) steht stattdessen das letzte Bild da. */
+function KopfVideo() {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const video = ref.current
+    if (!video) return
+    const endbild = () => {
+      video.poster = '/video/kliniken-kopf-ende.jpg'
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      endbild()
+      return
+    }
+    const beobachter = new IntersectionObserver(
+      ([eintrag]) => {
+        if (!eintrag.isIntersecting) return
+        beobachter.disconnect()
+        video.play().catch(endbild)
+      },
+      { threshold: 0.5 },
+    )
+    beobachter.observe(video)
+    return () => beobachter.disconnect()
+  }, [])
   return (
-    <div style={{ aspectRatio: '4 / 3', borderRadius: 8, background: '#eef0ea', display: 'grid', placeItems: 'center' }}>
-      <ImageIcon size={16} color="#b6bcae" strokeWidth={2} />
+    <div className="kopf-video">
+      <video
+        ref={ref}
+        src="/video/kliniken-kopf.mp4"
+        poster="/video/kliniken-kopf-start.jpg"
+        muted
+        playsInline
+        preload="auto"
+        width={960}
+        height={1200}
+        aria-label="Ein ausgedruckter Übungsplan mit QR-Code. Ein Handy scannt den Code und zeigt denselben Plan mit Übungsvideo."
+      />
     </div>
   )
 }
 
-/** Platzhalter-Zeilen statt erfundener Dosierungen. */
-function Textzeilen({ breiten }: { breiten: string[] }) {
+/** Abschnitt 3: Patientenansicht am Handy mit geöffneter Übung, schematisch wie PatientPlanView der App
+ *  (Zeile mit Nummer und Bild, Video, Dosierung, Beschreibung, Hinweise; zweite Übung zugeklappt). */
+function HandyUebung() {
+  const zeile = { display: 'flex', alignItems: 'center', gap: 10, padding: '10px 12px' } as const
+  const nummer = (aktiv: boolean) =>
+    ({
+      width: 22,
+      height: 22,
+      borderRadius: 999,
+      flex: 'none',
+      display: 'grid',
+      placeItems: 'center',
+      fontSize: 11,
+      fontWeight: 800,
+      background: aktiv ? '#8BA83A' : '#f0f0ed',
+      color: aktiv ? '#fff' : '#9a9a94',
+    }) as const
+  const pfeilKreis = { width: 26, height: 26, borderRadius: 999, background: '#f0f0ed', display: 'grid', placeItems: 'center', flex: 'none' } as const
+  const titel = { fontSize: 13, fontWeight: 600, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } as const
   return (
-    <div style={{ display: 'grid', gap: 5 }}>
-      {breiten.map((b, i) => (
-        <div key={i} style={{ height: 6, width: b, borderRadius: 3, background: '#e2e8f0' }} />
-      ))}
-    </div>
-  )
-}
-
-/** Ausdruck: Logo, Planname, vergeben am, Übungen mit Start-/Endbild und Dosierung, QR-Code unten. */
-function AusdruckBild() {
-  const uebungen = ['Wandrutschen', 'Vorgebeugtes Y-Heben']
-  return (
-    <div className="unterseite-bild" style={{ ...karte, borderRadius: 14, padding: '22px 22px 18px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-        <div>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: 17, fontWeight: 800, color: '#1a1a1a' }}>Schulter mobil</div>
-          <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>vergeben am 15.10.2026</div>
-        </div>
-        <div style={{ border: '1.5px dashed #cbd5c0', borderRadius: 8, padding: '6px 10px', fontSize: 11, fontWeight: 700, color: 'var(--pom-olive-hover)' }}>
-          Ihr Logo
-        </div>
-      </div>
-
-      {uebungen.map((name, i) => (
-        <div key={name} style={{ borderTop: '1px solid #f1f5f9', padding: '12px 0' }}>
-          <div style={{ fontSize: 12.5, fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
-            {i + 1}. {name}
+    <div className="unterseite-bild" style={{ maxWidth: 300 }}>
+      <div style={{ width: 300, maxWidth: '100%', background: '#fff', borderRadius: 32, boxShadow: 'var(--shadow-frame)', overflow: 'hidden' }}>
+        <div style={{ background: 'linear-gradient(135deg,#1a1a1a,#2a2a2a)', padding: '16px 20px 14px', color: '#fff', display: 'flex', alignItems: 'center', gap: 11 }}>
+          <div style={{ width: 34, height: 34, borderRadius: 10, background: 'rgba(139,168,58,.25)', border: '1.5px dashed rgba(255,255,255,.45)', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-display)', fontSize: 13, fontWeight: 800 }}>
+            IH
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: 8, alignItems: 'start' }}>
-            <Vorschaubild />
-            <Vorschaubild />
-            <div style={{ border: '1px solid #eef0ea', borderRadius: 8, padding: '7px 8px' }}>
-              <div style={{ ...kleinLabel, fontSize: 9, marginBottom: 6 }}>Dosierung</div>
-              <Textzeilen breiten={['90%', '60%']} />
+          <div>
+            <div style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 800, lineHeight: 1.2 }}>Ihr Haus</div>
+            <div style={{ fontSize: 11, fontWeight: 500, color: 'rgba(255,255,255,.6)' }}>Dein Trainingsplan</div>
+          </div>
+        </div>
+        <div style={{ padding: '14px 14px 18px' }}>
+          <div style={{ border: '1.5px solid #e5e5e0', borderRadius: 18, overflow: 'hidden' }}>
+            <div style={zeile}>
+              <span style={nummer(true)}>1</span>
+              <img src="/bilder/y-heben-ende.jpg" alt="" style={{ width: 40, height: 40, borderRadius: 10, objectFit: 'cover', flex: 'none' }} />
+              <div style={{ ...titel, flex: 1, minWidth: 0 }}>Vorgebeugtes Y-Heben mit Kurzhanteln</div>
+              <span style={pfeilKreis}>
+                <ChevronUp size={14} color="#9a9a94" />
+              </span>
+            </div>
+            <div style={{ padding: '0 12px 14px' }}>
+              <div style={{ position: 'relative', aspectRatio: '16 / 9', borderRadius: 12, overflow: 'hidden', background: '#1a1a1a' }}>
+                <img
+                  src="/exercise-thumb.jpg"
+                  alt="Übungsvideo - Vorgebeugtes Y-Heben mit Kurzhanteln"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+                <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center' }}>
+                  <span style={{ width: 44, height: 44, borderRadius: 999, background: 'rgba(255,255,255,.92)', display: 'grid', placeItems: 'center', boxShadow: '0 4px 14px rgba(0,0,0,.2)' }}>
+                    <Play size={18} color="#8BA83A" fill="#8BA83A" style={{ marginLeft: 2 }} />
+                  </span>
+                </span>
+              </div>
+              <div style={{ background: '#f2f3ec', borderRadius: 10, padding: '8px 12px', marginTop: 10 }}>
+                <div style={{ ...kleinLabel, fontSize: 9, color: '#7a8a5a', marginBottom: 3 }}>Dosierung</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: '#1a1a1a' }}>3 × 10–15</div>
+              </div>
+              <p style={{ fontSize: 11.5, lineHeight: 1.6, color: '#71716b', margin: '10px 0 0' }}>
+                Du hebst die fast gestreckten Arme schräg nach vorne oben, bis sie mit dem Oberkörper ein Y bilden,
+                und senkst sie kontrolliert wieder ab.
+              </p>
+              <div style={{ background: '#f4f5f0', borderRadius: 10, padding: '8px 12px', marginTop: 10 }}>
+                <div style={{ ...kleinLabel, fontSize: 9, color: '#8a9878', marginBottom: 3 }}>Hinweise</div>
+                <div style={{ fontSize: 12.5, color: '#1a1a1a' }}>Rücken gerade, Kopf in Verlängerung</div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderTop: '1px solid #f1f5f9', paddingTop: 12 }}>
-        <div style={{ width: 54, height: 54, borderRadius: 8, border: '1px solid #e2e8f0', display: 'grid', placeItems: 'center' }}>
-          <QrCode size={38} color="#1a1a1a" strokeWidth={1.6} />
-        </div>
-        <div>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#1a1a1a' }}>QR-Code scannen – direkt zum Plan</div>
-          <div style={{ fontSize: 10.5, color: '#94a3b8', marginTop: 2 }}>Erstellt mit Place of Motion</div>
+          <div style={{ ...zeile, border: '1.5px solid #e5e5e0', borderRadius: 18, marginTop: 10 }}>
+            <span style={nummer(false)}>2</span>
+            <img src="/bilder/seitheben-ende.jpg" alt="" style={{ width: 40, height: 40, borderRadius: 10, objectFit: 'cover', flex: 'none' }} />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={titel}>Vorgebeugtes Seitheben mit Kurzhanteln</div>
+              <div style={{ fontSize: 11.5, fontWeight: 600, color: '#8BA83A', marginTop: 2 }}>3 × 12</div>
+            </div>
+            <span style={pfeilKreis}>
+              <ChevronDown size={14} color="#9a9a94" />
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -265,7 +333,7 @@ export default function Kliniken() {
       {/* 1 · Kopf */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
-          <div className="split unterseite-split">
+          <div className="split unterseite-split unterseite-split--kopf">
             <div>
               <Eyebrow>Place of Motion für Einrichtungen</Eyebrow>
               <h1 className="unterseite-h1">Heimübungspläne für Krankenhäuser, Reha- und Therapiezentren</h1>
@@ -287,9 +355,7 @@ export default function Kliniken() {
                 Entwickelt von Stefan Mikula, Physiotherapeut mit eigener Praxis in Klagenfurt.
               </p>
             </div>
-            <Reveal delay={0.1}>
-              <AusdruckBild />
-            </Reveal>
+            <KopfVideo />
           </div>
         </Container>
       </section>
@@ -325,9 +391,7 @@ export default function Kliniken() {
         <Container className="section">
           <div className="split unterseite-split unterseite-split--bild-links">
             <Reveal delay={0.1}>
-              <div className="unterseite-bild" style={{ maxWidth: 300 }}>
-                <HeroFlowVisual kuerzel="IH" name="Ihr Haus" zusatz="Therapie" mitHinweis={false} />
-              </div>
+              <HandyUebung />
             </Reveal>
             <Reveal>
               <Eyebrow>Für Patient:innen</Eyebrow>

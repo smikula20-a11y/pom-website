@@ -2,21 +2,13 @@
  * HeroFlowVisual - statischer Nachbau der POM-Patienten-Ansicht (Phone-Mock).
  * Verifiziert gegen das App-Repo place-of-motion (QRPlanView/PatientPlanView),
  * Look aus dem Claude-Design-Handoff. Kein Supabase/Vimeo - rein statisch.
- * Auch auf /kliniken (Kürzel, Name und Zusatz des Hauses, ohne Hinweis „Dein Logo. Dein Name.“).
  */
 
-type Props = { kuerzel?: string; name?: string; zusatz?: string; mitHinweis?: boolean }
-
-export function HeroFlowVisual({
-  kuerzel = 'DP',
-  name = 'Deine Praxis',
-  zusatz = 'Physiotherapie',
-  mitHinweis = true,
-}: Props = {}) {
+export function HeroFlowVisual() {
   return (
     <div style={{ position: 'relative', justifySelf: 'start' }}>
       {/* Mobile-only: „Dein Logo. Dein Name." mit Pfeil ÜBER dem Phone (Design 3a). */}
-      {mitHinweis && <div className="hero-annotation-mobile" aria-hidden="true">
+      <div className="hero-annotation-mobile" aria-hidden="true">
         <div className="hero-annotation-mobile__text">
           Dein Logo.
           <br />
@@ -26,7 +18,7 @@ export function HeroFlowVisual({
           <path d="M35 3 C26 16 18 24 6 28" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" />
           <path d="M12 29.5 6 28l3.5-5" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      </div>}
+      </div>
       <div
         style={{
           width: 300,
@@ -62,7 +54,7 @@ export function HeroFlowVisual({
                 color: '#fff',
               }}
             >
-              {kuerzel}
+              DP
             </div>
             <div style={{ whiteSpace: 'nowrap' }}>
               <div
@@ -74,7 +66,7 @@ export function HeroFlowVisual({
                   lineHeight: 1.2,
                 }}
               >
-                {name}
+                Deine Praxis
               </div>
               <div
                 style={{
@@ -84,7 +76,7 @@ export function HeroFlowVisual({
                   color: 'rgba(255,255,255,.6)',
                 }}
               >
-                {zusatz}
+                Physiotherapie
               </div>
             </div>
           </div>
@@ -228,7 +220,7 @@ export function HeroFlowVisual({
       </div>
 
       {/* „Dein Logo. Dein Name." annotation (hidden on narrow screens) */}
-      {mitHinweis && <div className="hero-annotation">
+      <div className="hero-annotation">
         <svg width="38" height="34" viewBox="0 0 38 34" fill="none" aria-hidden="true" style={{ flex: 'none', marginTop: 14 }}>
           <path d="M35 3 C26 16 18 24 6 28" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" />
           <path d="M12 29.5 6 28l3.5-5" stroke="#8BA83A" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
@@ -247,7 +239,7 @@ export function HeroFlowVisual({
           <br />
           Dein Name.
         </div>
-      </div>}
+      </div>
     </div>
   )
 }
