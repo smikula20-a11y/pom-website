@@ -176,7 +176,7 @@ const kleinLabel = {
   color: '#94a3b8',
 } as const
 
-/** Kopf der Seite: kurzer Film ohne Ton (7 s): Ausdruck, QR-Code scannen, Plan am Handy, Video.
+/** Kopf der Seite: kurzer Film ohne Ton (10 s): Ausdruck, QR-Code scannen, Plan am Handy, Video.
  *  Gebaut mit HyperFrames in C:\Users\smiku\claude code\pom-videos\videos\kliniken-kopf (Stefan 21.10.2026).
  *  Spielt einmal, sobald er zur Hälfte zu sehen ist (am Handy steht er unter dem Text), und bleibt auf dem
  *  letzten Bild stehen. Poster = erstes Bild. Bei „Bewegung reduzieren“ oder wenn das Gerät nicht abspielt
