@@ -14,6 +14,11 @@ export const seiten = {
     description:
       'Heimübungspläne als Selbstzahlerleistung anbieten: Preis selbst festlegen, bar, mit Karte oder per Überweisung kassieren, Beleg in deinem Namen.',
   },
+  '/kliniken': {
+    title: 'Place of Motion für Krankenhäuser, Reha- und Therapiezentren',
+    description:
+      'Heimübungspläne mit Video für Ihr ganzes Team: eigene Zugänge, Logo des Hauses, Ausgabe per QR-Code, Patient:innen ohne Konto und ohne App.',
+  },
   '/impressum': {
     title: 'Impressum | Place of Motion',
     description: 'Impressum von Place of Motion: Anbieter, Kontakt und Firmendaten.',
