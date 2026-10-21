@@ -290,7 +290,7 @@ export const footer = {
   /** Unterseiten im Fußbereich (Spalte Produkt), interne Links. */
   pages: [
     { label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' },
-    { label: 'Für Kliniken', href: '/kliniken' },
+    { label: 'Für Einrichtungen', href: '/einrichtungen' },
   ],
   legal: [
     { label: 'Impressum', href: '/impressum' },

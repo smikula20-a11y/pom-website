@@ -295,7 +295,7 @@ export default function UebungsplaeneVerkaufen() {
               </div>
               <p className="unterseite-hinweis">
                 Für Häuser mit mehreren Therapeut:innen läuft der Verkauf über die eigene Kasse, mehr dazu unter{' '}
-                <Link to="/kliniken">Für Kliniken</Link>.
+                <Link to="/einrichtungen">Für Einrichtungen</Link>.
               </p>
             </div>
             <Reveal delay={0.1}>

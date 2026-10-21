@@ -354,7 +354,7 @@ function DatenschutzBild() {
   )
 }
 
-export default function Kliniken() {
+export default function Einrichtungen() {
   const a = footer.address
   return (
     <main>

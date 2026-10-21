@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import { Check, ChevronDown } from 'lucide-react'
 import { Eyebrow } from './primitives'
 
-/** Gemeinsame Bausteine der Unterseiten (/uebungsplaene-verkaufen, /kliniken). Stile in index.css (.unterseite-*). */
+/** Gemeinsame Bausteine der Unterseiten (/uebungsplaene-verkaufen, /einrichtungen). Stile in index.css (.unterseite-*). */
 
 export function UnterseiteH2({ children, onOlive = false }: { children: ReactNode; onOlive?: boolean }) {
   return (

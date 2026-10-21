@@ -9,7 +9,7 @@ import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
 import AGB from './pages/AGB'
 import UebungsplaeneVerkaufen from './pages/UebungsplaeneVerkaufen'
-import Kliniken from './pages/Kliniken'
+import Einrichtungen from './pages/Einrichtungen'
 import NichtGefunden from './pages/NichtGefunden'
 
 export default function App() {
@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/datenschutz" element={<Datenschutz />} />
         <Route path="/agb" element={<AGB />} />
         <Route path="/uebungsplaene-verkaufen" element={<UebungsplaeneVerkaufen />} />
-        <Route path="/kliniken" element={<Kliniken />} />
+        <Route path="/einrichtungen" element={<Einrichtungen />} />
         {/* Unbekannte Pfade -> Fehlerseite (404.html, echte 301s in vercel.json). */}
         <Route path="*" element={<NichtGefunden />} />
       </Routes>

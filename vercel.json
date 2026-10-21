@@ -24,6 +24,8 @@
     { "source": "/praxis-place-of-motion", "destination": "/#gruender", "permanent": true },
     { "source": "/ueber/faq", "destination": "/", "permanent": true },
 
+    { "source": "/kliniken", "destination": "/einrichtungen", "permanent": true },
+
     { "source": "/kontakt", "destination": "/#kontakt", "permanent": true },
     { "source": "/termin", "destination": "/#final-cta", "permanent": true },
 
