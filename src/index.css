@@ -1125,13 +1125,43 @@ section[id] { scroll-margin-top: 8px; }
   .unterseite-tabelle-symbol { margin-top: -5px; }
 }
 
-/* Häufige Fragen offen: Frage als Überschrift, Antwort direkt darunter. */
-.unterseite-fragen--offen > div {
-  background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 18px; padding: 20px 22px;
+/* Häufige Fragen zum Auf- und Zuklappen (nur /uebungsplan-software). Die ganze Kopfzeile ist Tippfläche. */
+.unterseite-fragen--klapp details {
+  padding: 0; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
 }
-.unterseite-fragen--offen h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--pom-ink); margin: 0; }
-.unterseite-fragen--offen p { margin: 8px 0 0; font-size: 16.5px; line-height: 1.7; color: var(--pom-slate-600); }
-.unterseite-fragen--offen .unterseite-link { margin-top: 10px; }
+.unterseite-fragen--klapp summary { padding: 18px 20px 18px 22px; min-height: 60px; border-radius: 17px; }
+.unterseite-fragen--klapp summary:focus-visible { outline: 3px solid var(--pom-olive); outline-offset: 2px; }
+.unterseite-fragen--klapp summary h3 { line-height: 1.35; transition: color .2s ease; }
+.unterseite-klapp-symbol {
+  flex: 0 0 34px; height: 34px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--pom-olive-a10); color: var(--pom-olive-hover);
+  transition: transform .25s ease, background-color .2s ease, color .2s ease;
+}
+.unterseite-fragen--klapp details[open] { border-color: var(--pom-olive); box-shadow: 0 8px 28px rgba(107, 132, 41, .10); }
+.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol { transform: rotate(45deg); background: var(--pom-olive); color: #fff; }
+.unterseite-antwort { padding: 0 22px 20px; }
+.unterseite-fragen--klapp .unterseite-antwort p { margin: 0; max-width: 640px; }
+.unterseite-antwort .unterseite-link { margin-top: 10px; }
+@media (hover: hover) {
+  .unterseite-fragen--klapp details:hover { border-color: var(--pom-olive-tint-line); }
+  .unterseite-fragen--klapp details[open]:hover { border-color: var(--pom-olive); }
+  .unterseite-fragen--klapp summary:hover h3 { color: var(--pom-olive-hover); }
+  .unterseite-fragen--klapp details:not([open]) summary:hover .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
+}
+/* Weiches Öffnen und Schließen, wo der Browser Höhe bis "auto" überblenden kann. Sonst öffnet es ohne Bewegung. */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    .unterseite-fragen--klapp { interpolate-size: allow-keywords; }
+    .unterseite-fragen--klapp details::details-content {
+      height: 0; overflow: clip;
+      transition: height .3s ease, content-visibility .3s allow-discrete;
+    }
+    .unterseite-fragen--klapp details[open]::details-content { height: auto; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .unterseite-fragen--klapp details, .unterseite-fragen--klapp summary h3, .unterseite-klapp-symbol { transition: none; }
+}
 
 /* Zwei Programme nebeneinander: Praxissoftware bleibt, Place of Motion kommt dazu. */
 .unterseite-nebeneinander { display: grid; gap: 10px; justify-items: center; }

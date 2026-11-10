@@ -41,7 +41,8 @@ import { HandyUebung, KopfVideo } from './Einrichtungen'
  *  Alle Texte stehen in content/uebungsplanSoftware.ts, weil dieselben Fragen und Antworten auch
  *  maschinenlesbar im <head> landen (FAQPage, siehe content/seo.ts).
  *  App-Bilder sind die von /einrichtungen (Film im Kopf, Handy-Ansicht), hier nichts Neues nachgebaut.
- *  Die Fragen sind offen gesetzt: Überschrift, Antwort direkt darunter, nichts zum Aufklappen. */
+ *  Häufige Fragen zum Auf- und Zuklappen (details/summary, erste offen): Die Antworten stehen trotzdem
+ *  vollständig im fertigen HTML. */
 
 const schrittSymbole: LucideIcon[] = [ClipboardList, QrCode, Smartphone]
 const auswahlSymbole: LucideIcon[] = [Smartphone, Video, Printer, Server, Receipt, Monitor, Gift]
@@ -302,7 +303,7 @@ export default function UebungsplanSoftware() {
         </Container>
       </section>
 
-      {/* 8 · Häufige Fragen, offen gesetzt */}
+      {/* 8 · Häufige Fragen zum Aufklappen, die erste ist beim Laden offen */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
           <div style={{ maxWidth: 780, marginInline: 'auto' }}>
@@ -310,13 +311,20 @@ export default function UebungsplanSoftware() {
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <UnterseiteH2>Häufige Fragen</UnterseiteH2>
             </div>
-            <div className="unterseite-fragen unterseite-fragen--offen">
-              {fragen.map((f) => (
-                <div key={f.frage}>
-                  <h3>{f.frage}</h3>
-                  <p>{f.antwort}</p>
-                  {f.link && <Textlink {...f.link} />}
-                </div>
+            <div className="unterseite-fragen unterseite-fragen--klapp">
+              {fragen.map((f, i) => (
+                <details key={f.frage} open={i === 0 ? true : undefined}>
+                  <summary>
+                    <h3>{f.frage}</h3>
+                    <span className="unterseite-klapp-symbol" aria-hidden="true">
+                      <Plus size={18} strokeWidth={2.6} />
+                    </span>
+                  </summary>
+                  <div className="unterseite-antwort">
+                    <p>{f.antwort}</p>
+                    {f.link && <Textlink {...f.link} />}
+                  </div>
+                </details>
               ))}
             </div>
           </div>
