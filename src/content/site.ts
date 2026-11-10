@@ -295,6 +295,7 @@ export const footer = {
   },
   /** Unterseiten im Fußbereich (Spalte Produkt), interne Links. */
   pages: [
+    { label: 'Übungsplan-Software', href: '/uebungsplan-software' },
     { label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' },
     { label: 'Für Einrichtungen', href: '/einrichtungen' },
   ],

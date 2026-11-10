@@ -11,7 +11,7 @@ const dist = path.join(wurzel, 'dist')
 const serverBundle = path.join(wurzel, 'dist-ssr', 'entry-server.js')
 
 const vorlage = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
-const { render, seiten, nichtGefunden, organisation, SITE_URL } = await import(
+const { render, seiten, nichtGefunden, organisation, strukturierteDaten, SITE_URL } = await import(
   pathToFileURL(serverBundle).href
 )
 
@@ -30,13 +30,14 @@ function seite(url, meta, kopf) {
     .replace('<div id="root"></div>', `<div id="root">${inhalt}</div>`)
 }
 
+// JSON in <script>: "<" escapen, damit kein Text das Tag vorzeitig schließt.
+const jsonLd = (daten) =>
+  `<script type="application/ld+json">${JSON.stringify(daten).replace(/</g, '\\u003c')}</script>`
+
 for (const [pfad, meta] of Object.entries(seiten)) {
   const kopf = [`<link rel="canonical" href="${SITE_URL}${pfad}" />`]
-  if (pfad === '/') {
-    // JSON in <script>: "<" escapen, damit kein Text das Tag vorzeitig schließt.
-    const json = JSON.stringify(organisation).replace(/</g, '\\u003c')
-    kopf.push(`<script type="application/ld+json">${json}</script>`)
-  }
+  if (pfad === '/') kopf.push(jsonLd(organisation))
+  for (const daten of strukturierteDaten[pfad] ?? []) kopf.push(jsonLd(daten))
   // /impressum -> impressum.html; Vercel liefert sie dank "cleanUrls" unter /impressum aus.
   const ziel = path.join(dist, pfad === '/' ? 'index.html' : `${pfad.slice(1)}.html`)
   fs.writeFileSync(ziel, seite(pfad, meta, kopf))

@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react'
-import { Check, ChevronDown } from 'lucide-react'
+import { ArrowRight, Check, Plus } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Eyebrow } from './primitives'
 
-/** Gemeinsame Bausteine der Unterseiten (/uebungsplaene-verkaufen, /einrichtungen). Stile in index.css (.unterseite-*). */
+/** Gemeinsame Bausteine der Unterseiten (/uebungsplaene-verkaufen, /einrichtungen, /uebungsplan-software). Stile in index.css (.unterseite-*). */
 
 export function UnterseiteH2({ children, onOlive = false }: { children: ReactNode; onOlive?: boolean }) {
   return (
@@ -27,8 +28,35 @@ export function Haekchenliste({ punkte, aufOlive = false }: { punkte: string[]; 
   )
 }
 
-/** Aufklappbare Fragen. Die Antworten stehen im HTML und sind auch zugeklappt für Suchmaschinen lesbar. */
-export function HaeufigeFragen({ fragen }: { fragen: { frage: string; antwort: string }[] }) {
+/** Interner Link mit Pfeil. Anker auf der Startseite (/#preise) als normaler Link, damit der Sprung sitzt. */
+export function Textlink({ href, label }: { href: string; label: string }) {
+  const inhalt = (
+    <>
+      {label}
+      <ArrowRight size={16} strokeWidth={2.4} aria-hidden="true" />
+    </>
+  )
+  return href.includes('#') ? (
+    <a className="unterseite-link" href={href}>
+      {inhalt}
+    </a>
+  ) : (
+    <Link className="unterseite-link" to={href}>
+      {inhalt}
+    </Link>
+  )
+}
+
+export interface FrageAntwort {
+  frage: string
+  antwort: string
+  link?: { label: string; href: string }
+}
+
+/** Häufige Fragen zum Auf- und Zuklappen, gleich auf allen Unterseiten (Stefan 10.11.2026): weiße Karten,
+ *  rechts Plus, offen Minus im gleichen Stil, die erste Frage ist beim Laden offen. Die Antworten stehen
+ *  auch zugeklappt vollständig im fertigen HTML und sind für Suchmaschinen lesbar. */
+export function HaeufigeFragen({ fragen }: { fragen: FrageAntwort[] }) {
   return (
     <div style={{ maxWidth: 780, marginInline: 'auto' }}>
       <Eyebrow style={{ textAlign: 'center' }}>Fragen</Eyebrow>
@@ -36,13 +64,18 @@ export function HaeufigeFragen({ fragen }: { fragen: { frage: string; antwort: s
         <UnterseiteH2>Häufige Fragen</UnterseiteH2>
       </div>
       <div className="unterseite-fragen">
-        {fragen.map((f) => (
-          <details key={f.frage}>
+        {fragen.map((f, i) => (
+          <details key={f.frage} open={i === 0 ? true : undefined}>
             <summary>
               <h3>{f.frage}</h3>
-              <ChevronDown className="unterseite-pfeil" size={20} strokeWidth={2.4} aria-hidden="true" />
+              <span className="unterseite-klapp-symbol" aria-hidden="true">
+                <Plus size={18} strokeWidth={2.6} />
+              </span>
             </summary>
-            <p>{f.antwort}</p>
+            <div className="unterseite-antwort">
+              <p>{f.antwort}</p>
+              {f.link && <Textlink {...f.link} />}
+            </div>
           </details>
         ))}
       </div>

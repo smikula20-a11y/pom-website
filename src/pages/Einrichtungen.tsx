@@ -173,7 +173,7 @@ const karte = {
  *  Spielt einmal, sobald er zur Hälfte zu sehen ist (am Handy steht er unter dem Text), und bleibt auf dem
  *  letzten Bild stehen. Poster = erstes Bild. Bei „Bewegung reduzieren“ oder wenn das Gerät nicht abspielt
  *  (z. B. Stromsparmodus) steht stattdessen das letzte Bild da. */
-function KopfVideo() {
+export function KopfVideo() {
   const ref = useRef<HTMLVideoElement>(null)
   useEffect(() => {
     const video = ref.current
@@ -226,7 +226,7 @@ function Hantel() {
  *  im kompakten Kartenformat des Handys auf der Startseite (HeroFlowVisual, ohne Rahmen, etwas höher):
  *  dunkler Kopf mit Logo, Tag, Übungen als Zeilen (Nummer, Startbild, Titel, Dosierung, Pfeil); die erste ist
  *  aufgeklappt mit Video, Dosierung und Hinweisen nebeneinander und der Anleitung. */
-function HandyUebung() {
+export function HandyUebung() {
   const zeile = { display: 'flex', alignItems: 'center', gap: 9, padding: '9px 9px 9px 10px' } as const
   const nummer = (offen: boolean) =>
     ({
