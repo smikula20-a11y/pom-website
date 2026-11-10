@@ -1,5 +1,4 @@
 import {
-  ArrowRight,
   CalendarDays,
   ClipboardList,
   FileText,
@@ -17,10 +16,9 @@ import {
   Wallet,
   type LucideIcon,
 } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
-import { UnterseiteH2 } from '../components/Unterseite'
+import { HaeufigeFragen, Textlink, UnterseiteH2 } from '../components/Unterseite'
 import { FinalCta } from '../sections/MidSections'
 import { links } from '../content/site'
 import {
@@ -47,25 +45,6 @@ import { HandyUebung, KopfVideo } from './Einrichtungen'
 const schrittSymbole: LucideIcon[] = [ClipboardList, QrCode, Smartphone]
 const auswahlSymbole: LucideIcon[] = [Smartphone, Video, Printer, Server, Receipt, Monitor, Gift]
 const andersSymbole: LucideIcon[] = [Wallet, Stethoscope, Building2, Video]
-
-/** Interner Link mit Pfeil. Anker auf der Startseite (/#preise) als normaler Link, damit der Sprung sitzt. */
-function Textlink({ href, label }: { href: string; label: string }) {
-  const inhalt = (
-    <>
-      {label}
-      <ArrowRight size={16} strokeWidth={2.4} aria-hidden="true" />
-    </>
-  )
-  return href.includes('#') ? (
-    <a className="unterseite-link" href={href}>
-      {inhalt}
-    </a>
-  ) : (
-    <Link className="unterseite-link" to={href}>
-      {inhalt}
-    </Link>
-  )
-}
 
 /** Hebt „Ja“ oder „Nein“ am Anfang der Antwort hervor, der Wortlaut bleibt gleich. */
 function Antwort({ text }: { text: string }) {
@@ -303,31 +282,10 @@ export default function UebungsplanSoftware() {
         </Container>
       </section>
 
-      {/* 8 · Häufige Fragen zum Aufklappen, die erste ist beim Laden offen */}
+      {/* 8 · Häufige Fragen zum Aufklappen (gemeinsamer Baustein, erste offen) */}
       <section style={{ background: 'var(--pom-stone-bg)' }}>
         <Container className="section">
-          <div style={{ maxWidth: 780, marginInline: 'auto' }}>
-            <Eyebrow style={{ textAlign: 'center' }}>Fragen</Eyebrow>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <UnterseiteH2>Häufige Fragen</UnterseiteH2>
-            </div>
-            <div className="unterseite-fragen unterseite-fragen--klapp">
-              {fragen.map((f, i) => (
-                <details key={f.frage} open={i === 0 ? true : undefined}>
-                  <summary>
-                    <h3>{f.frage}</h3>
-                    <span className="unterseite-klapp-symbol" aria-hidden="true">
-                      <Plus size={18} strokeWidth={2.6} />
-                    </span>
-                  </summary>
-                  <div className="unterseite-antwort">
-                    <p>{f.antwort}</p>
-                    {f.link && <Textlink {...f.link} />}
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
+          <HaeufigeFragen fragen={fragen} />
         </Container>
       </section>
 

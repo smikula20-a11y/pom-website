@@ -1029,8 +1029,6 @@ section[id] { scroll-margin-top: 8px; }
 }
 .unterseite-fragen summary::-webkit-details-marker { display: none; }
 .unterseite-fragen summary h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--pom-ink); margin: 0; }
-.unterseite-pfeil { flex: 0 0 auto; color: var(--pom-olive-hover); transition: transform .2s ease; }
-.unterseite-fragen details[open] .unterseite-pfeil { transform: rotate(180deg); }
 .unterseite-fragen details p { margin: 0 0 18px; font-size: 16.5px; line-height: 1.7; color: var(--pom-slate-600); }
 .unterseite-karte {
   background: #f8f8f6; border: 1px solid var(--pom-stone-300); border-radius: 24px;
@@ -1125,13 +1123,13 @@ section[id] { scroll-margin-top: 8px; }
   .unterseite-tabelle-symbol { margin-top: -5px; }
 }
 
-/* Häufige Fragen zum Auf- und Zuklappen (nur /uebungsplan-software). Die ganze Kopfzeile ist Tippfläche. */
-.unterseite-fragen--klapp details {
+/* Häufige Fragen zum Auf- und Zuklappen (alle Unterseiten). Die ganze Kopfzeile ist Tippfläche. */
+.unterseite-fragen details {
   padding: 0; transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
 }
-.unterseite-fragen--klapp summary { padding: 18px 20px 18px 22px; min-height: 60px; border-radius: 17px; }
-.unterseite-fragen--klapp summary:focus-visible { outline: 3px solid var(--pom-olive); outline-offset: 2px; }
-.unterseite-fragen--klapp summary h3 { line-height: 1.35; transition: color .2s ease; }
+.unterseite-fragen summary { padding: 18px 20px 18px 22px; min-height: 60px; border-radius: 17px; }
+.unterseite-fragen summary:focus-visible { outline: 3px solid var(--pom-olive); outline-offset: 2px; }
+.unterseite-fragen summary h3 { line-height: 1.35; transition: color .2s ease; }
 .unterseite-klapp-symbol {
   flex: 0 0 34px; height: 34px; border-radius: 999px; display: grid; place-items: center;
   background: var(--pom-olive-a10); color: var(--pom-olive-hover);
@@ -1139,31 +1137,31 @@ section[id] { scroll-margin-top: 8px; }
 }
 /* Offen wird aus dem Plus ein Minus im gleichen Stil: der senkrechte Strich (2. Pfad des Lucide-Plus) schrumpft weg. */
 .unterseite-klapp-symbol svg path { transform-box: fill-box; transform-origin: center; transition: transform .25s ease; }
-.unterseite-fragen--klapp details[open] { border-color: var(--pom-olive); box-shadow: 0 8px 28px rgba(107, 132, 41, .10); }
-.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
-.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol svg path:last-child { transform: scaleY(0); }
+.unterseite-fragen details[open] { border-color: var(--pom-olive); box-shadow: 0 8px 28px rgba(107, 132, 41, .10); }
+.unterseite-fragen details[open] .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
+.unterseite-fragen details[open] .unterseite-klapp-symbol svg path:last-child { transform: scaleY(0); }
 .unterseite-antwort { padding: 0 22px 20px; }
-.unterseite-fragen--klapp .unterseite-antwort p { margin: 0; max-width: 640px; }
+.unterseite-fragen .unterseite-antwort p { margin: 0; max-width: 640px; }
 .unterseite-antwort .unterseite-link { margin-top: 10px; }
 @media (hover: hover) {
-  .unterseite-fragen--klapp details:hover { border-color: var(--pom-olive-tint-line); }
-  .unterseite-fragen--klapp details[open]:hover { border-color: var(--pom-olive); }
-  .unterseite-fragen--klapp summary:hover h3 { color: var(--pom-olive-hover); }
-  .unterseite-fragen--klapp details:not([open]) summary:hover .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
+  .unterseite-fragen details:hover { border-color: var(--pom-olive-tint-line); }
+  .unterseite-fragen details[open]:hover { border-color: var(--pom-olive); }
+  .unterseite-fragen summary:hover h3 { color: var(--pom-olive-hover); }
+  .unterseite-fragen details:not([open]) summary:hover .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
 }
 /* Weiches Öffnen und Schließen, wo der Browser Höhe bis "auto" überblenden kann. Sonst öffnet es ohne Bewegung. */
 @supports (interpolate-size: allow-keywords) {
   @media (prefers-reduced-motion: no-preference) {
-    .unterseite-fragen--klapp { interpolate-size: allow-keywords; }
-    .unterseite-fragen--klapp details::details-content {
+    .unterseite-fragen { interpolate-size: allow-keywords; }
+    .unterseite-fragen details::details-content {
       height: 0; overflow: clip;
       transition: height .3s ease, content-visibility .3s allow-discrete;
     }
-    .unterseite-fragen--klapp details[open]::details-content { height: auto; }
+    .unterseite-fragen details[open]::details-content { height: auto; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .unterseite-fragen--klapp details, .unterseite-fragen--klapp summary h3, .unterseite-klapp-symbol,
+  .unterseite-fragen details, .unterseite-fragen summary h3, .unterseite-klapp-symbol,
   .unterseite-klapp-symbol svg path { transition: none; }
 }
 
