@@ -1135,10 +1135,13 @@ section[id] { scroll-margin-top: 8px; }
 .unterseite-klapp-symbol {
   flex: 0 0 34px; height: 34px; border-radius: 999px; display: grid; place-items: center;
   background: var(--pom-olive-a10); color: var(--pom-olive-hover);
-  transition: transform .25s ease, background-color .2s ease, color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
 }
+/* Offen wird aus dem Plus ein Minus im gleichen Stil: der senkrechte Strich (2. Pfad des Lucide-Plus) schrumpft weg. */
+.unterseite-klapp-symbol svg path { transform-box: fill-box; transform-origin: center; transition: transform .25s ease; }
 .unterseite-fragen--klapp details[open] { border-color: var(--pom-olive); box-shadow: 0 8px 28px rgba(107, 132, 41, .10); }
-.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol { transform: rotate(45deg); background: var(--pom-olive); color: #fff; }
+.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol { background: var(--pom-olive-a20); }
+.unterseite-fragen--klapp details[open] .unterseite-klapp-symbol svg path:last-child { transform: scaleY(0); }
 .unterseite-antwort { padding: 0 22px 20px; }
 .unterseite-fragen--klapp .unterseite-antwort p { margin: 0; max-width: 640px; }
 .unterseite-antwort .unterseite-link { margin-top: 10px; }
@@ -1160,7 +1163,8 @@ section[id] { scroll-margin-top: 8px; }
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .unterseite-fragen--klapp details, .unterseite-fragen--klapp summary h3, .unterseite-klapp-symbol { transition: none; }
+  .unterseite-fragen--klapp details, .unterseite-fragen--klapp summary h3, .unterseite-klapp-symbol,
+  .unterseite-klapp-symbol svg path { transition: none; }
 }
 
 /* Zwei Programme nebeneinander: Praxissoftware bleibt, Place of Motion kommt dazu. */
