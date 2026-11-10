@@ -60,6 +60,12 @@ export function Footer() {
               <a href={`mailto:${a.email}`}>{a.email}</a>
               <a href={a.phoneHref}>{a.phone}</a>
             </div>
+            <p style={{ margin: '20px 0 0', maxWidth: 240, fontSize: 14, lineHeight: 1.6, color: 'rgba(255,255,255,.6)' }}>
+              {footer.praxis.text}{' '}
+              <a href={footer.praxis.href} style={{ color: 'rgba(255,255,255,.85)', textDecoration: 'underline' }}>
+                {footer.praxis.label}
+              </a>
+            </p>
           </div>
         </div>
 

@@ -8,6 +8,7 @@ export function HonorarNote() {
   const m = honorar.mock
   return (
     <div
+      data-nosnippet=""
       style={{
         justifySelf: 'center',
         width: '100%',

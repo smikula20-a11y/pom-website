@@ -6,11 +6,13 @@ import {
   Palette,
   Play,
   QrCode,
+  ShieldCheck,
   Sparkles,
   Video,
   Wallet,
   X,
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { HonorarNote } from '../components/HonorarNote'
@@ -185,6 +187,33 @@ export function Features() {
             )
           })}
         </div>
+        <Reveal>
+          <p
+            style={{
+              margin: '32px auto 0',
+              maxWidth: 760,
+              textAlign: 'center',
+              fontSize: 15,
+              lineHeight: 1.6,
+              color: 'var(--pom-slate-600)',
+            }}
+          >
+            <ShieldCheck
+              size={18}
+              color="var(--pom-olive-hover)"
+              strokeWidth={2.2}
+              aria-hidden="true"
+              style={{ display: 'inline-block', verticalAlign: '-4px', marginRight: 6 }}
+            />
+            {features.datenschutz.text}{' '}
+            <Link
+              to={features.datenschutz.link.href}
+              style={{ color: 'var(--pom-olive-hover)', fontWeight: 600, whiteSpace: 'nowrap' }}
+            >
+              {features.datenschutz.link.label} →
+            </Link>
+          </p>
+        </Reveal>
       </Container>
     </section>
   )

@@ -395,7 +395,7 @@ export function FlowLoop() {
             </div>
 
             {/* Payoff - Honorarnote fährt am Ende hoch */}
-            <div className="flow-anim flow-note">
+            <div className="flow-anim flow-note" data-nosnippet="">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 11 }}>
                 <span
                   style={{

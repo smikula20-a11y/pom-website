@@ -84,6 +84,12 @@ export const features = {
     { title: 'Zusatzeinkommen', body: 'Verkaufe Pläne als Selbstzahler-Leistung - der Umsatz gehört dir.', pro: true },
     { title: 'Dein Branding', body: 'Dein Logo, dein Name - der Plan sieht aus wie aus deiner Praxis.', pro: true },
   ],
+  /** Datenschutz-Zeile unter den Kacheln (10.11.2026): KI-Suchdienste fanden auf der Startseite
+   *  nichts zum Datenschutz. Nur Fakten, die auch /einrichtungen nennt (AVV 01.10.2026). */
+  datenschutz: {
+    text: 'Datenschutz: Die Patientendaten liegen verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
+    link: { label: 'Mehr zu Datenschutz und Sicherheit', href: '/einrichtungen#datenschutz' },
+  },
 } as const
 
 /** So funktioniert's - Olive-Band. Copy aus dem Design-Handoff (deckt §6). */
@@ -292,6 +298,13 @@ export const footer = {
     { label: 'Übungspläne verkaufen', href: '/uebungsplaene-verkaufen' },
     { label: 'Für Einrichtungen', href: '/einrichtungen' },
   ],
+  /** Hinweis für alle, die die frühere Praxis suchen (10.11.2026): „stefan mikula physiotherapie“
+   *  führt laut Search Console oft hierher. */
+  praxis: {
+    text: 'Die Physiotherapie-Praxis von Stefan Mikula heißt jetzt Therapie Welzenegg:',
+    label: 'therapiewelzenegg.at',
+    href: 'https://therapiewelzenegg.at',
+  },
   legal: [
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },

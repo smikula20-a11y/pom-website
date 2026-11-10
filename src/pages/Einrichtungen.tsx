@@ -431,7 +431,7 @@ export default function Einrichtungen() {
       </section>
 
       {/* 4 · Datenschutz und Sicherheit */}
-      <section style={{ background: '#fff' }}>
+      <section id="datenschutz" style={{ background: '#fff' }}>
         <Container className="section">
           <div className="split unterseite-split">
             <Reveal>
