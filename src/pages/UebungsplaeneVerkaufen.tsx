@@ -114,7 +114,7 @@ function VergabeBild() {
     { icon: Landmark, label: 'Überweisung', aktiv: false },
   ]
   return (
-    <div className="unterseite-bild" style={{ ...karte, padding: '24px 24px 22px' }}>
+    <div className="unterseite-bild" data-nosnippet="" style={{ ...karte, padding: '24px 24px 22px' }}>
       <div style={{ ...kleinLabel, marginBottom: 10 }}>Plan vergeben</div>
       <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
         Rücken aktiv
@@ -168,7 +168,7 @@ function VergabeBild() {
 function BelegBild() {
   const zeile = { display: 'flex', justifyContent: 'space-between', gap: 12 } as const
   return (
-    <div className="unterseite-bild" style={{ ...karte, padding: '24px 26px' }}>
+    <div className="unterseite-bild" data-nosnippet="" style={{ ...karte, padding: '24px 26px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
         <div style={{ width: 34, height: 34, borderRadius: 10, background: 'var(--pom-olive-a10)', display: 'grid', placeItems: 'center' }}>
           <FileText size={17} color="var(--pom-olive-hover)" strokeWidth={2.2} />
@@ -222,7 +222,7 @@ function VerkaeufeBild() {
     { nr: '2026-012', name: 'Eva Probe', status: 'Bezahlt' },
   ]
   return (
-    <div className="unterseite-bild" style={{ ...karte, padding: '22px 22px 18px' }}>
+    <div className="unterseite-bild" data-nosnippet="" style={{ ...karte, padding: '22px 22px 18px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--pom-olive-tint)', border: '1px solid var(--pom-olive-tint-line)', borderRadius: 16, padding: '14px 16px', marginBottom: 16 }}>
         <div>
           <div style={{ ...kleinLabel, color: 'var(--pom-olive-hover)' }}>Umsatz (Monat)</div>
