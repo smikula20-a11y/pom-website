@@ -1071,3 +1071,96 @@ section[id] { scroll-margin-top: 8px; }
 @media (max-width: 440px) {
   .unterseite-vertrauen { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ---- /uebungsplan-software ---- */
+/* Textlink mit Pfeil unter Karten und Antworten. */
+.unterseite-link {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  font-size: 15.5px; font-weight: 600; color: var(--pom-olive-hover);
+}
+.unterseite-link:hover { text-decoration: underline; }
+.unterseite-link svg { transition: transform .2s ease; }
+.unterseite-link:hover svg { transform: translateX(3px); }
+
+/* Fragen-Tabelle: am PC zwei Spalten in einer weißen Karte, am Handy eine Karte pro Frage. */
+.unterseite-tabelle-rahmen {
+  background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 24px;
+  overflow: hidden; margin-top: 36px;
+}
+.unterseite-tabelle { width: 100%; border-collapse: collapse; text-align: left; }
+.unterseite-tabelle thead th {
+  font-family: var(--font-sans); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--pom-olive-hover); background: var(--pom-olive-tint); padding: 14px 28px;
+  border-bottom: 1px solid var(--pom-olive-tint-line);
+}
+.unterseite-tabelle tbody tr + tr { border-top: 1px solid var(--pom-stone-200); }
+.unterseite-tabelle tbody th {
+  width: 44%; padding: 20px 20px 20px 28px; vertical-align: top;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700; line-height: 1.35; color: var(--pom-ink);
+}
+.unterseite-tabelle tbody td {
+  padding: 22px 28px 20px 12px; vertical-align: top;
+  font-size: 16.5px; line-height: 1.6; color: var(--pom-slate-600);
+}
+.unterseite-tabelle tbody td strong { color: var(--pom-ink); font-weight: 700; }
+.unterseite-tabelle-frage { display: flex; align-items: flex-start; gap: 14px; }
+.unterseite-tabelle-symbol {
+  flex: 0 0 34px; height: 34px; border-radius: 10px; background: var(--pom-olive-a10);
+  display: grid; place-items: center; margin-top: -4px;
+}
+@media (max-width: 760px) {
+  .unterseite-tabelle-rahmen { background: none; border: 0; border-radius: 0; overflow: visible; margin-top: 28px; }
+  .unterseite-tabelle, .unterseite-tabelle tbody, .unterseite-tabelle tr,
+  .unterseite-tabelle tbody th, .unterseite-tabelle tbody td { display: block; }
+  /* Spaltenköpfe bleiben für Vorleseprogramme da, sichtbar sind sie am Handy nicht. */
+  .unterseite-tabelle thead {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .unterseite-tabelle tbody { display: grid; gap: 12px; }
+  .unterseite-tabelle tbody tr, .unterseite-tabelle tbody tr + tr {
+    background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 18px; padding: 18px 18px 16px;
+  }
+  .unterseite-tabelle tbody th { width: auto; padding: 0; font-size: 17px; }
+  .unterseite-tabelle tbody td { padding: 10px 0 0; font-size: 16px; }
+  .unterseite-tabelle-symbol { margin-top: -5px; }
+}
+
+/* Häufige Fragen offen: Frage als Überschrift, Antwort direkt darunter. */
+.unterseite-fragen--offen > div {
+  background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 18px; padding: 20px 22px;
+}
+.unterseite-fragen--offen h3 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--pom-ink); margin: 0; }
+.unterseite-fragen--offen p { margin: 8px 0 0; font-size: 16.5px; line-height: 1.7; color: var(--pom-slate-600); }
+.unterseite-fragen--offen .unterseite-link { margin-top: 10px; }
+
+/* Zwei Programme nebeneinander: Praxissoftware bleibt, Place of Motion kommt dazu. */
+.unterseite-nebeneinander { display: grid; gap: 10px; justify-items: center; }
+.unterseite-nebeneinander > div {
+  width: 100%; background: #fff; border: 1px solid #eef0ea; border-radius: 22px; padding: 22px 22px 20px;
+  box-shadow: 0 12px 40px rgba(26,26,26,.08);
+}
+.unterseite-nebeneinander > div.ist-pom { border: 2px solid var(--pom-olive); }
+.unterseite-nebeneinander ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 8px; }
+.unterseite-nebeneinander li { display: flex; align-items: center; gap: 10px; font-size: 16px; color: var(--pom-slate-600); }
+.unterseite-plus {
+  width: 34px; height: 34px; border-radius: 999px; background: var(--pom-olive); color: #fff;
+  display: grid; place-items: center;
+}
+
+/* Drei Tarife als Karten. */
+.unterseite-tarif { display: flex; flex-direction: column; background: #fff; }
+.unterseite-tarif.ist-pro { border: 2px solid var(--pom-olive); }
+.unterseite-karte h3.unterseite-tarif-name {
+  font-family: var(--font-sans); margin: 0;
+  font-size: 12px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; color: var(--pom-olive-hover);
+}
+.unterseite-tarif-preis {
+  font-family: var(--font-display); font-size: 40px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.1;
+  color: var(--pom-ink); margin-top: 10px;
+}
+.unterseite-tarif-zusatz { font-size: 15px; color: var(--pom-slate-500); min-height: 22px; margin: 4px 0 14px; }
+@media (max-width: 900px) {
+  .unterseite-tarif-zusatz:empty { display: none; }
+  .unterseite-tarif-preis { margin-bottom: 12px; }
+  .unterseite-tarif-zusatz:not(:empty) { margin-top: -8px; }
+}
