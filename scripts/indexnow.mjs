@@ -60,11 +60,12 @@ async function melden(urls) {
   }
 }
 
-if (!(await schluesselLive())) {
+if (await schluesselLive()) {
+  const args = process.argv.slice(2)
+  const urls = args.length ? args : [...(await urlsAusSitemap()), ...ALTE_ADRESSEN]
+  await melden(urls)
+} else {
+  // exitCode statt process.exit(): process.exit nach fetch stürzt unter Node 24/Windows ab.
   console.error(`Abbruch: ${SITE}/${KEY}.txt ist nicht live oder enthält nicht den Schlüssel.`)
-  process.exit(1)
+  process.exitCode = 1
 }
-
-const args = process.argv.slice(2)
-const urls = args.length ? args : [...(await urlsAusSitemap()), ...ALTE_ADRESSEN]
-await melden(urls)
