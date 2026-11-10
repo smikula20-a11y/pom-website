@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
+    "indexnow": "node scripts/indexnow.mjs",
     "lint": "tsc -b --noEmit"
   },
   "dependencies": {
