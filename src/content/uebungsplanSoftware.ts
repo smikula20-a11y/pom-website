@@ -58,7 +58,7 @@ export const auswahl: FrageAntwort[] = [
   },
   {
     frage: 'Wo liegen die Patientendaten?',
-    antwort: 'Verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
+    antwort: 'DSGVO-konform, mit Vertrag zur Auftragsverarbeitung. Die Daten liegen verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
   },
   {
     frage: 'Erstellt die Software Belege nach österreichischem Steuerrecht?',
@@ -144,7 +144,7 @@ export const fragen: FrageAntwort[] = [
   },
   {
     frage: 'Wo liegen die Daten?',
-    antwort: 'Verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
+    antwort: 'DSGVO-konform, mit Vertrag zur Auftragsverarbeitung. Die Daten liegen verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
     ohneSchema: true,
   },
   {

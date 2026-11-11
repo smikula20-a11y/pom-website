@@ -238,8 +238,8 @@ export default function Datenschutz() {
           online.placeofmotion.com. Betrieben wird sie vom
           Dienst <strong>ThriveCart</strong> (ThriveCart LLC, 251 Little Falls Drive, Wilmington,
           Delaware 19808, USA). ThriveCart verarbeitet die Daten in unserem Auftrag. Sie geben dort
-          Vor- und Nachnamen, E-Mail-Adresse und Anschrift (Straße, Ort, Postleitzahl, Land,
-          Bundesland) ein. Die Kassa setzt technisch notwendige Cookies für den Bestell- und
+          Vor- und Nachnamen und E-Mail-Adresse ein, je nach Tarif auch Ihre Anschrift (Straße, Ort,
+          Postleitzahl, Land, Bundesland). Die Kassa setzt technisch notwendige Cookies für den Bestell- und
           Zahlungsvorgang.
         </p>
         <p>
