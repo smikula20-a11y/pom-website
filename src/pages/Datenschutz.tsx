@@ -429,8 +429,8 @@ export default function Datenschutz() {
         </p>
         <p>
           Was wir mit diesen Daten tun dürfen, welche Dienstleister wir einsetzen und wie die Daten
-          geschützt sind, regelt der Vertrag zur
-          Auftragsverarbeitung. <a href="/auftragsverarbeitung">Vertrag zur Auftragsverarbeitung</a>
+          geschützt sind, regelt der{' '}
+          <a href="/auftragsverarbeitung">Vertrag zur Auftragsverarbeitung</a>.
         </p>
         <p>
           Patientinnen und Patienten finden in der Ansicht ihres Plans einen kurzen

@@ -414,7 +414,7 @@ export default function Auftragsverarbeitung() {
 
         <h2 className="teil">Anlage 2: Technische und organisatorische Maßnahmen</h2>
         <p>
-          Stand 10.11.2026. Hier steht nur, was tatsächlich umgesetzt ist. Place of Motion hat keine
+          Stand November 2026. Hier steht nur, was tatsächlich umgesetzt ist. Place of Motion hat keine
           Zertifizierung und lässt keine Penetrationstests durchführen.
         </p>
 
@@ -535,12 +535,7 @@ export default function Auftragsverarbeitung() {
 
         <h2 className="teil">Anlage 3: Unterauftragsverarbeiter und eingebundene Dienste</h2>
         <p>
-          Stand 10.11.2026. Angaben zu Supabase, Vercel, Bunny, easyname und Vimeo übernommen aus
-          dem Vertrag für Einrichtungen vom 04.11.2026 (dort geprüft am 29.09.2026, Supabase, Vercel
-          und Bunny erneut am 02.11.2026). Region Frankfurt und E-Mail-Versand über easyname am
-          10.11.2026 im Supabase-Dashboard nachgesehen. Angaben zu Anthropic aus den Commercial
-          Terms (Fassung 17.06.2025) und dem Data Processing Addendum (Fassung 24.02.2025),
-          abgerufen 10.11.2026.
+          Stand November 2026.
         </p>
 
         <h3>Teil A: Unterauftragsverarbeiter</h3>
@@ -597,7 +592,7 @@ export default function Auftragsverarbeitung() {
                 <td data-label="Grundlage der Übermittlung">
                   Angemessenheitsbeschluss für den Datenschutzrahmen EU-USA (Durchführungsbeschluss
                   (EU) 2023/1795). Vercel ist in der Data Privacy Framework List als „Active“
-                  geführt, nächste Rezertifizierung fällig 29.04.2027. Der Vertrag von Vercel
+                  geführt. Der Vertrag von Vercel
                   enthält zusätzlich die Standarddatenschutzklauseln. Auftragsverarbeitungsvertrag
                   liegt vor (08.09.2026).
                 </td>
@@ -711,7 +706,7 @@ export default function Auftragsverarbeitung() {
                 <td data-label="Grundlage der Übermittlung">
                   Angemessenheitsbeschluss für den Datenschutzrahmen EU-USA (Durchführungsbeschluss
                   (EU) 2023/1795). Vimeo ist in der Data Privacy Framework List als „Active“
-                  geführt, nächste Rezertifizierung fällig 15.12.2026.
+                  geführt.
                 </td>
               </tr>
             </tbody>
