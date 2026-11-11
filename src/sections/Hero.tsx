@@ -55,7 +55,7 @@ export function Hero() {
       <Container className="section">
         <div className="hero-grid">
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <div className="pom-eyebrow" style={{ color: 'var(--pom-olive)', marginBottom: 20 }}>
+            <div className="pom-eyebrow" style={{ color: 'var(--pom-olive)', marginBottom: 20, textWrap: 'balance' }}>
               {hero.eyebrow}
             </div>
             <h1

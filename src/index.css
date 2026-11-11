@@ -541,241 +541,46 @@ section[id] { scroll-margin-top: 8px; }
 }
 
 /* ============================================================
- * FLOW-LOOP — animierte Produkt-Sequenz (7s), Design 3a §4
- *   Desktop: horizontale Reihe + gestrichelte Konnektoren + Punkt.
- *   Mobile (<880px): vertikaler Stack, Punkte entfallen.
- *   Reduced-Motion: Endzustand eingefroren.
+ * ABLAUF-FILM — „So läuft's live“ (AblaufFilm.tsx, 11.11.2026)
+ *   Unter 880 px Hochformat 4:5, darüber Querformat 16:10.
  * ============================================================ */
-.flow-track {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ablauf { display: flex; flex-direction: column; align-items: center; }
+.ablauf__eyebrow { color: var(--pom-olive); margin-bottom: 22px; text-align: center; }
+.ablauf-film {
+  width: 100%; max-width: 1040px; border-radius: 24px; overflow: hidden; background: #161713;
+  box-shadow: 0 1px 2px rgba(30, 35, 20, .08), 0 30px 70px rgba(26, 26, 26, .22);
 }
-.flow-editor {
-  width: 252px;
-  flex: none;
-  background: #f7f7f5;
-  border: 1px solid #e5e5e0;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
-  overflow: hidden;
+.ablauf-film__video { display: block; width: 100%; height: auto; }
+.ablauf-film__video--hoch { display: none; aspect-ratio: 4 / 5; }
+.ablauf-film__video--quer { aspect-ratio: 16 / 10; }
+.ablauf__schritte {
+  list-style: none; margin: 26px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 30px;
 }
+.ablauf__schritte li {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: #1a1a1a;
+}
+.ablauf__nr {
+  width: 24px; height: 24px; border-radius: 999px; flex: none; display: grid; place-items: center;
+  background: var(--pom-olive); color: #fff; font-family: var(--font-display); font-size: 12px; font-weight: 800;
+}
+.ablauf__pro {
+  font-size: 10px; font-weight: 900; letter-spacing: .1em; color: var(--pom-olive-hover);
+  background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line); padding: 3px 8px; border-radius: 999px;
+}
+.ablauf__cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ablauf__microcopy { font-family: var(--font-sans); font-size: 13px; color: var(--pom-stone-500); }
 
-/* Konnektor: gestrichelte Linie + Pfeil + wandernder Punkt */
-.flow-connector {
-  position: relative;
-  flex: 1;
-  min-width: 60px;
-  height: 2px;
-  margin: 0 6px;
-  display: flex;
-  align-items: center;
-}
-.flow-connector__line {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(90deg, rgba(139, 168, 58, 0.35) 0 6px, transparent 6px 12px);
-}
-.flow-connector__arrow {
-  position: absolute;
-  right: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.flow-dot {
-  position: absolute;
-  top: 50%;
-  margin-top: -5px;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: #8ba83a;
-  box-shadow: 0 0 0 4px rgba(139, 168, 58, 0.2);
-  opacity: 0;
-  animation-duration: 7s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-.flow-dot--1 { animation-name: flowDotOne; }
-.flow-dot--2 { animation-name: flowDotTwo; }
-
-/* QR-Scan-Linie */
-.flow-scan {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  top: 12px;
-  height: 2px;
-  background: #8ba83a;
-  box-shadow: 0 0 10px 2px rgba(139, 168, 58, 0.6);
-  border-radius: 2px;
-  opacity: 0;
-  animation: flowScan 7s ease-in-out infinite;
-}
-
-.flow-row { animation: flowRowIn 7s ease-in-out infinite; }
-.flow-pop { animation: flowPop 7s ease-in-out infinite; }
-
-/* Payoff-Honorarnote (absolut über der Reihe) */
-.flow-note {
-  position: absolute;
-  right: -8px;
-  bottom: -14px;
-  width: 196px;
-  background: #fff;
-  border: 1px solid #f1f5f9;
-  border-radius: 16px;
-  box-shadow: 0 18px 44px rgba(26, 26, 26, 0.2);
-  padding: 16px 18px;
-  animation: flowNote 7s ease-in-out infinite;
-}
-.flow-stamp {
-  position: absolute;
-  top: 11px;
-  right: 14px;
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #059669;
-  border: 2px solid #059669;
-  border-radius: 6px;
-  padding: 3px 8px;
-  transform: rotate(-9deg);
-  animation: flowStamp 7s ease-in-out infinite;
-}
-
-.flow-legend {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 26px;
-  margin-top: 34px;
-  padding-top: 26px;
-  border-top: 1px solid #f0f0ed;
-}
-
-@keyframes flowDotOne {
-  0%, 15% { left: 2%; opacity: 0; }
-  18% { opacity: 1; }
-  28% { opacity: 1; }
-  31%, 100% { left: 96%; opacity: 0; }
-}
-@keyframes flowDotTwo {
-  0%, 50% { left: 2%; opacity: 0; }
-  53% { opacity: 1; }
-  61% { opacity: 1; }
-  64%, 100% { left: 96%; opacity: 0; }
-}
-@keyframes flowScan {
-  0%, 33% { transform: translateY(0); opacity: 0; }
-  37% { opacity: 0.9; }
-  46% { transform: translateY(96px); opacity: 0.9; }
-  49%, 100% { opacity: 0; }
-}
-@keyframes flowRowIn {
-  0%, 4% { opacity: 0; transform: translateX(-10px); }
-  11% { opacity: 1; transform: none; }
-  90% { opacity: 1; transform: none; }
-  96%, 100% { opacity: 0; transform: translateX(-10px); }
-}
-@keyframes flowPop {
-  0%, 63% { opacity: 0; transform: scale(0.9); }
-  70% { opacity: 1; transform: scale(1); }
-  92% { opacity: 1; transform: scale(1); }
-  97%, 100% { opacity: 0; transform: scale(0.9); }
-}
-@keyframes flowNote {
-  0%, 73% { opacity: 0; transform: translateY(26px) scale(0.95); }
-  80% { opacity: 1; transform: translateY(0) scale(1); }
-  95% { opacity: 1; transform: translateY(0) scale(1); }
-  99%, 100% { opacity: 0; transform: translateY(26px) scale(0.95); }
-}
-@keyframes flowStamp {
-  0%, 82% { opacity: 0; transform: scale(1.5) rotate(-9deg); }
-  87% { opacity: 1; transform: scale(1) rotate(-9deg); }
-  95% { opacity: 1; transform: scale(1) rotate(-9deg); }
-  99%, 100% { opacity: 0; transform: scale(1) rotate(-9deg); }
-}
-/* Mobile: Punkt wandert vertikal (top statt left) durch die Konnektoren. */
-@keyframes flowDotDownOne {
-  0%, 15% { top: 0; opacity: 0; }
-  18% { opacity: 1; }
-  28% { opacity: 1; }
-  31%, 100% { top: 100%; opacity: 0; }
-}
-@keyframes flowDotDownTwo {
-  0%, 50% { top: 0; opacity: 0; }
-  53% { opacity: 1; }
-  61% { opacity: 1; }
-  64%, 100% { top: 100%; opacity: 0; }
-}
-
-/* Mobile: vertikaler Stack — Konnektoren drehen, Punkte weg, Payoff statisch. */
 @media (max-width: 880px) {
-  .flow-card { padding: 28px 20px 24px; }
-  .flow-track { flex-direction: column; }
-  .flow-connector {
-    flex: none;
-    width: 2px;
-    height: 48px;
-    margin: 2px 0;
-    align-self: center;
+  .ablauf-film { max-width: 440px; border-radius: 20px; }
+  .ablauf-film__video--hoch { display: block; }
+  .ablauf-film__video--quer { display: none; }
+  .ablauf__schritte {
+    display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 10px 22px; margin-top: 20px;
   }
-  .flow-connector__line {
-    /* Saubere, an den Enden weich auslaufende Linie statt schraffierter Striche. */
-    background: linear-gradient(
-      180deg,
-      rgba(139, 168, 58, 0) 0%,
-      rgba(139, 168, 58, 0.4) 22%,
-      rgba(139, 168, 58, 0.4) 78%,
-      rgba(139, 168, 58, 0) 100%
-    );
-  }
-  .flow-connector__arrow {
-    right: auto;
-    top: auto;
-    left: 50%;
-    bottom: -8px;
-    transform: translateX(-50%) rotate(90deg) scale(1.3);
-  }
-  /* Punkt wandert vertikal nach unten (statt auf Mobile versteckt). */
-  .flow-dot {
-    display: block;
-    left: 50%;
-    top: 0;
-    margin-left: -5px;
-    margin-top: -5px;
-  }
-  .flow-dot--1 { animation-name: flowDotDownOne; }
-  .flow-dot--2 { animation-name: flowDotDownTwo; }
-  .flow-note {
-    /* relative (nicht static): hält den absolut positionierten „Verkauft"-
-     * Stempel an der Karte statt an .flow-track. */
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin-top: 14px;
-    align-self: center;
-  }
-  .flow-legend { gap: 10px 16px; }
-}
-
-/* Live-Demo-Facade nur auf Mobile — am Desktop bringt die Smartphone-Demo
- * nichts, dort zeigt die Loop bereits alles. */
-@media (min-width: 881px) {
-  .flow-facade { display: none; }
-}
-
-/* Reduced-Motion: alles im Endzustand einfrieren, nichts verschwindet. */
-@media (prefers-reduced-motion: reduce) {
-  .flow-anim { animation: none !important; }
-  .flow-dot, .flow-scan { opacity: 0 !important; }
-  .flow-row, .flow-pop, .flow-note { opacity: 1 !important; transform: none !important; }
-  .flow-stamp { opacity: 1 !important; transform: rotate(-9deg) !important; }
+  .ablauf__schritte li { font-size: 14px; }
+  .ablauf__cta { margin-top: 22px; }
 }
 
 /* ============================================================

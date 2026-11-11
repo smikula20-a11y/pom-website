@@ -55,16 +55,19 @@ export const hero = {
   annotation: ['Dein Logo.', 'Dein Name.'],
 } as const
 
-/** Flow-Loop (Produkt in Aktion) - animierte CSS-Sequenz statt Live-iframe.
- *  Die echte Demo lädt erst bei Klick auf die Facade (Performance/Fokus, §Handoff). */
+/** Ablauf-Film auf der Startseite (AblaufFilm, ersetzt FlowLoop am 11.11.2026).
+ *  Die Schritte stehen als Text unter dem Film. Statt „Live-Demo ansehen“ führt
+ *  ein Knopf zur kostenlosen Anmeldung (Stefan 11.11.2026). */
 export const demo = {
   eyebrow: "So läuft's · live",
-  indicator: 'In Bewegung',
-  // Schritt-Legende unter der Karte (letzter Schritt = Ergebnis, nicht 4. Station).
-  legend: ['Plan erstellen', 'QR teilen', 'Patient trainiert', 'Verkauft'],
-  facade: { lead: 'Lieber selbst ausprobieren?', cta: 'Live-Demo ansehen' },
-  src: links.demo,
-  title: 'Place of Motion - Produkt-Demo',
+  filmLabel:
+    'Kurzer Film ohne Ton: Im Editor kommt eine Übung in den Plan, der Plan wird per QR-Code geteilt, am Handy läuft das Übungsvideo, danach entsteht die Honorarnote.',
+  schritte: [
+    { text: 'Plan erstellen', pro: false },
+    { text: 'Per QR-Code teilen', pro: false },
+    { text: 'Mit Video üben', pro: false },
+    { text: 'Verkaufen', pro: true },
+  ],
 } as const
 
 export const problem = {

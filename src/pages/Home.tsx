@@ -1,6 +1,6 @@
 import { Hero } from '../sections/Hero'
 import { Pricing } from '../sections/Pricing'
-import { FlowLoop } from '../components/FlowLoop'
+import { AblaufFilm } from '../components/AblaufFilm'
 import {
   Audience,
   Features,
@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <Hero />
       <Problem />
-      <FlowLoop />
+      <AblaufFilm />
       <Features />
       <HowItWorks />
       <Honorar />
