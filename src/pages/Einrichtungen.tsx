@@ -302,7 +302,7 @@ export function HandyUebung() {
               <div style={{ display: 'flex', gap: 6, marginTop: 8 }}>
                 <div style={{ ...box, flex: 'none', background: '#f2f3ec' }}>
                   <div style={{ ...boxLabel, color: '#6f7f50' }}>Dosierung</div>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a1a' }}>3 × 10–15</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a1a' }}>3 × 10-15</div>
                 </div>
                 <div style={{ ...box, flex: 1, background: '#f4f5f0' }}>
                   <div style={{ ...boxLabel, color: '#77856a' }}>Hinweise</div>

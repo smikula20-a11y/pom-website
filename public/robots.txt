@@ -1,4 +1,4 @@
-# Place of Motion – Website placeofmotion.com
+# Place of Motion - Website placeofmotion.com
 # Suchmaschinen und KI-Dienste dürfen die Website lesen, auch zum Training
 # (Entscheidung 13.10.2026). Die App unter app.placeofmotion.com regelt das selbst.
 User-agent: *

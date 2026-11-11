@@ -196,6 +196,43 @@ export const finalCta = {
   note: 'Kein Verkaufsdruck. Wir schauen gemeinsam, ob POM zu deiner Praxis passt.',
 } as const
 
+/* ---------------- Häufige Fragen auf der Startseite (11.11.2026) ----------------
+ * Sichtbar als aufklappbare Karten und wortgleich als FAQPage für Suchmaschinen (seo.ts).
+ * Aussagen geprüft gegen AGB Punkt 5, Datenschutzerklärung Punkt 18 und die Preistabelle. */
+export const startFragen: { frage: string; antwort: string; link?: { label: string; href: string } }[] = [
+  {
+    frage: 'Was ist Place of Motion?',
+    antwort:
+      'Place of Motion ist eine Software aus Kärnten. Physiotherapeut:innen erstellen damit Heimübungspläne mit Übungsvideos und geben sie per QR-Code, Link oder Ausdruck weiter. Patient:innen brauchen weder Konto noch App.',
+  },
+  {
+    frage: 'Für wen ist Place of Motion gedacht?',
+    antwort:
+      'Für Physio- und Ergotherapeut:innen in Einzel- und Gruppenpraxen. Für Krankenhäuser, Reha- und Therapiezentren gibt es eigene Zugänge fürs Team.',
+    link: { label: 'Für Einrichtungen', href: '/einrichtungen' },
+  },
+  {
+    frage: 'Wie fange ich an?',
+    antwort:
+      'Du registrierst dich kostenlos mit BASIC, ohne Kreditkarte. Place of Motion läuft im Browser, am PC und am Handy, du musst nichts installieren. Wenn du es dir lieber zeigen lässt, buchst du ein Erstgespräch.',
+  },
+  {
+    frage: 'Was ist der Unterschied zwischen BASIC und PRO?',
+    antwort:
+      'Mit BASIC nutzt du die Übungsbibliothek mit Videos und gibst Pläne per QR-Code, Link und Ausdruck weiter. PRO bringt dazu den KI-Entwurf, Vorlagen, dein Logo auf Plan und Ausdruck, eigene Videos und den Verkauf mit Beleg. PRO kostet 49 € im Monat oder 490 € im Jahr.',
+  },
+  {
+    frage: 'Was macht der KI-Entwurf?',
+    antwort:
+      'Du beschreibst in ein paar Sätzen, worum es geht. Die KI schlägt daraus einen Plan mit Übungen aus der Bibliothek vor. Du prüfst den Entwurf, änderst ihn und entscheidest, was deine Patient:innen bekommen.',
+  },
+  {
+    frage: 'Kann ich jederzeit kündigen?',
+    antwort:
+      'Ja. Monatliche Tarife kündigst du jederzeit zum Ende des laufenden Kalendermonats. Der Jahrestarif läuft zwölf Monate und endet dann, wenn du kündigst. BASIC kannst du jederzeit beenden.',
+  },
+]
+
 /* ---------------- Preise (Zahlen aus Notion, NICHT aus dem Dump) ----------------
  * BASIC gratis · PRO €49/Monat (Toggle jährlich = 2 Monate gratis) · FM €15/Monat lifetime.
  * §8: keine „Provision", keine Video-Anzahl. */
@@ -273,8 +310,8 @@ export const pricing: {
     {
       name: 'Founding Member',
       badge: '⚡ Founding Member',
-      // Stand 11.07.2026: 5 FM vergeben (Stefan) -> 5 frei.
-      scarcity: { total: 10, left: 5 },
+      // Stand 11.11.2026: 7 FM vergeben (Stefan) -> 3 frei.
+      scarcity: { total: 10, left: 3 },
       price: '€15',
       interval: '/ Monat',
       note: 'Lifetime-Preis · bleibt für immer',
