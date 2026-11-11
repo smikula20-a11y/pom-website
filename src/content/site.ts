@@ -310,6 +310,7 @@ export const footer = {
     { label: 'Impressum', href: '/impressum' },
     { label: 'Datenschutz', href: '/datenschutz' },
     { label: 'AGB', href: '/agb' },
+    { label: 'Auftragsverarbeitung', href: '/auftragsverarbeitung' },
   ],
 } as const
 
@@ -327,5 +328,8 @@ export const impressum = {
   chamber: 'Wirtschaftskammer Kärnten',
   berufsrecht: 'Gewerbeordnung (GewO), abrufbar über ris.bka.gv.at',
   berufsrechtUrl: 'https://www.ris.bka.gv.at',
-  datenschutzStand: 'Juli 2026',
+  /** Stand je Rechtstext, getrennt gepflegt: nur ändern, wenn sich der jeweilige Text ändert. */
+  datenschutzStand: 'November 2026',
+  agbStand: 'November 2026',
+  avvFassung: 'Fassung 1.0, Stand November 2026',
 } as const

@@ -6,7 +6,7 @@ export default function AGB() {
     <main style={{ background: '#fff' }}>
       <div className="section prose">
         <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
-        <p className="lead">Stand: {impressum.datenschutzStand}</p>
+        <p className="lead">Stand: {impressum.agbStand}</p>
 
         <h2>1. Geltungsbereich &amp; Anbieter</h2>
         <p>
@@ -87,17 +87,21 @@ export default function AGB() {
 
         <h2>10. Haftung</h2>
         <p>
-          Der Anbieter haftet unbeschränkt für Vorsatz und grobe Fahrlässigkeit sowie für Schäden aus
-          der Verletzung des Lebens, des Körpers oder der Gesundheit. Im Übrigen ist die Haftung -
-          soweit gesetzlich zulässig - auf den vertragstypischen, vorhersehbaren Schaden begrenzt. Für
-          die fachliche Anwendung der Trainingspläne bei Patient:innen haftet der Nutzer.
+          Der Anbieter haftet für Vorsatz und grobe Fahrlässigkeit sowie für Schäden an Leben, Körper
+          und Gesundheit. Für leichte Fahrlässigkeit haftet der Anbieter nicht.
+        </p>
+        <p>Für die fachliche Anwendung der Trainingspläne bei Patient:innen haftet der Nutzer.</p>
+        <p>
+          Daten, die der Nutzer aufbewahren muss, sichert er selbst, zum Beispiel als PDF oder
+          CSV-Datei.
         </p>
 
         <h2>11. Datenschutz</h2>
         <p>
           Informationen zur Verarbeitung personenbezogener Daten finden sich in der{' '}
           <a href="/datenschutz">Datenschutzerklärung</a>. Für die Verarbeitung von Patientendaten im
-          Dienst gilt zusätzlich die im Produkt bereitgestellte Vereinbarung.
+          Dienst gilt zusätzlich der Vertrag zur Auftragsverarbeitung (
+          <a href="/auftragsverarbeitung">placeofmotion.com/auftragsverarbeitung</a>).
         </p>
 
         <h2>12. Änderungen der AGB</h2>

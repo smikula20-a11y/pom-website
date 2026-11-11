@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Impressum from './pages/Impressum'
 import Datenschutz from './pages/Datenschutz'
 import AGB from './pages/AGB'
+import Auftragsverarbeitung from './pages/Auftragsverarbeitung'
 import UebungsplaeneVerkaufen from './pages/UebungsplaeneVerkaufen'
 import Einrichtungen from './pages/Einrichtungen'
 import UebungsplanSoftware from './pages/UebungsplanSoftware'
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
         <Route path="/agb" element={<AGB />} />
+        <Route path="/auftragsverarbeitung" element={<Auftragsverarbeitung />} />
         <Route path="/uebungsplaene-verkaufen" element={<UebungsplaeneVerkaufen />} />
         <Route path="/einrichtungen" element={<Einrichtungen />} />
         <Route path="/uebungsplan-software" element={<UebungsplanSoftware />} />
