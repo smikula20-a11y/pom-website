@@ -85,10 +85,11 @@ export const features = {
     { title: 'Dein Branding', body: 'Dein Logo, dein Name - der Plan sieht aus wie aus deiner Praxis.', pro: true },
   ],
   /** Datenschutz-Zeile unter den Kacheln (10.11.2026): KI-Suchdienste fanden auf der Startseite
-   *  nichts zum Datenschutz. Nur Fakten, die auch /einrichtungen nennt (AVV 01.10.2026). */
+   *  nichts zum Datenschutz. Seit 11.11.2026 mit „DSGVO-konform“: Vertrag zur Auftragsverarbeitung für Praxen
+   *  live (/auftragsverarbeitung), Zustimmung in der App, Datenschutzerklärung für Website und App. */
   datenschutz: {
-    text: 'Datenschutz: Die Patientendaten liegen verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
-    link: { label: 'Mehr zu Datenschutz und Sicherheit', href: '/einrichtungen#datenschutz' },
+    text: 'Datenschutz: DSGVO-konform, mit Vertrag zur Auftragsverarbeitung. Die Patientendaten liegen verschlüsselt in einem Rechenzentrum in Frankfurt am Main, mit täglicher Sicherung.',
+    link: { label: 'Zum Vertrag zur Auftragsverarbeitung', href: '/auftragsverarbeitung' },
   },
 } as const
 
