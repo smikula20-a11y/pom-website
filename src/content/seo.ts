@@ -2,14 +2,15 @@
  *  im <head> der fertigen HTML-Datei, im Browser setzt Seitentitel.tsx sie bei
  *  jedem Seitenwechsel. Hauptadresse ist placeofmotion.com (www leitet dorthin um). */
 import { alleFragen, kopf } from './uebungsplanSoftware'
+import { startFragen } from './site'
 
 export const SITE_URL = 'https://placeofmotion.com'
 
 export const seiten = {
   '/': {
-    title: 'Place of Motion — Digitale Trainingspläne für deine Praxis',
+    title: 'Place of Motion - Digitale Trainingspläne für deine Praxis',
     description:
-      'Erstelle digitale Trainingspläne für deine Patienten — per QR-Code aufs Handy, mit Video pro Übung. Kostenlos starten, optional verkaufen. Für Physiotherapeut:innen.',
+      'Erstelle digitale Trainingspläne für deine Patienten - per QR-Code aufs Handy, mit Video pro Übung. Kostenlos starten, optional verkaufen. Für Physiotherapeut:innen.',
   },
   '/uebungsplan-software': {
     title: 'Übungsplan-Software für Physiotherapie in Österreich | Place of Motion',
@@ -68,6 +69,18 @@ export const organisation = {
  *  /uebungsplan-software: Fragen und Antworten wortgleich zum sichtbaren Text, dazu ein Steckbrief
  *  der Software mit den beiden Tarifen. Keine Bewertungen, keine Kundenzahlen. */
 export const strukturierteDaten: Partial<Record<Seitenpfad, object[]>> = {
+  '/': [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: 'de-AT',
+      mainEntity: startFragen.map((f) => ({
+        '@type': 'Question',
+        name: f.frage,
+        acceptedAnswer: { '@type': 'Answer', text: f.antwort },
+      })),
+    },
+  ],
   '/uebungsplan-software': [
     {
       '@context': 'https://schema.org',
