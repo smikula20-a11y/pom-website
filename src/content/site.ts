@@ -45,6 +45,13 @@ export const hero = {
   subhead:
     'Erstelle digitale Trainingspläne für deine Patienten - per QR-Code aufs Handy, mit Video pro Übung.',
   microcopy: 'Keine Kreditkarte · In 2 Minuten startklar.',
+  /** Vertrauenskarte unter den Knöpfen (Stefan 11.11.2026, Variante C). Kein Siegel-Look:
+   *  nur belegte Fakten (Vertrag zur Auftragsverarbeitung live seit 11.11.2026). */
+  vertrauen: {
+    titel: 'DSGVO-konform',
+    punkte: ['Vertrag zur Auftragsverarbeitung', 'Daten in Frankfurt', 'Made in Austria'],
+    href: '/auftragsverarbeitung',
+  },
   annotation: ['Dein Logo.', 'Dein Name.'],
 } as const
 
