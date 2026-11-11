@@ -31,12 +31,18 @@ export const seiten = {
     description: 'Impressum von Place of Motion: Anbieter, Kontakt und Firmendaten.',
   },
   '/datenschutz': {
-    title: 'Datenschutz | Place of Motion',
-    description: 'Datenschutzerklärung von Place of Motion.',
+    title: 'Datenschutzerklärung für Website und App | Place of Motion',
+    description:
+      'Datenschutzerklärung von Place of Motion für die Website placeofmotion.com und die Web-App: welche Daten, wozu, wie lange, welche Dienstleister.',
   },
   '/agb': {
     title: 'AGB | Place of Motion',
     description: 'Allgemeine Geschäftsbedingungen von Place of Motion.',
+  },
+  '/auftragsverarbeitung': {
+    title: 'Vertrag zur Auftragsverarbeitung | Place of Motion',
+    description:
+      'Vertrag zur Auftragsverarbeitung nach Art 28 DSGVO für Praxen, die Place of Motion nutzen: Daten, Schutzmaßnahmen, Dienstleister.',
   },
 } as const
 
