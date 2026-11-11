@@ -423,7 +423,7 @@ section[id] { scroll-margin-top: 8px; }
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 420px;
-  gap: 72px;
+  gap: 56px;
   align-items: center;
 }
 .hero-annotation {
@@ -1293,3 +1293,7 @@ section[id] { scroll-margin-top: 8px; }
   .unterseite-tarif-preis { margin-bottom: 12px; }
   .unterseite-tarif-zusatz:not(:empty) { margin-top: -8px; }
 }
+
+/* Vertrauenskarte im Kopfbereich (11.11.2026) */
+.hero-vertrauen { transition: border-color .2s ease, box-shadow .2s ease; }
+@media (hover: hover) { .hero-vertrauen:hover { border-color: rgba(139,168,58,.5) !important; box-shadow: 0 12px 32px rgba(107,132,41,.14) !important; } }
