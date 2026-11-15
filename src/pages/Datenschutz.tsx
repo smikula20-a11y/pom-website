@@ -24,7 +24,7 @@ export default function Datenschutz() {
           Feistritz 34, 9560 Feldkirchen, Österreich
           <br />
           E-Mail: <a href="mailto:office@placeofmotion.com">office@placeofmotion.com</a> ·
-          Telefon: <a href="tel:+436509946090">+43 650 9946090</a>
+          Telefon: <a href="tel:+4368120157016">+43 681 20157016</a>
         </p>
         <p>
           Place of Motion ist ein Einzelunternehmen. Einen Datenschutzbeauftragten haben wir nicht

@@ -337,8 +337,8 @@ export const footer = {
     street: 'Feistritz 34',
     city: '9560 Feldkirchen',
     owner: 'Stefan Mikula',
-    phone: '+43 650 9946090',
-    phoneHref: 'tel:+436509946090',
+    phone: '+43 681 20157016',
+    phoneHref: 'tel:+4368120157016',
     email: 'office@placeofmotion.com',
   },
   /** Unterseiten im Fußbereich (Spalte Produkt), interne Links. */
