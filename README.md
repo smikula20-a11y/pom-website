@@ -34,7 +34,7 @@ npm run preview  # dist/ lokal servieren
 
 ## Impressum / Datenschutz (SaaS-Business, nicht die Praxis)
 
-Place of Motion · Feistritz 34 · 9560 Feldkirchen · Stefan Mikula · +43 650 9946090 · office@placeofmotion.com
+Place of Motion · Feistritz 34 · 9560 Feldkirchen · Stefan Mikula · +43 681 20157016 · office@placeofmotion.com
 (Die alte Klagenfurter Praxisadresse gehört auf die `praxis.`-Subdomain, **nicht** hierher.)
 
 ## Guardrails
