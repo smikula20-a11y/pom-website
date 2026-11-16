@@ -379,5 +379,6 @@ export const impressum = {
   /** Stand je Rechtstext, getrennt gepflegt: nur ändern, wenn sich der jeweilige Text ändert. */
   datenschutzStand: 'November 2026',
   agbStand: 'November 2026',
-  avvFassung: 'Fassung 1.0, Stand November 2026',
+  // Unterlagen (PDF): Fassung 1.1. Beim Livegang Monat prüfen (AGB und AVV gleich).
+  avvFassung: 'Fassung 1.1, Stand November 2026',
 } as const

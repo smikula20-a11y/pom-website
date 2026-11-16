@@ -67,6 +67,14 @@ export default function AGB() {
           fachliche Richtigkeit der Trainingspläne selbst verantwortlich. Eine missbräuchliche Nutzung,
           insbesondere die Gefährdung der Sicherheit oder Verfügbarkeit des Dienstes, ist untersagt.
         </p>
+        <p>
+          Lädt der Nutzer eigene Inhalte hoch, etwa Videos, Bilder oder Unterlagen als PDF, sichert er
+          zu, dass er die nötigen Rechte daran hat, zum Beispiel vom Verlag eines Arbeitsblatts oder
+          von den Personen, die in einem Video zu sehen sind. Wird der Anbieter wegen solcher Inhalte
+          von Dritten in Anspruch genommen, hält der Nutzer ihn schad- und klaglos. Für hochgeladene
+          Inhalte gelten außerdem die Regeln im Vertrag zur Auftragsverarbeitung, etwa dass
+          Unterlagen keine Daten von Patient:innen enthalten.
+        </p>
 
         <h2>8. Inhalte, Daten &amp; Honorarnote</h2>
         <p>
@@ -75,6 +83,23 @@ export default function AGB() {
           Dienst lediglich die Honorarnote im Namen des Nutzers - der Umsatz steht vollständig dem
           Nutzer zu, der Anbieter tritt nicht als Verkäufer der Leistung auf. Die steuerliche und
           rechtliche Verantwortung für den Verkauf liegt beim Nutzer.
+        </p>
+        <p>
+          Für hochgeladene Inhalte erhält der Anbieter nur die Rechte, die er braucht, um sie zu
+          speichern und in den Plänen des Nutzers anzuzeigen.
+        </p>
+        <p>
+          <strong>Meldung rechtswidriger Inhalte.</strong> Wer meint, dass ein hochgeladener Inhalt
+          rechtswidrig ist oder seine Rechte verletzt, meldet das per E-Mail an{' '}
+          <a href={`mailto:${a.email}`}>{a.email}</a>. Die Meldung enthält eine Begründung, eine
+          möglichst genaue Angabe, wo der Inhalt zu finden ist (zum Beispiel den Link zum Plan und den
+          Titel der Unterlage), Name und E-Mail-Adresse sowie die Erklärung, dass die Angaben nach
+          bestem Wissen richtig und vollständig sind. Der Anbieter bestätigt den Eingang und prüft die
+          Meldung selbst, ohne automatische Entscheidung. Ist sie berechtigt, sperrt oder löscht er den
+          Inhalt und teilt das dem Nutzer mit Begründung mit. Der Inhalt fehlt dann auch in schon
+          ausgegebenen Plänen. Der Nutzer kann per E-Mail widersprechen, dann prüft der Anbieter
+          erneut. Der meldenden Person teilt der Anbieter seine Entscheidung ebenfalls mit. Der Weg zu
+          den Gerichten bleibt beiden offen.
         </p>
 
         <h2>9. Verfügbarkeit &amp; Gewährleistung</h2>
