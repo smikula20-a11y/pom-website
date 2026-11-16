@@ -239,8 +239,8 @@ export default function Auftragsverarbeitung() {
         <p>
           9.3 Place of Motion löscht die Daten der Praxis binnen 30 Tagen, nachdem die Praxis die
           Löschung verlangt hat. Gelöscht werden die Patientendaten, die Pläne, die Rechnungsdaten,
-          die hochgeladenen Videos und Bilder, die Aufrufdaten und das Konto. Mit der Löschung
-          funktionieren die ausgegebenen Links und QR-Codes nicht mehr.
+          die hochgeladenen Videos, Bilder und Unterlagen (PDF), die Aufrufdaten und das Konto. Mit
+          der Löschung funktionieren die ausgegebenen Links und QR-Codes nicht mehr.
         </p>
         <p>
           9.4 Sicherungskopien werden im regulären Sicherungszyklus überschrieben, spätestens 30
@@ -271,7 +271,10 @@ export default function Auftragsverarbeitung() {
         </p>
         <p>
           10.3 Die Praxis filmt und fotografiert für hochgeladene Videos und Bilder keine
-          Patientinnen und Patienten.
+          Patientinnen und Patienten. Als Unterlagen (PDF) lädt sie nur Blätter hoch, die für alle
+          Patientinnen und Patienten gleich sind, ohne Namen und ohne andere Angaben, mit denen eine
+          Patientin oder ein Patient erkennbar ist. Ausgefüllte Bögen, Befunde und Briefe lädt sie
+          nicht hoch.
         </p>
         <p>
           10.4 In das Eingabefeld des KI-Planassistenten schreibt die Praxis keine Namen und keine
@@ -378,6 +381,13 @@ export default function Auftragsverarbeitung() {
           Übungen der Bibliothek. Aus der Patientenverwaltung wird nichts mitgeschickt. Die Praxis
           schreibt keine Namen in das Feld (Punkt 10.4).
         </p>
+        <p>
+          <strong>8. Selbst hochgeladene Unterlagen (PDF, nur Tarif PRO).</strong> Arbeits- und
+          Informationsblätter, die die Praxis als PDF hochlädt, mit Titel, Bereich (Physio, Ergo,
+          Logo oder Info) und Dateigröße. Sie können Namen und Angaben der Praxis enthalten, aber
+          keine Daten von Patientinnen und Patienten (Punkt 10.3). Patientinnen und Patienten öffnen
+          sie über ihren Plan.
+        </p>
 
         <h3>D. Was nicht unter diesen Vertrag fällt</h3>
         <p>
@@ -409,6 +419,11 @@ export default function Auftragsverarbeitung() {
             Löschung des Kontos nach Punkt 9. Auf Weisung der Praxis löscht Place of Motion sie
             früher.
           </li>
+          <li>
+            Entfernt die Praxis eine Unterlage aus ihrer Bibliothek, bleibt die Datei gespeichert,
+            damit schon ausgegebene Pläne sie weiter öffnen. Gelöscht wird sie mit dem Konto nach
+            Punkt 9. Auf Weisung der Praxis löscht Place of Motion sie früher.
+          </li>
           <li>Nach dem Ende gilt Punkt 9.</li>
         </ul>
 
@@ -438,8 +453,8 @@ export default function Auftragsverarbeitung() {
           </li>
           <li>
             <strong>Trennung der Praxen.</strong> Zugriffsregeln in der Datenbank sorgen dafür, dass
-            ein Konto nur die eigenen Patientinnen und Patienten, Pläne, Rechnungsdaten und Videos
-            sieht.
+            ein Konto nur die eigenen Patientinnen und Patienten, Pläne, Rechnungsdaten, Videos und
+            Unterlagen sieht.
           </li>
           <li>
             <strong>Zugang der Patientinnen und Patienten.</strong> Nur über einen zufälligen
@@ -470,8 +485,13 @@ export default function Auftragsverarbeitung() {
             beim Dienstleister verschlüsselt gespeichert (AES-256).
           </li>
           <li>
-            <strong>Videos.</strong> Die Adressen der selbst hochgeladenen Videos werden am Server
-            signiert und laufen nach 6 Stunden ab.
+            <strong>Videos und Unterlagen.</strong> Die Adressen der selbst hochgeladenen Videos werden
+            am Server signiert und laufen nach 6 Stunden ab. Unterlagen (PDF) liegen in einer
+            geschlossenen Ablage. Geöffnet werden sie nur über einen Link, den der Server ausstellt:
+            für die Praxis zu ihren eigenen Unterlagen, für Patientinnen und Patienten nur zu den
+            Unterlagen in ihrem Plan. Der Link läuft nach einer Stunde ab. Die Ablage nimmt nur
+            PDF-Dateien bis 10 MB an, und der Server prüft beim Hochladen, ob die Datei wirklich ein
+            PDF ist.
           </li>
           <li>
             <strong>Nachvollziehbarkeit.</strong> Die Anwendung speichert zu jeder Patientin, jedem
@@ -484,8 +504,8 @@ export default function Auftragsverarbeitung() {
         <ol start={13}>
           <li>
             <strong>Sicherungen.</strong> Tägliche Sicherung der Datenbank beim Dienstleister in
-            Frankfurt, Aufbewahrung rund eine Woche. Dateien in der Ablage (hochgeladene Bilder und
-            Standbilder) sind nicht Teil dieser Sicherung.
+            Frankfurt, Aufbewahrung rund eine Woche. Dateien in der Ablage (hochgeladene Bilder,
+            Standbilder und Unterlagen) sind nicht Teil dieser Sicherung.
           </li>
           <li><strong>Keine zugesagte Verfügbarkeit.</strong> Es gilt Punkt 9 der AGB.</li>
           <li>
