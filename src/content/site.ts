@@ -39,11 +39,19 @@ export const nav = {
   cta: { label: 'Erstgespräch buchen', href: links.calendly },
 } as const
 
+/** Kopfbereich neu (Stefan 18.11.2026, Website-Audit Befund 1): Die Überschrift ist der
+ *  Zeit-Satz aus Stefans Brief an die Praxen statt des Einkommens-Satzes. Grund: Laut
+ *  Notion (SALES 17 und 18) kauften die Founding Members wegen Zeit, Bedienbarkeit und
+ *  eigener Videos; von 93 vergebenen Plänen wurde bis 18.11.2026 einer verkauft.
+ *  Der Einkommens-Satz steht jetzt als Überschrift im Abschnitt „Und dein Umsatz?“.
+ *  microcopy bleibt für die Zeile unter dem Film (AblaufFilm). */
 export const hero = {
-  eyebrow: 'Digitale Trainingspläne für deine Praxis',
-  headline: 'Dein Einkommen hört auf, wenn du aufhörst zu behandeln.',
+  eyebrow: 'Übungsplan-Software für Physio- und Ergotherapie',
+  headline: 'Heimübungen kosten dich pro Patient zehn Minuten, die keiner zahlt.',
   subhead:
-    'Erstelle digitale Trainingspläne für deine Patienten - per QR-Code aufs Handy, mit Video pro Übung.',
+    'Mit Place of Motion stellst du den Plan mit Video aus der Bibliothek zusammen und gibst ihn per QR-Code mit. Ohne App, ohne Konto. Kostenlos, oder du verrechnest ihn als Selbstzahlerleistung.',
+  /** Zeile unter den Knöpfen: was es kostet, auf einen Blick. */
+  preiszeile: 'BASIC kostenlos · PRO 49 € im Monat',
   microcopy: 'Keine Kreditkarte · In 2 Minuten startklar.',
   /** Vertrauenskarte unter den Knöpfen (Stefan 11.11.2026, Variante C). Kein Siegel-Look:
    *  nur belegte Fakten (Vertrag zur Auftragsverarbeitung live seit 11.11.2026). */
@@ -130,9 +138,11 @@ export const howItWorks = {
  *  beim Therapeuten, POM erstellt nur die Honorarnote. KEINE „Provision". */
 export const honorar = {
   eyebrow: 'Und dein Umsatz?',
-  heading: 'Verkauft statt verschenkt - mit automatischer Honorarnote.',
+  // Überschrift = früherer Satz aus dem Kopfbereich (Stefan 18.11.2026).
+  heading: 'Dein Einkommen hört auf, wenn du aufhörst zu behandeln.',
   body: 'Vergib einen Plan kostenlos oder verkauft - bar, Karte oder Überweisung. Die Honorarnote erstellt sich automatisch in deinem Namen. Der Umsatz gehört dir, der Plan wird zur Einnahme.',
-  cta: { label: 'So verdienst du mit', href: '#final-cta' },
+  // Führt zur Seite mit dem ganzen Ablauf statt zum Schlussabschnitt.
+  cta: { label: 'So verdienst du mit', href: '/uebungsplaene-verkaufen' },
   // Beispiel-Beleg (pricing-neutral, KEIN Abo-Preis).
   mock: {
     number: 'HN-2026-0142',
