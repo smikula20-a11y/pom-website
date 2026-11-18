@@ -1099,6 +1099,21 @@ section[id] { scroll-margin-top: 8px; }
   .unterseite-tarif-zusatz:not(:empty) { margin-top: -8px; }
 }
 
+/* Kopfbereich: Größe und Abstände von Überschrift und Unterzeile (18.11.2026).
+ * Seit dem Zeit-Satz sind beide Texte länger. Auf niedrigen Laptop-Bildschirmen
+ * (z. B. 1366 x 768) und am Handy rücken sie dichter zusammen, damit die Knöpfe
+ * ohne Scrollen sichtbar bleiben. */
+.hero-titel { font-size: clamp(34px, 5vw, 54px); margin: 0 0 24px; }
+.hero-text { font-size: 19px; margin: 0 0 40px; }
+@media (min-width: 901px) and (max-height: 820px) {
+  #top .section { padding-top: 56px; }
+  .hero-titel { font-size: 48px; margin-bottom: 18px; }
+  .hero-text { margin-bottom: 28px; }
+}
+@media (max-width: 900px) {
+  .hero-text { font-size: 17px; margin-bottom: 28px; }
+}
+
 /* Vertrauenskarte im Kopfbereich (11.11.2026) */
 .hero-vertrauen { transition: border-color .2s ease, box-shadow .2s ease; }
 @media (hover: hover) { .hero-vertrauen:hover { border-color: rgba(139,168,58,.5) !important; box-shadow: 0 12px 32px rgba(107,132,41,.14) !important; } }

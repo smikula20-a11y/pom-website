@@ -58,27 +58,27 @@ export function Hero() {
             <div className="pom-eyebrow" style={{ color: 'var(--pom-olive)', marginBottom: 20, textWrap: 'balance' }}>
               {hero.eyebrow}
             </div>
+            {/* Größe und Abstände von Überschrift und Unterzeile stehen in index.css
+                (.hero-titel, .hero-text), damit sie je Bildschirm angepasst werden können. */}
             <h1
+              className="hero-titel"
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(34px, 5vw, 54px)',
                 fontWeight: 800,
                 lineHeight: 1.12,
                 letterSpacing: '-0.02em',
                 color: '#1a1a1a',
-                margin: '0 0 24px',
                 textWrap: 'pretty',
               }}
             >
               {hero.headline}
             </h1>
             <p
+              className="hero-text"
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: 19,
                 lineHeight: 1.65,
                 color: '#71716b',
-                margin: '0 0 40px',
                 maxWidth: 540,
                 textWrap: 'pretty',
               }}
@@ -106,7 +106,7 @@ export function Hero() {
               }}
             >
               <Check size={15} color="#8BA83A" strokeWidth={2.75} />
-              {hero.microcopy}
+              {hero.preiszeile}
             </div>
             <VertrauensKarte />
           </div>
