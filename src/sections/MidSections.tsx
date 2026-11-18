@@ -25,7 +25,7 @@ import {
   honorar,
   howItWorks,
   problem,
-  testimonial,
+  stimmen,
 } from '../content/site'
 
 function H2({ children, onOlive = false }: { children: ReactNode; onOlive?: boolean }) {
@@ -391,68 +391,43 @@ function AudienceCard({
   )
 }
 
-/* ---------------- Social Proof ---------------- */
-export function SocialProof() {
+/* ---------------- Kundenstimmen (direkt unter dem Kopfbereich) ---------------- */
+export function Stimmen() {
   return (
-    <section style={{ background: '#fff' }}>
-      <Container className="section" style={{ maxWidth: 820, textAlign: 'center' }}>
-        <Reveal>
-          <Eyebrow>{testimonial.eyebrow}</Eyebrow>
-          <blockquote
-            style={{
-              margin: '10px 0 0',
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(22px, 2.8vw, 30px)',
-              fontWeight: 700,
-              lineHeight: 1.35,
-              letterSpacing: '-0.02em',
-              color: '#1a1a1a',
-              textWrap: 'pretty',
-            }}
-          >
-            „{testimonial.quote}"
-          </blockquote>
-          <p
-            style={{
-              margin: '26px auto 0',
-              maxWidth: 560,
-              fontFamily: 'var(--font-sans)',
-              fontSize: 16.5,
-              lineHeight: 1.7,
-              color: 'var(--pom-slate-500)',
-              textWrap: 'pretty',
-            }}
-          >
-            {testimonial.support}
-          </p>
-          <div style={{ marginTop: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
-            <div
-              style={{
-                width: 48,
-                height: 48,
-                borderRadius: 999,
-                background: 'var(--pom-olive)',
-                color: '#fff',
-                display: 'grid',
-                placeItems: 'center',
-                fontFamily: 'var(--font-display)',
-                fontWeight: 800,
-                fontSize: 17,
-                flex: 'none',
-              }}
-            >
-              SA
-            </div>
-            <div style={{ textAlign: 'left' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, color: '#1a1a1a' }}>
-                {testimonial.name}
-              </div>
-              <div style={{ fontSize: 14, color: 'var(--pom-stone-500)', fontWeight: 500 }}>
-                {testimonial.role}
-              </div>
-            </div>
-          </div>
-        </Reveal>
+    <section id="stimmen" style={{ background: '#fff', borderBottom: '1px solid #ececec' }}>
+      <Container className="stimmen">
+        <Eyebrow style={{ marginBottom: 0 }}>{stimmen.eyebrow}</Eyebrow>
+        <div className="stimmen-grid">
+          {stimmen.liste.map((s) => (
+            <figure key={s.name} className="stimme">
+              {s.sterne ? (
+                <div className="stimme-sterne" role="img" aria-label={`${s.sterne} von 5 Sternen`}>
+                  {'★'.repeat(s.sterne)}
+                </div>
+              ) : null}
+              <blockquote>„{s.text}“</blockquote>
+              <figcaption className="stimme-fuss">
+                <span className="stimme-kuerzel" aria-hidden="true">
+                  {s.kuerzel}
+                </span>
+                <span>
+                  <span className="stimme-name">{s.name}</span>
+                  <span className="stimme-rolle">
+                    {s.rolle}
+                    {s.quelle ? (
+                      <>
+                        {' · '}
+                        <a href={s.quelle.href} target="_blank" rel="noopener noreferrer">
+                          {s.quelle.label}
+                        </a>
+                      </>
+                    ) : null}
+                  </span>
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </Container>
     </section>
   )

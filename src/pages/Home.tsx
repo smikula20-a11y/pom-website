@@ -9,7 +9,7 @@ import {
   Honorar,
   HowItWorks,
   Problem,
-  SocialProof,
+  Stimmen,
 } from '../sections/MidSections'
 import { Container } from '../components/primitives'
 import { HaeufigeFragen } from '../components/Unterseite'
@@ -19,6 +19,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/* Kundenstimmen gleich nach dem Kopfbereich (18.11.2026), vorher stand eine Stimme nach den Preisen */}
+      <Stimmen />
       <Problem />
       <AblaufFilm />
       <Features />
@@ -26,7 +28,6 @@ export default function Home() {
       <Honorar />
       <Audience />
       <Pricing />
-      <SocialProof />
       <Founder />
       {/* Häufige Fragen: Antworten stehen im HTML, auch zugeklappt lesbar für Suchmaschinen */}
       <section id="fragen" style={{ background: '#fff' }}>
