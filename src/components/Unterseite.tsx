@@ -36,6 +36,14 @@ export function Textlink({ href, label }: { href: string; label: string }) {
       <ArrowRight size={16} strokeWidth={2.4} aria-hidden="true" />
     </>
   )
+  // Externe Quelle (z. B. Studie in den Häufigen Fragen): neuer Tab, kein Router-Link.
+  if (href.startsWith('http')) {
+    return (
+      <a className="unterseite-link" href={href} target="_blank" rel="noopener noreferrer">
+        {inhalt}
+      </a>
+    )
+  }
   return href.includes('#') ? (
     <a className="unterseite-link" href={href}>
       {inhalt}
