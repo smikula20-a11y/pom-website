@@ -170,19 +170,50 @@ export const audience = {
   ],
 } as const
 
-/** Sarah-Testimonial (Freigabe 23.06.2026: voller Name + Verlinkung OK).
- *  Traegt Usability/Regional-Trust - NICHT den Einkommens-Winkel.
- *  quote + support = das Originalzitat WORTGETREU, nur am Satzende getrennt
- *  fuer das Pull-Quote-Layout (grosser Kernsatz + kleinerer Beleg). */
-export const testimonial = {
+/** Kundenstimmen direkt unter dem Kopfbereich (Stefan 18.11.2026, Website-Audit Befund 7).
+ *  Beide Texte sind WORTGETREU, nichts umformuliert.
+ *  - Leon Fian: seine Google-Bewertung vom 18.11.2026, ganz (nur das Smiley am Ende fehlt).
+ *    Freigabe per WhatsApp 18.11.2026, 13:17 („Klar.“) für Bewertung und Namen; der
+ *    Praxisname ist nicht erfragt und steht deshalb nicht da. Die fünf Sterne gehören zu
+ *    dieser einen Bewertung, es gibt bewusst keine Gesamtnote.
+ *  - Sarah Arbeiter: zwei aufeinanderfolgende Sätze aus ihrer Rückmeldung
+ *    (Freigabe 23.06.2026: voller Name + Verlinkung OK). Der ganze Text lautete:
+ *    „Stefan hat mir vor kurzem sein Tool vorgestellt. Ich bin schon lange auf der Suche
+ *    nach einem geeigneten Programm. Stefan hat wirklich alles gut durchdacht und die
+ *    leichte und rasche Bedienbarkeit haben mich sofort überzeugt. Die Pläne sind wirklich
+ *    schnell erstellt und sie kommen bei meinen PatientInnen gut an. Seit meinem Kauf wurde
+ *    das Repertoire an Übungen erweitert und er ist offen für neue Vorschläge. Für den Kauf
+ *    war für mich noch entscheidend, dass ich ein regionales Unternehmen unterstütze. Ich
+ *    freue mich auf eine weitere Zusammenarbeit!“
+ *  Kein „Founding Member“ bei den Namen (Stefan 18.11.2026). */
+export interface Stimme {
+  text: string
+  name: string
+  kuerzel: string
+  rolle: string
+  /** Sterne der einzelnen Bewertung, nur bei Google-Bewertungen. */
+  sterne?: number
+  quelle?: { label: string; href: string }
+}
+export const stimmen: { eyebrow: string; liste: Stimme[] } = {
   eyebrow: 'Aus der Praxis',
-  quote:
-    'Stefan hat mir vor kurzem sein Tool vorgestellt. Ich bin schon lange auf der Suche nach einem geeigneten Programm. Stefan hat wirklich alles gut durchdacht und die leichte und rasche Bedienbarkeit haben mich sofort überzeugt.',
-  support:
-    'Die Pläne sind wirklich schnell erstellt und sie kommen bei meinen PatientInnen gut an. Seit meinem Kauf wurde das Repertoire an Übungen erweitert und er ist offen für neue Vorschläge. Für den Kauf war für mich noch entscheidend, dass ich ein regionales Unternehmen unterstütze. Ich freue mich auf eine weitere Zusammenarbeit!',
-  name: 'Sarah Arbeiter',
-  role: 'Physiotherapeutin · Gruppenpraxis · Founding Member',
-} as const
+  liste: [
+    {
+      text: 'Benutze Place of Motion jetzt schon seit ein paar Monaten. Bin sehr zufrieden mit der einfachen Bedienung und der unkomplizierten Erstellung der Trainingshandouts für meine Patienten. Spare mir damit auch viel Zeit. Kann ich nur empfehlen.',
+      name: 'Leon Fian',
+      kuerzel: 'LF',
+      rolle: 'Physiotherapeut',
+      sterne: 5,
+      quelle: { label: 'Bewertung bei Google', href: 'https://g.page/r/CeMRxCe_4dpfECE' },
+    },
+    {
+      text: 'Stefan hat wirklich alles gut durchdacht und die leichte und rasche Bedienbarkeit haben mich sofort überzeugt. Die Pläne sind wirklich schnell erstellt und sie kommen bei meinen PatientInnen gut an.',
+      name: 'Sarah Arbeiter',
+      kuerzel: 'SA',
+      rolle: 'Physiotherapeutin',
+    },
+  ],
+}
 
 /** Gruender-Absatz (exakt, §Appendix D). Presse nur hier, target=_blank. */
 export const founder = {
