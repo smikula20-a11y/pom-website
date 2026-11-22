@@ -88,7 +88,7 @@ function PlanCard({
 }
 
 export function Pricing() {
-  // Jahres-Abrechnung als Default (rabattiert, catchy).
+  // Jahres-Abrechnung als Default; die PRO-Karte zeigt dabei den Preis pro Monat (Stefan 22.11.2026).
   const [yearly, setYearly] = useState(true)
   return (
     <section id="preise" style={{ background: 'var(--pom-stone-bg)' }}>
@@ -120,7 +120,12 @@ export function Pricing() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--pom-slate-400)' }}>
-          {pricing.footnote}
+          {pricing.footnote.map((zeile, i) => (
+            <span key={zeile}>
+              {i > 0 && <br />}
+              {zeile}
+            </span>
+          ))}
         </p>
       </Container>
     </section>
