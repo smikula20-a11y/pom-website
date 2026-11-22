@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Container } from './primitives'
-import { Button } from './Button'
-import { cta, demo, hero } from '../content/site'
+import { KnopfPaar } from './KnopfPaar'
+import { demo } from '../content/site'
 
 /**
  * AblaufFilm - „So läuft's live“ auf der Startseite (ersetzt FlowLoop, Stefan 11.11.2026).
@@ -80,10 +80,7 @@ export function AblaufFilm() {
         </ol>
 
         <div className="ablauf__cta">
-          <Button href={cta.secondary.href} variant="primary" size="lg" external>
-            {cta.secondary.label}
-          </Button>
-          <div className="ablauf__microcopy">{hero.microcopy}</div>
+          <KnopfPaar mitte />
         </div>
       </Container>
     </section>

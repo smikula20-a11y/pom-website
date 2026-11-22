@@ -22,9 +22,14 @@ export const links = {
 } as const
 
 /** Primaere / sekundaere CTA-Beschriftungen (CTA-Hierarchie §3). */
+/** Die zwei Knöpfe der Website (Befund 2, Stefan 22.11.2026): überall gleiche Reihenfolge,
+ *  „Erstgespräch buchen“ bleibt der grüne Hauptknopf. Unter jedem Knopf steht eine Zeile,
+ *  was nach dem Klick passiert. Wortlaut der ersten Zeile laut Calendly am 22.11.2026
+ *  („20 Minuten per Videocall, ganz unverbindlich“); BASIC braucht bei der Anmeldung nur
+ *  E-Mail, Passwort und ein Häkchen. */
 export const cta = {
-  primary: { label: 'Erstgespräch buchen', href: links.calendly },
-  secondary: { label: 'Kostenlos BASIC starten', href: links.appRegister },
+  primary: { label: 'Erstgespräch buchen', href: links.calendly, zeile: '20 Minuten per Videocall, unverbindlich' },
+  secondary: { label: 'Kostenlos BASIC starten', href: links.appRegister, zeile: 'Ohne Kreditkarte' },
 } as const
 
 export const nav = {
@@ -43,8 +48,7 @@ export const nav = {
  *  Zeit-Satz aus Stefans Brief an die Praxen statt des Einkommens-Satzes. Grund: Laut
  *  Notion (SALES 17 und 18) kauften die Founding Members wegen Zeit, Bedienbarkeit und
  *  eigener Videos; von 93 vergebenen Plänen wurde bis 18.11.2026 einer verkauft.
- *  Der Einkommens-Satz steht jetzt als Überschrift im Abschnitt „Und dein Umsatz?“.
- *  microcopy bleibt für die Zeile unter dem Film (AblaufFilm). */
+ *  Der Einkommens-Satz steht jetzt als Überschrift im Abschnitt „Und dein Umsatz?“. */
 export const hero = {
   eyebrow: 'Übungsplan-Software für Physio- und Ergotherapie',
   headline: 'Heimübungen kosten dich pro Patient zehn Minuten, die keiner zahlt.',
@@ -52,7 +56,6 @@ export const hero = {
     'Mit Place of Motion stellst du den Plan mit Video aus der Bibliothek zusammen und gibst ihn per QR-Code mit. Ohne App, ohne Konto. Kostenlos, oder du verrechnest ihn als Selbstzahlerleistung.',
   /** Zeile unter den Knöpfen: was es kostet, auf einen Blick. */
   preiszeile: 'BASIC kostenlos · PRO 49 € im Monat',
-  microcopy: 'Keine Kreditkarte · In 2 Minuten startklar.',
   /** Vertrauenskarte unter den Knöpfen (Stefan 11.11.2026, Variante C). Kein Siegel-Look:
    *  nur belegte Fakten (Vertrag zur Auftragsverarbeitung live seit 11.11.2026). */
   vertrauen: {
@@ -237,7 +240,16 @@ export const finalCta = {
   // Transparenz-Zeile STATT Preistabelle (§8).
   transparency:
     'Kostenlos mit BASIC starten - PRO schaltet KI, Verkauf und deinen Markenauftritt frei.',
-  note: 'Kein Verkaufsdruck. Wir schauen gemeinsam, ob POM zu deiner Praxis passt.',
+  /** Zeile unter den Knöpfen (Stefan 22.11.2026: WhatsApp läuft auf der POM-Nummer).
+   *  Ersetzt den Satz „Kein Verkaufsdruck. Wir schauen gemeinsam, ob POM zu deiner Praxis passt.“ */
+  reden: {
+    frage: 'Lieber gleich reden?',
+    anrufen: 'Anrufen',
+    whatsapp: 'auf WhatsApp schreiben',
+    nummer: '0681 20157016',
+    telHref: 'tel:+4368120157016',
+    whatsappHref: 'https://wa.me/4368120157016',
+  },
 } as const
 
 /* ---------------- Häufige Fragen auf der Startseite (11.11.2026) ----------------

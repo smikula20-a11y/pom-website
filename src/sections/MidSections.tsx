@@ -16,9 +16,9 @@ import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { HonorarNote } from '../components/HonorarNote'
+import { KnopfPaar } from '../components/KnopfPaar'
 import {
   audience,
-  cta,
   features,
   finalCta,
   founder,
@@ -508,25 +508,17 @@ export function FinalCta() {
           >
             {finalCta.transparency}
           </p>
-          <div
-            style={{
-              display: 'flex',
-              gap: 16,
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-              marginTop: 32,
-            }}
-          >
-            <Button href={cta.primary.href} variant="white" size="lg" external>
-              {cta.primary.label}
-            </Button>
-            <Button href={cta.secondary.href} variant="secondary" size="lg" uppercase={false} external
-              className="btn-on-olive">
-              {cta.secondary.label}
-            </Button>
-          </div>
-          <p style={{ marginTop: 18, fontSize: 15, color: 'rgba(255,255,255,.75)', fontWeight: 500 }}>
-            {finalCta.note}
+          <KnopfPaar mitte aufOlive style={{ marginTop: 32 }} />
+          <p className="final-reden">
+            {finalCta.reden.frage}{' '}
+            <a href={finalCta.reden.telHref}>{finalCta.reden.anrufen}</a> oder{' '}
+            <a href={finalCta.reden.whatsappHref} target="_blank" rel="noopener noreferrer">
+              {finalCta.reden.whatsapp}
+            </a>
+            :{' '}
+            <a href={finalCta.reden.telHref} className="final-reden__nummer">
+              {finalCta.reden.nummer}
+            </a>
           </p>
         </Reveal>
       </Container>

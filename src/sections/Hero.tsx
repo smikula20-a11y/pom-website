@@ -1,9 +1,9 @@
 import { Check, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Button } from '../components/Button'
+import { KnopfPaar } from '../components/KnopfPaar'
 import { Container } from '../components/primitives'
 import { HeroFlowVisual } from '../components/HeroFlowVisual'
-import { cta, hero } from '../content/site'
+import { hero } from '../content/site'
 
 /** Rot-weiß-rote Flagge, klein (wie die Kachel „Made in Austria“ auf /einrichtungen). */
 function Flagge() {
@@ -25,7 +25,7 @@ function VertrauensKarte() {
       to={href}
       className="hero-vertrauen"
       style={{
-        display: 'flex', alignItems: 'center', gap: 14, marginTop: 18, padding: '12px 18px 12px 12px',
+        display: 'flex', alignItems: 'center', gap: 14, marginTop: 14, padding: '12px 18px 12px 12px',
         borderRadius: 16, background: '#fff', border: '1px solid #e7e8e2',
         boxShadow: '0 10px 30px rgba(26,26,26,.06)', textDecoration: 'none', maxWidth: 480,
       }}
@@ -85,20 +85,13 @@ export function Hero() {
             >
               {hero.subhead}
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-              <Button href={cta.primary.href} variant="primary" size="lg" external>
-                {cta.primary.label}
-              </Button>
-              <Button href={cta.secondary.href} variant="ghost" size="lg" uppercase={false} external>
-                {cta.secondary.label}
-              </Button>
-            </div>
+            <KnopfPaar />
             <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
-                marginTop: 22,
+                marginTop: 14,
                 fontFamily: 'var(--font-sans)',
                 fontSize: 14,
                 fontWeight: 500,
