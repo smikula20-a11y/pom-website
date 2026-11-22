@@ -16,11 +16,10 @@ import {
   Wallet,
   type LucideIcon,
 } from 'lucide-react'
-import { Button } from '../components/Button'
+import { KnopfPaar } from '../components/KnopfPaar'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { HaeufigeFragen, Textlink, UnterseiteH2 } from '../components/Unterseite'
 import { FinalCta } from '../sections/MidSections'
-import { links } from '../content/site'
 import {
   anders,
   auswahl,
@@ -115,14 +114,7 @@ export default function UebungsplanSoftware() {
               <Eyebrow>{kopf.eyebrow}</Eyebrow>
               <h1 className="unterseite-h1">{kopf.h1}</h1>
               <p className="unterseite-lead">{kopf.lead}</p>
-              <div className="unterseite-knoepfe">
-                <Button href={links.appRegister} external>
-                  Kostenlos starten
-                </Button>
-                <Button href={links.calendly} variant="secondary" external>
-                  Erstgespräch buchen
-                </Button>
-              </div>
+              <KnopfPaar />
               <p className="unterseite-hinweis">{kopf.hinweis}</p>
             </div>
             <KopfVideo />

@@ -11,10 +11,11 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
+import { KnopfMitZeile } from '../components/KnopfPaar'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { FinalCta } from '../sections/MidSections'
-import { links } from '../content/site'
+import { cta } from '../content/site'
 
 /** Unterseite „Übungspläne als Selbstzahlerleistung verkaufen“ (Text von Stefan freigegeben 15.10.2026).
  *  Texte und Bilder belegt an der App: PlanAssignmentModal (Vergabe, Knopf „Verkaufen & Honorarnote“),
@@ -286,9 +287,11 @@ export default function UebungsplaeneVerkaufen() {
                 Überweisung, und die App erstellt den Beleg in deinem Namen. Das Geld geht direkt an dich.
               </p>
               <div className="unterseite-knoepfe">
-                <Button href={links.calendly} external>
-                  Erstgespräch buchen
-                </Button>
+                <KnopfMitZeile zeile={cta.primary.zeile}>
+                  <Button href={cta.primary.href} external>
+                    {cta.primary.label}
+                  </Button>
+                </KnopfMitZeile>
                 <Button href="/#preise" variant="secondary">
                   Preise ansehen
                 </Button>
@@ -388,9 +391,11 @@ export default function UebungsplaeneVerkaufen() {
                 (kostenlos) vergibst du Pläne kostenlos.
               </p>
               <div className="unterseite-knoepfe" style={{ justifyContent: 'center' }}>
-                <Button href={links.calendly} external>
-                  Erstgespräch buchen
-                </Button>
+                <KnopfMitZeile zeile={cta.primary.zeile}>
+                  <Button href={cta.primary.href} external>
+                    {cta.primary.label}
+                  </Button>
+                </KnopfMitZeile>
                 <Button href="/#preise" variant="secondary">
                   Preise ansehen
                 </Button>

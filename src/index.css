@@ -894,7 +894,7 @@ section[id] { scroll-margin-top: 8px; }
 .unterseite-lead { font-size: 19px; line-height: 1.65; color: var(--pom-slate-600); margin: 20px 0 28px; max-width: 560px; }
 .unterseite-text { font-size: 17px; line-height: 1.7; color: var(--pom-slate-600); margin: 18px 0 0; max-width: 560px; }
 .unterseite-hinweis { font-size: 15px; color: var(--pom-slate-500); margin: 22px 0 0; }
-.unterseite-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+.unterseite-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
 .unterseite-schritt {
   background: rgba(255,255,255,.12);
   border: 1px solid rgba(255,255,255,.22);
@@ -1111,7 +1111,10 @@ section[id] { scroll-margin-top: 8px; }
   .hero-text { margin-bottom: 28px; }
 }
 @media (max-width: 900px) {
-  .hero-text { font-size: 17px; margin-bottom: 28px; }
+  /* Seit Befund 2 (22.11.2026) stehen unter den Knöpfen zwei Zeilen; dafür oben etwas
+   * weniger Luft, damit die DSGVO-Karte am Handy weiter ohne Scrollen sichtbar bleibt. */
+  #top .section { padding-top: 36px; }
+  .hero-text { font-size: 17px; margin-bottom: 24px; }
 }
 
 /* Kundenstimmen direkt unter dem Kopfbereich (18.11.2026): zwei gleich gestaltete
@@ -1145,3 +1148,24 @@ section[id] { scroll-margin-top: 8px; }
 /* Vertrauenskarte im Kopfbereich (11.11.2026) */
 .hero-vertrauen { transition: border-color .2s ease, box-shadow .2s ease; }
 @media (hover: hover) { .hero-vertrauen:hover { border-color: rgba(139,168,58,.5) !important; box-shadow: 0 12px 32px rgba(107,132,41,.14) !important; } }
+
+/* Knopfpaar (Befund 2, 22.11.2026): überall gleiche Reihenfolge, unter jedem Knopf
+ * eine Zeile, was nach dem Klick passiert. Am Handy stehen die Knöpfe untereinander. */
+.knopf-paar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px 16px; }
+.knopf-paar--mitte { justify-content: center; }
+.knopf-mit-zeile { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.knopf-zeile {
+  font-family: var(--font-sans); font-size: 13px; line-height: 1.35; font-weight: 500;
+  color: var(--pom-slate-600); text-align: center;
+}
+.knopf-paar--olive .knopf-zeile { color: rgba(255, 255, 255, 0.9); }
+.final-reden {
+  margin: 26px 0 0; font-family: var(--font-sans); font-size: 15px; font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+.final-reden a { color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.final-reden__nummer { font-weight: 700; }
+@media (max-width: 560px) {
+  .knopf-paar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .knopf-mit-zeile .btn { width: 100%; }
+}
