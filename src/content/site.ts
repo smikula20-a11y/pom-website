@@ -99,8 +99,9 @@ export const features = {
   heading: 'Alles, um Patienten auch zwischen den Terminen zu begleiten.',
   items: [
     { title: 'Plan per QR teilen', body: 'Ein Scan in der Praxis - kein Login, keine App-Installation.', pro: false },
-    { title: 'Professionelle Übungsvideos', body: 'Klare Videos pro Übung, damit zuhause richtig trainiert wird.', pro: false },
-    { title: 'PDF pro Patient', body: 'Jeder Plan auch als sauberes PDF zum Mitgeben.', pro: false },
+    // Befund 12 (22.11.2026): ohne Wirkungsanklang („damit zuhause richtig trainiert wird“).
+    { title: 'Professionelle Übungsvideos', body: 'Zu jeder Übung ein Video zum Nachschauen zuhause.', pro: false },
+    { title: 'Ausdruck pro Patient', body: 'Jeder Plan auch auf Papier zum Mitgeben.', pro: false },
     { title: 'Zeit sparen mit KI-Entwurf', body: 'Ein Entwurf in Sekunden - du bleibst der fachliche Kopf.', pro: true },
     { title: 'Zusatzeinkommen', body: 'Verkaufe Pläne als Selbstzahler-Leistung - der Umsatz gehört dir.', pro: true },
     { title: 'Dein Branding', body: 'Dein Logo, dein Name - der Plan sieht aus wie aus deiner Praxis.', pro: true },
@@ -318,14 +319,20 @@ export const pricing: {
   eyebrow: string
   heading: string
   sub: string
-  footnote: string
+  /** Zeilen unter den Preisen, je Eintrag eine Zeile. */
+  footnote: string[]
   toggleLabels: { monthly: string; yearly: string }
   plans: PricePlan[]
 } = {
   eyebrow: 'Preise',
   heading: 'Starte kostenlos. Wachse, wenn du bereit bist.',
   sub: 'Kein Risiko, keine Kreditkarte für den Start.',
-  footnote: 'Jederzeit kündbar · Keine versteckten Kosten.',
+  // Befund 4 (Stefan 22.11.2026): Kündigung wie in AGB Punkt 5 (vorher „Jederzeit kündbar“,
+  // das galt nur für die Monatstarife), Endpreise wie AGB Punkt 4 (Kleinunternehmer).
+  footnote: [
+    'Monatlich jederzeit zum Monatsende kündbar, das Jahresabo zum Ende der 12 Monate.',
+    'Endpreise, keine Umsatzsteuer. Keine versteckten Kosten.',
+  ],
   toggleLabels: { monthly: 'Monatlich', yearly: 'Jährlich' },
   plans: [
     {
@@ -333,10 +340,14 @@ export const pricing: {
       price: '€0',
       interval: '/ Monat',
       note: 'Zum Reinschnuppern',
+      // Grenzen von BASIC offen (Stefan 22.11.2026), laut App.tsx PERMISSIONS:
+      // maxLessons 5, canSave false (Entwürfe und Vorlagen), watermark + advertFooter am Ausdruck.
       features: [
-        { t: 'Zugang zur App & Übungsbibliothek', ok: true },
-        { t: 'Pläne per QR & PDF teilen', ok: true },
-        { t: 'Professionelle Übungsvideos', ok: true },
+        { t: 'App und Übungsbibliothek mit Videos', ok: true },
+        { t: 'Pläne per QR-Code und als Ausdruck', ok: true },
+        { t: 'Bis zu 5 Übungen pro Plan', ok: true },
+        { t: 'Entwürfe und Vorlagen speichern', ok: false },
+        { t: 'Ausdruck ohne Wasserzeichen und Werbezeile', ok: false },
         { t: 'KI-Planassistent', ok: false },
         { t: 'Verkauf & automatische Honorarnote', ok: false },
         { t: 'Dein Logo & Branding', ok: false },
@@ -348,18 +359,21 @@ export const pricing: {
       badge: '★ Empfohlen',
       featured: true,
       toggle: {
-        monthly: { price: '€49', interval: '/ Monat' },
-        // Jahres-Default: Prozent-Rabatt als Toggle-Badge (save), Anker-Preis
-        // in der Note. Kein zweites „Empfohlen" - das bleibt dem Plan.
-        yearly: { price: '€490', interval: '/ Jahr', note: '≈ 41 €/Monat · 2 Monate gratis', save: '-17 %' },
+        monthly: { price: '€49', interval: '/ Monat', note: 'monatlich abgerechnet · jederzeit zum Monatsende kündbar' },
+        // Jahres-Default (Stefan 22.11.2026): große Zahl ist der Preis pro Monat (490 / 12 = 40,83,
+        // aufgerundet), die Jahressumme steht darunter. Kein zweites „Empfohlen" - das bleibt dem Plan.
+        yearly: { price: '€41', interval: '/ Monat', note: 'jährlich abgerechnet: €490 im Voraus · 2 Monate gratis', save: '-17 %' },
       },
       features: [
-        { t: 'Unbegrenzte Pläne & Übungen', ok: true },
+        // „Unbegrenzt viele Übungen pro Plan“ statt „Unbegrenzte Pläne“: auch BASIC vergibt beliebig
+        // viele Pläne. Unterlagen hochladen nur PRO (App.tsx, Befund 10).
+        { t: 'Unbegrenzt viele Übungen pro Plan', ok: true },
         { t: 'KI-Planassistent', ok: true, highlight: true },
-        { t: 'Vorlagen & Entwürfe', ok: true },
-        { t: 'Dein Logo in App & PDF', ok: true },
+        { t: 'Entwürfe und Vorlagen speichern', ok: true },
+        { t: 'Eigene Unterlagen als PDF mitgeben, z. B. Merkblätter', ok: true },
+        { t: 'Dein Logo in App und Ausdruck', ok: true },
+        { t: 'Ausdruck ohne Wasserzeichen', ok: true },
         { t: 'Verkauf als Selbstzahler-Leistung - Umsatz gehört dir', ok: true },
-        { t: 'PDF ohne Wasserzeichen', ok: true },
       ],
       cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'primary', external: true },
     },
