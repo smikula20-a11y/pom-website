@@ -2,8 +2,8 @@
  * Inhalts-Layer - eine Wahrheit fuer die Wurzel-Website.
  * Copy woertlich aus Notion „Messaging-Brief Website-Wurzel".
  * Preistabelle: PRO €49 ENTSCHIEDEN 11.07.2026 (Stefan; Notion
- * STAMM §3.2 = Master). Das „39 €" in der Honorarnote ist ein
- * pricing-neutrales Beispiel, kein Website-Preis.
+ * STAMM §3.2 = Master). Die „39 €" im Umsatzrechner und in den
+ * Beispielbildern sind ein pricing-neutrales Beispiel, kein Website-Preis.
  * ============================================================ */
 
 /** Externe Ziele (Appendix E). */
@@ -141,13 +141,22 @@ export const honorar = {
   body: 'Vergib einen Plan kostenlos oder verkauft - bar, Karte oder Überweisung. Die Honorarnote erstellt sich automatisch in deinem Namen. Der Umsatz gehört dir, der Plan wird zur Einnahme.',
   // Führt zur Seite mit dem ganzen Ablauf statt zum Schlussabschnitt.
   cta: { label: 'So verdienst du mit', href: '/uebungsplaene-verkaufen' },
-  // Beispiel-Beleg (pricing-neutral, KEIN Abo-Preis).
-  mock: {
-    number: 'HN-2026-0142',
-    status: 'Verkauft',
-    line: { label: 'Trainingsplan „Rücken aktiv"', amount: '39 €' },
-    meta: { who: 'Max Mustermann · 07.07.', method: 'Karte' },
-    total: '39,00 €',
+  /* Umsatzrechner statt Beispiel-Beleg (Stefan 23.11.2026, Website-Audit Befund 9). Nur Praxis-Umsatz,
+   * keine Aussage über Patient:innen. Startwert 1 Plan pro Woche bewusst vorsichtig (bis 18.11.2026 wurde
+   * 1 von 93 vergebenen Plänen verkauft), 39 € wie in allen Beispielbildern der Website.
+   * Monat = 4 Wochen, Jahr = 46 Arbeitswochen (Stefan 23.11.2026). PRO-Preis wie in der Preistabelle. */
+  rechner: {
+    eyebrow: 'Rechne selbst',
+    titel: 'Was bringt dir der Verkauf?',
+    plaene: { label: 'Verkaufte Pläne pro Woche', min: 1, max: 10, start: 1 },
+    preis: { label: 'Preis pro Plan', min: 10, max: 80, start: 39 },
+    wochenProMonat: 4,
+    arbeitswochenProJahr: 46,
+    proPreisMonat: 49,
+    monat: 'Umsatz im Monat',
+    jahr: 'Umsatz im Jahr',
+    kleingedruckt:
+      'Rechenbeispiel, kein Versprechen. Monat = 4 Wochen, Jahr = 46 Arbeitswochen. Den Preis legst du selbst fest, verkaufen geht mit PRO.',
   },
 } as const
 

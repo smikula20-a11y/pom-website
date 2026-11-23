@@ -642,6 +642,33 @@ section[id] { scroll-margin-top: 8px; }
 }
 
 /* ============================================================
+ * UMSATZRECHNER (Startseite „Und dein Umsatz?“, Website-Audit Befund 9, 23.11.2026)
+ * ============================================================ */
+.rechner {
+  justify-self: center; width: 100%; max-width: 380px; margin-inline: auto;
+  background: #fff; border: 1px solid #eef0ea; border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(26,26,26,.10); padding: 24px 24px 20px;
+  font-family: var(--font-sans);
+}
+.rechner__eyebrow { color: var(--pom-olive); margin-bottom: 8px; }
+.rechner__titel { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: #1a1a1a; margin: 0 0 18px; }
+.rechner__label { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.rechner__wert { color: var(--pom-olive-hover); font-weight: 800; font-variant-numeric: tabular-nums; }
+/* Höhe 28 px = größere Fläche zum Antippen am Handy, die Leiste selbst bleibt schmal. */
+.rechner__regler { display: block; width: 100%; height: 28px; margin: 2px 0 12px; accent-color: var(--pom-olive); cursor: pointer; }
+.rechner__ergebnis {
+  background: #f5f5f3; border-radius: 14px; padding: 14px 16px; margin-top: 4px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.rechner__zeile { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; color: var(--pom-slate-500); }
+.rechner__zeile b { font-family: var(--font-display); font-size: 24px; font-weight: 800; color: #1a1a1a; font-variant-numeric: tabular-nums; }
+.rechner__pro {
+  background: var(--pom-olive-tint); border-radius: 10px; padding: 10px 12px; margin: 12px 0 0;
+  font-size: 13.5px; line-height: 1.5; color: #1a1a1a;
+}
+.rechner__fein { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: var(--pom-slate-500); }
+
+/* ============================================================
  * PROSE — legal pages (Impressum / Datenschutz / AGB / Auftragsverarbeitung)
  * ============================================================ */
 .prose { max-width: 760px; margin-inline: auto; color: var(--pom-slate-600); }
