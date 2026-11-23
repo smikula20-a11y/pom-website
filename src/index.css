@@ -545,7 +545,12 @@ section[id] { scroll-margin-top: 8px; }
  *   Unter 880 px Hochformat 4:5, darüber Querformat 16:10.
  * ============================================================ */
 .ablauf { display: flex; flex-direction: column; align-items: center; }
-.ablauf__eyebrow { color: var(--pom-olive); margin-bottom: 22px; text-align: center; }
+.ablauf__eyebrow { color: var(--pom-olive); margin-bottom: 14px; text-align: center; }
+.ablauf__titel {
+  font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 34px); font-weight: 800;
+  letter-spacing: -0.02em; line-height: 1.2; color: #1a1a1a; margin: 0 0 32px;
+  max-width: 620px; text-align: center; text-wrap: balance;
+}
 .ablauf-film {
   width: 100%; max-width: 1040px; border-radius: 24px; overflow: hidden; background: #161713;
   box-shadow: 0 1px 2px rgba(30, 35, 20, .08), 0 30px 70px rgba(26, 26, 26, .22);
@@ -553,21 +558,26 @@ section[id] { scroll-margin-top: 8px; }
 .ablauf-film__video { display: block; width: 100%; height: auto; }
 .ablauf-film__video--hoch { display: none; aspect-ratio: 4 / 5; }
 .ablauf-film__video--quer { aspect-ratio: 16 / 10; }
+/* Vier Schritte unter dem Film (23.11.2026): am Laptop nebeneinander, am Handy untereinander. */
 .ablauf__schritte {
-  list-style: none; margin: 26px 0 0; padding: 0;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 30px;
+  list-style: none; margin: 32px 0 0; padding: 0; width: 100%; max-width: 1040px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;
 }
-.ablauf__schritte li {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: #1a1a1a;
-}
+.ablauf__schritte li { display: flex; align-items: flex-start; gap: 12px; }
 .ablauf__nr {
-  width: 24px; height: 24px; border-radius: 999px; flex: none; display: grid; place-items: center;
-  background: var(--pom-olive); color: #fff; font-family: var(--font-display); font-size: 12px; font-weight: 800;
+  width: 28px; height: 28px; border-radius: 999px; flex: none; display: grid; place-items: center;
+  background: var(--pom-olive); color: #fff; font-family: var(--font-display); font-size: 14px; font-weight: 800;
+}
+.ablauf__schritt-titel {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 2px;
+  font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #1a1a1a;
+}
+.ablauf__schritt-text {
+  display: block; font-family: var(--font-sans); font-size: 15px; line-height: 1.5; color: var(--pom-slate-600);
 }
 .ablauf__pro {
-  font-size: 10px; font-weight: 900; letter-spacing: .1em; color: var(--pom-olive-hover);
-  background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line); padding: 3px 8px; border-radius: 999px;
+  font-family: var(--font-sans); font-size: 10px; font-weight: 900; letter-spacing: .1em; color: var(--pom-olive-hover);
+  background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line); padding: 2px 7px; border-radius: 999px;
 }
 .ablauf__cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .ablauf__microcopy { font-family: var(--font-sans); font-size: 13px; color: var(--pom-stone-500); }
@@ -576,11 +586,59 @@ section[id] { scroll-margin-top: 8px; }
   .ablauf-film { max-width: 440px; border-radius: 20px; }
   .ablauf-film__video--hoch { display: block; }
   .ablauf-film__video--quer { display: none; }
-  .ablauf__schritte {
-    display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 10px 22px; margin-top: 20px;
-  }
-  .ablauf__schritte li { font-size: 14px; }
+  .ablauf__titel { margin-bottom: 24px; }
+  .ablauf__schritte { grid-template-columns: 1fr; gap: 14px; max-width: 440px; margin-top: 24px; }
   .ablauf__cta { margin-top: 22px; }
+}
+
+/* ============================================================
+ * FUNKTIONEN + TÜREN (Startseite, Website-Audit Befund 8, 23.11.2026)
+ *   Funktionen am Handy kompakt: Symbol links neben dem Text.
+ * ============================================================ */
+.funktionen-raster { margin-top: 44px; }
+.funktion-karte {
+  background: #f8f8f6; border: 1px solid var(--pom-stone-300); border-radius: 24px;
+  padding: 28px 26px; height: 100%;
+}
+.funktion-karte__kopf { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.funktion-karte__symbol {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--pom-olive-a10);
+  display: grid; place-items: center; flex: none;
+}
+.funktion-karte__pro {
+  font-family: var(--font-sans); font-size: 11px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--pom-olive-hover); background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line);
+  padding: 3px 8px; border-radius: 999px;
+}
+.funktion-karte__titel { margin-bottom: 8px; }
+.funktion-karte__text { margin: 0; font-size: 16px; line-height: 1.6; color: var(--pom-slate-600); }
+
+.tueren-raster { margin-top: 44px; }
+.tuer {
+  display: flex; flex-direction: column; height: 100%; text-decoration: none;
+  background: #fff; border: 1px solid var(--pom-stone-300); border-radius: 20px; padding: 26px 24px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.tuer:hover { border-color: var(--pom-olive-tint-line); box-shadow: var(--shadow-card-hover-olive); }
+.tuer__titel { margin-bottom: 6px; }
+.tuer__text { margin: 0 0 14px; font-size: 16px; line-height: 1.55; color: var(--pom-slate-600); flex: 1; }
+.tuer__link { font-family: var(--font-sans); font-size: 15px; font-weight: 700; color: var(--pom-olive-hover); }
+
+@media (max-width: 900px) {
+  .funktionen-raster { margin-top: 28px; gap: 10px; }
+  .funktion-karte {
+    display: grid; grid-template-columns: 40px 1fr; column-gap: 14px;
+    padding: 16px; border-radius: 16px;
+  }
+  .funktion-karte__kopf { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 0; }
+  .funktion-karte__symbol { width: 40px; height: 40px; border-radius: 10px; }
+  .funktion-karte__pro { font-size: 9px; padding: 2px 5px; }
+  .funktion-karte__titel { font-size: 17px; margin-bottom: 4px; }
+  .funktion-karte__text { font-size: 15px; line-height: 1.5; }
+  .tueren-raster { margin-top: 24px; gap: 12px; }
+  .tuer { padding: 18px; border-radius: 16px; }
+  .tuer__titel { font-size: 18px; margin-bottom: 4px; }
+  .tuer__text { font-size: 15px; line-height: 1.5; margin-bottom: 10px; }
 }
 
 /* ============================================================

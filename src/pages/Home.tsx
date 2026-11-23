@@ -2,14 +2,13 @@ import { Hero } from '../sections/Hero'
 import { Pricing } from '../sections/Pricing'
 import { AblaufFilm } from '../components/AblaufFilm'
 import {
-  Audience,
   Features,
   FinalCta,
   Founder,
   Honorar,
-  HowItWorks,
   Problem,
   Stimmen,
+  Tueren,
 } from '../sections/MidSections'
 import { Container } from '../components/primitives'
 import { HaeufigeFragen } from '../components/Unterseite'
@@ -22,12 +21,13 @@ export default function Home() {
       {/* Kundenstimmen gleich nach dem Kopfbereich (18.11.2026), vorher stand eine Stimme nach den Preisen */}
       <Stimmen />
       <Problem />
+      {/* Befund 8 (23.11.2026): Film und Ablauf in einem Abschnitt, drei Türen statt „Für wen“,
+          Preise direkt nach Funktionen und Türen, „Und dein Umsatz?“ nach den Preisen */}
       <AblaufFilm />
       <Features />
-      <HowItWorks />
-      <Honorar />
-      <Audience />
+      <Tueren />
       <Pricing />
+      <Honorar />
       <Founder />
       {/* Häufige Fragen: Antworten stehen im HTML, auch zugeklappt lesbar für Suchmaschinen */}
       <section id="fragen" style={{ background: '#fff' }}>
