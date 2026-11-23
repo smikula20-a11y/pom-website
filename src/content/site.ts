@@ -52,8 +52,10 @@ export const nav = {
 export const hero = {
   eyebrow: 'Übungsplan-Software für Physio- und Ergotherapie',
   headline: 'Heimübungen kosten dich pro Patient zehn Minuten, die keiner zahlt.',
+  // 22.11.2026 (Befund 5): alle Wege zum Teilen; dafür der letzte Satz kürzer, sonst rutscht
+  // die DSGVO-Karte am Handy (375 x 812) unter den ersten Bildschirm.
   subhead:
-    'Mit Place of Motion stellst du den Plan mit Video aus der Bibliothek zusammen und gibst ihn per QR-Code mit. Ohne App, ohne Konto. Kostenlos, oder du verrechnest ihn als Selbstzahlerleistung.',
+    'Mit Place of Motion stellst du den Plan mit Video aus der Bibliothek zusammen und gibst ihn per QR-Code, Link oder Ausdruck mit. Ohne App, ohne Konto. Kostenlos oder als Selbstzahlerleistung.',
   /** Zeile unter den Knöpfen: was es kostet, auf einen Blick. */
   preiszeile: 'BASIC kostenlos · PRO 49 € im Monat',
   /** Vertrauenskarte unter den Knöpfen (Stefan 11.11.2026, Variante C). Kein Siegel-Look:
@@ -98,10 +100,12 @@ export const features = {
   eyebrow: 'Was POM kann',
   heading: 'Alles, um Patienten auch zwischen den Terminen zu begleiten.',
   items: [
-    { title: 'Plan per QR teilen', body: 'Ein Scan in der Praxis - kein Login, keine App-Installation.', pro: false },
+    // Befund 5 (Stefan 22.11.2026): alle Wege zum Teilen, nicht nur Scannen in der Praxis
+    // (App: QR-Code, „Link kopieren“, Ausdruck mit QR-Code auf Seite 1).
+    { title: 'Plan teilen, wie es passt', body: 'QR-Code direkt in der Praxis scannen, Link per WhatsApp, SMS oder E-Mail schicken oder den Ausdruck mitgeben. Ohne App, ohne Konto, ohne Passwort.', pro: false },
     // Befund 12 (22.11.2026): ohne Wirkungsanklang („damit zuhause richtig trainiert wird“).
     { title: 'Professionelle Übungsvideos', body: 'Zu jeder Übung ein Video zum Nachschauen zuhause.', pro: false },
-    { title: 'Ausdruck pro Patient', body: 'Jeder Plan auch auf Papier zum Mitgeben.', pro: false },
+    { title: 'Ausdruck pro Patient', body: 'Jeder Plan auch auf Papier, mit Bild und Dosierung zu jeder Übung. Auf Seite 1 steht der QR-Code zum Plan am Handy.', pro: false },
     { title: 'Zeit sparen mit KI-Entwurf', body: 'Ein Entwurf in Sekunden - du bleibst der fachliche Kopf.', pro: true },
     { title: 'Zusatzeinkommen', body: 'Verkaufe Pläne als Selbstzahler-Leistung - der Umsatz gehört dir.', pro: true },
     { title: 'Dein Branding', body: 'Dein Logo, dein Name - der Plan sieht aus wie aus deiner Praxis.', pro: true },
@@ -127,13 +131,14 @@ export const howItWorks = {
     },
     {
       n: 2,
-      title: 'QR-Code teilen',
-      body: 'Der Patient scannt den Code in der Praxis - kein Login, keine App-Installation.',
+      title: 'Plan teilen',
+      body: 'Per QR-Code in der Praxis, als Link per WhatsApp, SMS oder E-Mail oder auf dem Ausdruck. Ohne App, ohne Konto.',
     },
     {
       n: 3,
-      title: 'Patient trainiert',
-      body: 'Zuhause, am Handy, mit Video pro Übung - dein Plan arbeitet weiter, auch ohne Termin.',
+      // Befund 12 (22.11.2026): ohne Wirkungsanklang („Patient trainiert … dein Plan arbeitet weiter“).
+      title: 'Übungen zuhause',
+      body: 'Am Handy, mit Video und Dosierung zu jeder Übung, auch zwischen den Terminen.',
     },
   ],
 } as const
@@ -271,12 +276,18 @@ export const startFragen: { frage: string; antwort: string; link?: { label: stri
   {
     frage: 'Wie fange ich an?',
     antwort:
-      'Du registrierst dich kostenlos mit BASIC, ohne Kreditkarte. Place of Motion läuft im Browser, am PC und am Handy, du musst nichts installieren. Wenn du es dir lieber zeigen lässt, buchst du ein Erstgespräch.',
+      'Du registrierst dich kostenlos mit BASIC, ohne Kreditkarte, und bestätigst deine E-Mail-Adresse. Place of Motion läuft im Browser, am PC und am Handy, du musst nichts installieren. Wenn du es dir lieber zeigen lässt, buchst du ein Erstgespräch.',
+  },
+  // Befund 6 (Stefan 22.11.2026): vier neue Fragen, Entwürfe aus Notion SEO-Seite Punkt 4.
+  {
+    frage: 'Funktioniert das auch für ältere Patient:innen?',
+    antwort:
+      'Der Plan öffnet sich direkt im Browser, über den QR-Code oder über den Link, den du per WhatsApp, SMS oder E-Mail schickst. Ohne App, ohne Konto und ohne Passwort. Wer kein Smartphone hat oder lieber Papier mag, bekommt den Ausdruck mit Bild und Dosierung zu jeder Übung. Du entscheidest bei jeder Person, was besser passt, oder gibst beides mit.',
   },
   {
     frage: 'Was ist der Unterschied zwischen BASIC und PRO?',
     antwort:
-      'Mit BASIC nutzt du die Übungsbibliothek mit Videos und gibst Pläne per QR-Code, Link und Ausdruck weiter. PRO bringt dazu den KI-Entwurf, Vorlagen, dein Logo auf Plan und Ausdruck, eigene Videos und den Verkauf mit Beleg. PRO kostet 49 € im Monat oder 490 € im Jahr.',
+      'Mit BASIC nutzt du die Übungsbibliothek mit Videos und gibst Pläne mit bis zu 5 Übungen per QR-Code, Link und Ausdruck weiter. PRO bringt dazu den KI-Entwurf, Vorlagen, dein Logo auf Plan und Ausdruck, eigene Videos und Unterlagen und den Verkauf mit Beleg. PRO kostet 49 € im Monat oder 490 € im Jahr.',
   },
   {
     frage: 'Was macht der KI-Entwurf?',
@@ -284,9 +295,30 @@ export const startFragen: { frage: string; antwort: string; link?: { label: stri
       'Du beschreibst in ein paar Sätzen, worum es geht. Die KI schlägt daraus einen Plan mit Übungen aus der Bibliothek vor. Du prüfst den Entwurf, änderst ihn und entscheidest, was deine Patient:innen bekommen.',
   },
   {
+    // Wortlaut Stefan 22.11.2026; geprüft an Lang S, McLelland C, MacDonald D, Hamilton DF:
+    // Do digital interventions increase adherence to home exercise rehabilitation?
+    // Archives of Physiotherapy 2022;12:24 (10 RCTs, 1.117 Teilnehmende, 7 von 10 mit höherer Übungstreue).
+    // Übungstreue ist Verhalten, keine Gesundheitswirkung (Regel 13.10.2026).
+    frage: 'Üben Patient:innen mit einem digitalen Plan mehr?',
+    antwort:
+      'Studien zu digitalen Übungsprogrammen sprechen dafür, zumindest für die ersten Wochen. Eine Übersichtsarbeit über 10 Studien mit rund 1.100 Teilnehmenden fand in 7 Studien eine höhere Übungstreue mit digitalem Programm. In den 3 Studien mit längerer Beobachtung gab es keinen Unterschied (Lang und andere, 2022).',
+    link: { label: 'Zur Studie', href: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9527092/' },
+  },
+  {
+    // Geprüft: AVV-Anlage („bis die Praxis ihn abschaltet … nicht von selbst ab“), Knopf in der App heißt „Plan deaktivieren“.
+    frage: 'Was passiert mit dem Plan nach der Behandlung?',
+    antwort:
+      'Der Plan bleibt über QR-Code und Link erreichbar, bis du ihn deaktivierst oder löschst. Place of Motion schaltet Pläne nicht von selbst ab, du entscheidest bei jedem Plan selbst.',
+  },
+  {
     frage: 'Kann ich jederzeit kündigen?',
     antwort:
       'Ja. Monatliche Tarife kündigst du jederzeit zum Ende des laufenden Kalendermonats. Der Jahrestarif läuft zwölf Monate und endet dann, wenn du kündigst. BASIC kannst du jederzeit beenden.',
+  },
+  {
+    frage: 'Wie erreiche ich dich, wenn etwas nicht klappt?',
+    antwort:
+      'Direkt bei mir: per Telefon oder WhatsApp unter 0681 20157016 oder per E-Mail an office@placeofmotion.com. Du landest in keinem Callcenter, sondern bei Stefan Mikula, der Place of Motion entwickelt.',
   },
 ]
 
@@ -371,6 +403,8 @@ export const pricing: {
         { t: 'KI-Planassistent', ok: true, highlight: true },
         { t: 'Entwürfe und Vorlagen speichern', ok: true },
         { t: 'Eigene Unterlagen als PDF mitgeben, z. B. Merkblätter', ok: true },
+        // Befund 5: Kundenwort „eigene Übungen“; Hochladen nur PRO (VideoUploadModal canUpload).
+        { t: 'Eigene Übungsvideos hochladen', ok: true },
         { t: 'Dein Logo in App und Ausdruck', ok: true },
         { t: 'Ausdruck ohne Wasserzeichen', ok: true },
         { t: 'Verkauf als Selbstzahler-Leistung - Umsatz gehört dir', ok: true },
