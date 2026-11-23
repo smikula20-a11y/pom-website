@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
-import { HonorarNote } from '../components/HonorarNote'
+import { Umsatzrechner } from '../components/Umsatzrechner'
 import { KnopfPaar } from '../components/KnopfPaar'
 import {
   features,
@@ -172,7 +172,7 @@ export function Features() {
   )
 }
 
-/* ---------------- Honorarnote ---------------- */
+/* ---------------- Und dein Umsatz? (rechts der Umsatzrechner, Befund 9) ---------------- */
 export function Honorar() {
   return (
     <section style={{ background: '#fff' }}>
@@ -199,7 +199,7 @@ export function Honorar() {
             </Button>
           </Reveal>
           <Reveal delay={0.1}>
-            <HonorarNote />
+            <Umsatzrechner />
           </Reveal>
         </div>
       </Container>
