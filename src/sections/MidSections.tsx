@@ -1,16 +1,13 @@
 import type { ReactNode } from 'react'
 import {
   Check,
-  ClipboardList,
   FileText,
   Palette,
-  Play,
   QrCode,
   ShieldCheck,
   Sparkles,
   Video,
   Wallet,
-  X,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '../components/Button'
@@ -18,14 +15,13 @@ import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { HonorarNote } from '../components/HonorarNote'
 import { KnopfPaar } from '../components/KnopfPaar'
 import {
-  audience,
   features,
   finalCta,
   founder,
   honorar,
-  howItWorks,
   problem,
   stimmen,
+  tueren,
 } from '../content/site'
 
 function H2({ children, onOlive = false }: { children: ReactNode; onOlive?: boolean }) {
@@ -122,66 +118,23 @@ export function Features() {
           <Eyebrow>{features.eyebrow}</Eyebrow>
           <H2>{features.heading}</H2>
         </Reveal>
-        <div className="grid-3" style={{ marginTop: 44 }}>
+        {/* Am Handy kompakt: Symbol links neben dem Text (Befund 8, 23.11.2026), Stile in index.css (.funktion-karte) */}
+        <div className="grid-3 funktionen-raster">
           {features.items.map((f, i) => {
             const Icon = featureIcons[i] ?? Check
             return (
               <Reveal key={f.title} delay={(i % 3) * 0.08}>
-                <div
-                  className="pom-card-hover"
-                  style={{
-                    background: '#f8f8f6',
-                    border: '1px solid var(--pom-stone-300)',
-                    borderRadius: 24,
-                    padding: '28px 26px',
-                    height: '100%',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      marginBottom: 16,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 12,
-                        background: 'var(--pom-olive-a10)',
-                        display: 'grid',
-                        placeItems: 'center',
-                      }}
-                    >
+                <div className="pom-card-hover funktion-karte">
+                  <div className="funktion-karte__kopf">
+                    <div className="funktion-karte__symbol">
                       <Icon size={22} color="var(--pom-olive-hover)" strokeWidth={2.2} />
                     </div>
-                    {f.pro && (
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-sans)',
-                          fontSize: 11,
-                          fontWeight: 900,
-                          letterSpacing: '.1em',
-                          textTransform: 'uppercase',
-                          color: 'var(--pom-olive-hover)',
-                          background: 'var(--pom-olive-tint)',
-                          border: '1px solid var(--pom-olive-tint-line)',
-                          padding: '3px 8px',
-                          borderRadius: 999,
-                        }}
-                      >
-                        PRO
-                      </span>
-                    )}
+                    {f.pro && <span className="funktion-karte__pro">PRO</span>}
                   </div>
-                  <h3 className="pom-h3" style={{ marginBottom: 8 }}>
-                    {f.title}
-                  </h3>
-                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--pom-slate-600)' }}>
-                    {f.body}
-                  </p>
+                  <div>
+                    <h3 className="pom-h3 funktion-karte__titel">{f.title}</h3>
+                    <p className="funktion-karte__text">{f.body}</p>
+                  </div>
                 </div>
               </Reveal>
             )
@@ -214,69 +167,6 @@ export function Features() {
             </Link>
           </p>
         </Reveal>
-      </Container>
-    </section>
-  )
-}
-
-/* ---------------- So funktioniert's (Olive-Band) ---------------- */
-const stepIcons = [ClipboardList, QrCode, Play]
-export function HowItWorks() {
-  return (
-    <section id="so-funktionierts" className="pom-band-olive">
-      <Container className="section">
-        <div className="pom-band-eyebrow" style={{ marginBottom: 14 }}>
-          {howItWorks.eyebrow}
-        </div>
-        <H2 onOlive>{howItWorks.heading}</H2>
-        <div className="grid-3" style={{ marginTop: 52 }}>
-          {howItWorks.steps.map((s, i) => {
-            const Icon = stepIcons[i] ?? ClipboardList
-            return (
-              <Reveal key={s.n} delay={i * 0.1}>
-                <div
-                  style={{
-                    background: 'rgba(255,255,255,.12)',
-                    border: '1px solid rgba(255,255,255,.22)',
-                    borderRadius: 24,
-                    padding: '32px 28px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: 14,
-                    height: '100%',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 10,
-                      background: 'rgba(255,255,255,.92)',
-                      display: 'grid',
-                      placeItems: 'center',
-                    }}
-                  >
-                    <Icon size={20} color="var(--pom-olive-hover)" strokeWidth={2.5} />
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 19,
-                      fontWeight: 700,
-                      letterSpacing: '-0.01em',
-                      color: '#fff',
-                    }}
-                  >
-                    {s.n} · {s.title}
-                  </div>
-                  <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,.85)' }}>
-                    {s.body}
-                  </p>
-                </div>
-              </Reveal>
-            )
-          })}
-        </div>
       </Container>
     </section>
   )
@@ -317,77 +207,50 @@ export function Honorar() {
   )
 }
 
-/* ---------------- Für wen / nicht für wen ---------------- */
-export function Audience() {
+/* ---------------- Für wen: drei Türen (Befund 8, 23.11.2026) ---------------- */
+function TuerLink({ href, children }: { href: string; children: ReactNode }) {
+  if (href.startsWith('http'))
+    return (
+      <a className="tuer" href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
+    )
+  if (href.startsWith('#'))
+    return (
+      <a className="tuer" href={href}>
+        {children}
+      </a>
+    )
+  return (
+    <Link className="tuer" to={href}>
+      {children}
+    </Link>
+  )
+}
+
+export function Tueren() {
   return (
     <section id="fuer-wen" style={{ background: 'var(--pom-stone-bg)' }}>
       <Container className="section">
         <Reveal>
-          <Eyebrow>{audience.eyebrow}</Eyebrow>
-          <H2>{audience.heading}</H2>
+          <Eyebrow>{tueren.eyebrow}</Eyebrow>
+          <H2>{tueren.heading}</H2>
         </Reveal>
-        <div className="grid-2" style={{ marginTop: 44 }}>
-          <Reveal>
-            <AudienceCard heading={audience.fitHeading} items={audience.fit} kind="fit" />
-          </Reveal>
-          <Reveal delay={0.08}>
-            <AudienceCard heading={audience.notHeading} items={audience.not} kind="not" />
-          </Reveal>
+        <div className="grid-3 tueren-raster">
+          {tueren.liste.map((t, i) => (
+            <Reveal key={t.titel} delay={i * 0.08}>
+              <TuerLink href={t.link.href}>
+                <h3 className="pom-h3 tuer__titel">{t.titel}</h3>
+                <p className="tuer__text">{t.text}</p>
+                <span className="tuer__link">
+                  {t.link.label} <span aria-hidden="true">{t.link.pfeil}</span>
+                </span>
+              </TuerLink>
+            </Reveal>
+          ))}
         </div>
       </Container>
     </section>
-  )
-}
-
-function AudienceCard({
-  heading,
-  items,
-  kind,
-}: {
-  heading: string
-  items: readonly string[]
-  kind: 'fit' | 'not'
-}) {
-  const fit = kind === 'fit'
-  return (
-    <div
-      style={{
-        background: '#fff',
-        border: `1px solid ${fit ? 'var(--pom-olive-tint-line)' : 'var(--pom-stone-300)'}`,
-        borderRadius: 24,
-        padding: '32px 30px',
-        height: '100%',
-      }}
-    >
-      <h3 className="pom-h3" style={{ marginBottom: 20 }}>
-        {heading}
-      </h3>
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
-        {items.map((it) => (
-          <li key={it} style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-            <span
-              style={{
-                flex: 'none',
-                width: 22,
-                height: 22,
-                borderRadius: 999,
-                display: 'grid',
-                placeItems: 'center',
-                marginTop: 1,
-                background: fit ? 'var(--pom-olive)' : 'var(--pom-stone-200)',
-              }}
-            >
-              {fit ? (
-                <Check size={13} color="#fff" strokeWidth={3} />
-              ) : (
-                <X size={13} color="var(--pom-stone-600)" strokeWidth={3} />
-              )}
-            </span>
-            <span style={{ fontSize: 16, lineHeight: 1.55, color: 'var(--pom-slate-600)' }}>{it}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }
 

@@ -69,17 +69,30 @@ export const hero = {
 } as const
 
 /** Ablauf-Film auf der Startseite (AblaufFilm, ersetzt FlowLoop am 11.11.2026).
- *  Die Schritte stehen als Text unter dem Film. Statt „Live-Demo ansehen“ führt
+ *  Seit 23.11.2026 (Website-Audit Befund 8) zugleich „So funktioniert's“: Der eigene
+ *  Abschnitt mit drei Schritten entfällt, die vier Schritte des Films stehen mit kurzem
+ *  Text darunter (Stefan 23.11.2026, Mockup abgenommen). Statt „Live-Demo ansehen“ führt
  *  ein Knopf zur kostenlosen Anmeldung (Stefan 11.11.2026). */
 export const demo = {
-  eyebrow: "So läuft's · live",
+  eyebrow: "So funktioniert's",
+  heading: 'Vom Plan zur Honorarnote, in vier Schritten.',
   filmLabel:
     'Kurzer Film ohne Ton: Im Editor kommt eine Übung in den Plan, der Plan wird per QR-Code geteilt, am Handy läuft das Übungsvideo, danach entsteht die Honorarnote.',
   schritte: [
-    { text: 'Plan erstellen', pro: false },
-    { text: 'Per QR-Code teilen', pro: false },
-    { text: 'Mit Video üben', pro: false },
-    { text: 'Verkaufen', pro: true },
+    { titel: 'Plan erstellen', text: 'Übungen aus der Bibliothek, mit Dosierung, Hinweisen und Video.', pro: false },
+    // Befund 5 (22.11.2026): alle Wege zum Teilen, nicht nur Scannen in der Praxis.
+    {
+      titel: 'Plan teilen',
+      text: 'Per QR-Code, als Link per WhatsApp, SMS oder E-Mail oder auf dem Ausdruck. Ohne App, ohne Konto.',
+      pro: false,
+    },
+    // Befund 12 (22.11.2026): ohne Wirkungsanklang („Patient trainiert … dein Plan arbeitet weiter“).
+    { titel: 'Übungen zuhause', text: 'Am Handy, mit Video und Dosierung zu jeder Übung.', pro: false },
+    {
+      titel: 'Verkaufen',
+      text: 'Wenn du willst, als Selbstzahlerleistung. Die Honorarnote erstellt sich automatisch.',
+      pro: true,
+    },
   ],
 } as const
 
@@ -119,30 +132,6 @@ export const features = {
   },
 } as const
 
-/** So funktioniert's - Olive-Band. Copy aus dem Design-Handoff (deckt §6). */
-export const howItWorks = {
-  eyebrow: "So funktioniert's",
-  heading: 'Vom Plan zur Honorarnote - in drei Schritten.',
-  steps: [
-    {
-      n: 1,
-      title: 'Plan erstellen',
-      body: 'Übungen aus der Bibliothek zusammenstellen - mit Dosierung, Hinweisen und Video pro Übung.',
-    },
-    {
-      n: 2,
-      title: 'Plan teilen',
-      body: 'Per QR-Code in der Praxis, als Link per WhatsApp, SMS oder E-Mail oder auf dem Ausdruck. Ohne App, ohne Konto.',
-    },
-    {
-      n: 3,
-      // Befund 12 (22.11.2026): ohne Wirkungsanklang („Patient trainiert … dein Plan arbeitet weiter“).
-      title: 'Übungen zuhause',
-      body: 'Am Handy, mit Video und Dosierung zu jeder Übung, auch zwischen den Terminen.',
-    },
-  ],
-} as const
-
 /** Honorarnote - realisiert die Zusatzeinkommen-Korrektur (§8): 100 % Umsatz
  *  beim Therapeuten, POM erstellt nur die Honorarnote. KEINE „Provision". */
 export const honorar = {
@@ -162,20 +151,29 @@ export const honorar = {
   },
 } as const
 
-export const audience = {
+/** Drei Türen statt „Für wen / nicht für wen“ (Stefan 23.11.2026, Website-Audit Befund 8).
+ *  Die Liste „Nicht geeignet, wenn du …“ aus dem Juli fällt bewusst weg. Gruppenpraxis:
+ *  Hinweis auf ein eigenes Angebot OHNE Preis (Stefan 23.11.2026; Preise nur im Gespräch,
+ *  Notion STAMM §3.8). Einrichtungen haben eine eigene Seite. */
+export const tueren = {
   eyebrow: 'Für wen',
-  heading: 'Ehrlich: für wen POM gebaut ist - und für wen nicht.',
-  fitHeading: 'Geeignet, wenn du …',
-  fit: [
-    'Patienten zwischen und nach den Einheiten begleiten willst.',
-    'digitale Einnahmen ohne Mehraufwand willst.',
-    'unter deinem eigenen Namen auftreten willst.',
-  ],
-  notHeading: 'Nicht geeignet, wenn du …',
-  not: [
-    'schnelle Marketing-Tricks suchst.',
-    'Therapie durch Technik ersetzen willst.',
-    'Qualität für Nebensache hältst.',
+  heading: 'Für Einzelpraxen, Gruppenpraxen und Einrichtungen.',
+  liste: [
+    {
+      titel: 'Einzelpraxis',
+      text: 'Du arbeitest allein in deiner Praxis. Starte kostenlos mit BASIC oder hol dir PRO.',
+      link: { label: 'Zu den Preisen', href: '#preise', pfeil: '↓' },
+    },
+    {
+      titel: 'Gruppenpraxis',
+      text: 'Ihr seid mehrere selbstständige Therapeut:innen unter einem Dach? Jede:r bekommt ein eigenes Konto, für Gruppenpraxen gibt es ein eigenes Angebot.',
+      link: { label: 'Erstgespräch buchen', href: links.calendly, pfeil: '→' },
+    },
+    {
+      titel: 'Einrichtung',
+      text: 'Krankenhaus, Reha- oder Therapiezentrum? Alles für Einrichtungen steht auf einer eigenen Seite.',
+      link: { label: 'Für Einrichtungen', href: '/einrichtungen', pfeil: '→' },
+    },
   ],
 } as const
 

@@ -4,7 +4,8 @@ import { KnopfPaar } from './KnopfPaar'
 import { demo } from '../content/site'
 
 /**
- * AblaufFilm - „So läuft's live“ auf der Startseite (ersetzt FlowLoop, Stefan 11.11.2026).
+ * AblaufFilm - „So funktioniert's“ auf der Startseite (ersetzt FlowLoop, Stefan 11.11.2026;
+ * seit 23.11.2026 mit den vier Schritten als Text, der frühere Abschnitt „So funktioniert's“ entfällt).
  * Gerechneter Film ohne Ton, 12 s, nahtlose Schleife: Plan erstellen, Teilen, Üben, Verkaufen.
  * Gebaut mit HyperFrames in C:\Users\smiku\claude code\pom-videos\videos\startseite-ablauf
  * (Querformat wird daraus erzeugt: startseite-ablauf-quer).
@@ -59,9 +60,11 @@ function FilmVideo({ format }: { format: 'hoch' | 'quer' }) {
 
 export function AblaufFilm() {
   return (
-    <section id="demo" style={{ background: '#eceae4' }}>
+    // Seit 23.11.2026 auch „So funktioniert's“ (Befund 8): eigener Abschnitt entfällt, Anker bleibt für die Navigation.
+    <section id="so-funktionierts" style={{ background: '#eceae4' }}>
       <Container className="section ablauf">
         <div className="pom-eyebrow ablauf__eyebrow">{demo.eyebrow}</div>
+        <h2 className="ablauf__titel">{demo.heading}</h2>
 
         <div className="ablauf-film">
           <FilmVideo format="hoch" />
@@ -71,10 +74,15 @@ export function AblaufFilm() {
         {/* Die vier Schritte als lesbarer Text (auch für Suchmaschinen) */}
         <ol className="ablauf__schritte">
           {demo.schritte.map((schritt, i) => (
-            <li key={schritt.text}>
+            <li key={schritt.titel}>
               <span className="ablauf__nr">{i + 1}</span>
-              {schritt.text}
-              {schritt.pro && <span className="ablauf__pro">PRO</span>}
+              <span>
+                <span className="ablauf__schritt-titel">
+                  {schritt.titel}
+                  {schritt.pro && <span className="ablauf__pro">PRO</span>}
+                </span>
+                <span className="ablauf__schritt-text">{schritt.text}</span>
+              </span>
             </li>
           ))}
         </ol>
