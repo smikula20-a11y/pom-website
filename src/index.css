@@ -808,8 +808,13 @@ section[id] { scroll-margin-top: 8px; }
 }
 .price-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  /* Zwei Zeilen je Karte (Inhalt, Knöpfe) im gemeinsamen Raster der .price-grid: So beginnen
+   * die Knöpfe aller Karten auf derselben Höhe (Stefan 25.11.2026). Ohne subgrid-Unterstützung
+   * liegen die Teile einfach untereinander. */
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
   background: #fff;
   border: 1px solid var(--pom-slate-200);
   border-radius: 16px;
@@ -859,6 +864,31 @@ section[id] { scroll-margin-top: 8px; }
 .price-interval { font-size: 15px; font-weight: 400; color: var(--pom-slate-400); }
 .price-note { font-size: 13.5px; color: var(--pom-slate-400); margin-top: 6px; min-height: 18px; }
 .price-hr { border: none; border-top: 1px solid var(--pom-slate-100); margin: 20px 0; }
+.price-top { display: flex; flex-direction: column; }
+.price-actions { display: flex; flex-direction: column; }
+/* Founding Member: Hinweiskasten mittig im freien Raum zwischen Liste und Knöpfen. */
+.price-top--hinweis .price-features { flex: 0 0 auto; margin-bottom: 0; }
+.price-hinweis {
+  margin: auto 0;
+  background: var(--pom-olive-tint);
+  border: 1px solid var(--pom-olive-tint-line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--pom-slate-700);
+}
+.price-hinweis strong { color: var(--pom-olive-hover); }
+/* Zweiter Knopf direkt zur Kasse unter dem Erstgespräch (25.11.2026). Zeile in slate-500 statt 400,
+   damit der Kontrast auf Weiß reicht. */
+.price-direkt { margin-top: 10px; }
+.price-direkt-zeile {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--pom-slate-500);
+}
 .price-features { list-style: none; margin: 0 0 22px; padding: 0; flex: 1; }
 .price-features li {
   display: flex;
@@ -945,6 +975,8 @@ section[id] { scroll-margin-top: 8px; }
 @media (max-width: 900px) {
   .price-grid { grid-template-columns: 1fr; }
   .price-card--featured { margin-top: 12px; }
+  /* untereinander gibt es keinen freien Raum, also feste Abstände */
+  .price-hinweis { margin: 18px 0 22px; }
 }
 
 /* ============================================================
