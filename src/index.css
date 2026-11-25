@@ -859,6 +859,16 @@ section[id] { scroll-margin-top: 8px; }
 .price-interval { font-size: 15px; font-weight: 400; color: var(--pom-slate-400); }
 .price-note { font-size: 13.5px; color: var(--pom-slate-400); margin-top: 6px; min-height: 18px; }
 .price-hr { border: none; border-top: 1px solid var(--pom-slate-100); margin: 20px 0; }
+/* Zweiter Knopf direkt zur Kasse unter dem Erstgespräch (25.11.2026). Zeile in slate-500 statt 400,
+   damit der Kontrast auf Weiß reicht. */
+.price-direkt { margin-top: 10px; }
+.price-direkt-zeile {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--pom-slate-500);
+}
 .price-features { list-style: none; margin: 0 0 22px; padding: 0; flex: 1; }
 .price-features li {
   display: flex;

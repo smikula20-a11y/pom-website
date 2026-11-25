@@ -83,6 +83,22 @@ function PlanCard({
       >
         {plan.cta.label}
       </Button>
+
+      {plan.direkt && (
+        <>
+          <Button
+            href={!yearly && plan.direkt.hrefMonatlich ? plan.direkt.hrefMonatlich : plan.direkt.href}
+            variant="secondary"
+            external
+            fullWidth
+            uppercase={false}
+            className="price-direkt"
+          >
+            {plan.direkt.label}
+          </Button>
+          <div className="price-direkt-zeile">{plan.direkt.zeile}</div>
+        </>
+      )}
     </div>
   )
 }

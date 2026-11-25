@@ -12,6 +12,11 @@ export const links = {
   appRegister: 'https://app.placeofmotion.com?register=true',
   appLogin: 'https://app.placeofmotion.com',
   demo: 'https://demo.placeofmotion.com',
+  /** Kassen in ThriveCart (neues Aussehen seit 15.11. bzw. 25.11.2026). Die PRO-Kasse wählt ohne
+   *  Zusatz „Jährlich" vor, mit ?abo=monat „Monatlich" (Kassen-Skript, 25.11.2026). */
+  kassePro: 'https://online.placeofmotion.com/pro/',
+  kasseProMonatlich: 'https://online.placeofmotion.com/pro/?abo=monat',
+  kasseFoundingMember: 'https://online.placeofmotion.com/founding-member/',
   press: {
     orf: 'https://kaernten.orf.at/stories/3138200/',
     meinbezirk:
@@ -352,6 +357,9 @@ export interface PricePlan {
   featured?: boolean
   /** Verknappung: Gesamt-Plätze (durchgestrichen) + noch freie. */
   scarcity?: { total: number; left: number }
+  /** Zweiter Knopf direkt zur Kasse, unter dem Erstgespräch. hrefMonatlich gilt, wenn der
+   *  Umschalter auf „Monatlich" steht (die Kasse wählt dann über ?abo=monat Monatlich vor). */
+  direkt?: { label: string; href: string; hrefMonatlich?: string; zeile: string }
 }
 
 export const pricing: {
@@ -417,6 +425,14 @@ export const pricing: {
         { t: 'Verkauf als Selbstzahler-Leistung - Umsatz gehört dir', ok: true },
       ],
       cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'primary', external: true },
+      // Befund 2/3 (Stefan 25.11.2026): Kauf auch ohne Gespräch. Wortlaut wie der Kaufknopf der Kasse
+      // („Jetzt PRO starten"); die Danke-Seite nach dem Kauf bietet den Einschulungstermin an.
+      direkt: {
+        label: 'Direkt mit PRO starten',
+        href: links.kassePro,
+        hrefMonatlich: links.kasseProMonatlich,
+        zeile: 'Ohne Termin zur Kasse. Die Einschulung buchst du danach.',
+      },
     },
     {
       name: 'Founding Member',
@@ -433,6 +449,13 @@ export const pricing: {
         { t: 'Direkter Draht zur Entwicklung', ok: true },
       ],
       cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'secondary', external: true },
+      // Stefan 25.11.2026: Founding Member auch direkt kaufbar, bis die Plätze weg sind (ThriveCart
+      // sperrt die Kasse danach selbst). scarcity.left oben nach jedem Kauf von Hand nachziehen.
+      direkt: {
+        label: 'Direkt Founding Member werden',
+        href: links.kasseFoundingMember,
+        zeile: 'Ohne Termin zur Kasse. Die Einschulung buchst du danach.',
+      },
     },
   ],
 }
