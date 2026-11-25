@@ -16,6 +16,7 @@ import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { FinalCta } from '../sections/MidSections'
 import { cta } from '../content/site'
+import { useKennung } from '../components/kennung'
 
 /** Unterseite „Übungspläne als Selbstzahlerleistung verkaufen“ (Text von Stefan freigegeben 15.10.2026).
  *  Texte und Bilder belegt an der App: PlanAssignmentModal (Vergabe, Knopf „Verkaufen & Honorarnote“),
@@ -272,6 +273,7 @@ function VerkaeufeBild() {
 
 
 export default function UebungsplaeneVerkaufen() {
+  const kennung = useKennung()
   return (
     <main>
       {/* 1 · Kopf */}
@@ -288,7 +290,7 @@ export default function UebungsplaeneVerkaufen() {
               </p>
               <div className="unterseite-knoepfe">
                 <KnopfMitZeile zeile={cta.primary.zeile}>
-                  <Button href={cta.primary.href} external>
+                  <Button href={kennung(cta.primary.href, 'kopfbereich')} external>
                     {cta.primary.label}
                   </Button>
                 </KnopfMitZeile>
@@ -392,7 +394,7 @@ export default function UebungsplaeneVerkaufen() {
               </p>
               <div className="unterseite-knoepfe" style={{ justifyContent: 'center' }}>
                 <KnopfMitZeile zeile={cta.primary.zeile}>
-                  <Button href={cta.primary.href} external>
+                  <Button href={kennung(cta.primary.href, 'pro-abschnitt')} external>
                     {cta.primary.label}
                   </Button>
                 </KnopfMitZeile>

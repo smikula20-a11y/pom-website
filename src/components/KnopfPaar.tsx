@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Button } from './Button'
 import { cta } from '../content/site'
+import { useKennung } from './kennung'
 
 /** Ein Knopf mit einer kurzen Zeile darunter, was nach dem Klick passiert. */
 export function KnopfMitZeile({ zeile, children }: { zeile: string; children: ReactNode }) {
@@ -19,21 +20,25 @@ export function KnopfMitZeile({ zeile, children }: { zeile: string; children: Re
  * Hauptknopf weiß.
  */
 export function KnopfPaar({
+  stelle,
   mitte = false,
   aufOlive = false,
   style,
 }: {
+  /** Stelle auf der Seite für die Kennung am Calendly-Link (z. B. „kopfbereich“, Befund 11). */
+  stelle: string
   mitte?: boolean
   aufOlive?: boolean
   style?: CSSProperties
 }) {
+  const kennung = useKennung()
   const klassen = ['knopf-paar', mitte ? 'knopf-paar--mitte' : '', aufOlive ? 'knopf-paar--olive' : '']
     .filter(Boolean)
     .join(' ')
   return (
     <div className={klassen} style={style}>
       <KnopfMitZeile zeile={cta.primary.zeile}>
-        <Button href={cta.primary.href} variant={aufOlive ? 'white' : 'primary'} size="lg" external>
+        <Button href={kennung(cta.primary.href, stelle)} variant={aufOlive ? 'white' : 'primary'} size="lg" external>
           {cta.primary.label}
         </Button>
       </KnopfMitZeile>

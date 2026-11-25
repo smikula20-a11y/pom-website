@@ -3,6 +3,7 @@ import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { pricing } from '../content/site'
 import type { PricePlan } from '../content/site'
+import { kurz, useKennung } from '../components/kennung'
 
 function PlanCard({
   plan,
@@ -14,6 +15,9 @@ function PlanCard({
   setYearly: (v: boolean) => void
 }) {
   const featured = !!plan.featured
+  // Kennung an Erstgespräch und Direktkauf (Befund 11): z. B. „preiskarte-pro“.
+  const kennung = useKennung()
+  const stelle = `preiskarte-${kurz(plan.name)}`
 
   let amount = plan.price
   let interval = plan.interval
@@ -89,7 +93,7 @@ function PlanCard({
 
       <div className="price-actions">
         <Button
-          href={plan.cta.href}
+          href={kennung(plan.cta.href, stelle)}
           variant={plan.cta.variant}
           external={plan.cta.external}
           fullWidth
@@ -102,7 +106,7 @@ function PlanCard({
         {plan.direkt && (
           <>
             <Button
-              href={!yearly && plan.direkt.hrefMonatlich ? plan.direkt.hrefMonatlich : plan.direkt.href}
+              href={kennung(!yearly && plan.direkt.hrefMonatlich ? plan.direkt.hrefMonatlich : plan.direkt.href, stelle)}
               variant="secondary"
               external
               fullWidth

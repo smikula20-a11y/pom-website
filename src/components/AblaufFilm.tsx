@@ -88,7 +88,7 @@ export function AblaufFilm() {
         </ol>
 
         <div className="ablauf__cta">
-          <KnopfPaar mitte />
+          <KnopfPaar stelle="film" mitte />
         </div>
       </Container>
     </section>

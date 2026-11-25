@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { Button } from '../components/Button'
 import { nav } from '../content/site'
+import { useKennung } from '../components/kennung'
 
 export function Nav() {
   const [open, setOpen] = useState(false)
+  const kennung = useKennung()
 
   // Primär-CTA: auf schmalen Screens nur das erste Wort ("Erstgespräch"),
   // "buchen" wird per CSS ausgeblendet. Quelle bleibt nav.cta.label.
@@ -52,7 +54,7 @@ export function Nav() {
         <Button href={nav.login.href} variant="secondary" size="sm" external>
           {nav.login.label}
         </Button>
-        <Button href={nav.cta.href} variant="primary" size="sm" external>
+        <Button href={kennung(nav.cta.href, 'kopfleiste')} variant="primary" size="sm" external>
           {ctaFirst}
           {ctaRest && <span className="nav__cta-suffix">{' ' + ctaRest}</span>}
         </Button>
