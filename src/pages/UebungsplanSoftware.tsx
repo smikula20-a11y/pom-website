@@ -114,7 +114,7 @@ export default function UebungsplanSoftware() {
               <Eyebrow>{kopf.eyebrow}</Eyebrow>
               <h1 className="unterseite-h1">{kopf.h1}</h1>
               <p className="unterseite-lead">{kopf.lead}</p>
-              <KnopfPaar />
+              <KnopfPaar stelle="kopfbereich" />
               <p className="unterseite-hinweis">{kopf.hinweis}</p>
             </div>
             <KopfVideo />

@@ -106,6 +106,14 @@ export default function Datenschutz() {
           Calendly ist unter dem EU-US Data Privacy Framework zertifiziert. Ergänzend gelten die
           EU-Standardvertragsklauseln.
         </p>
+        <p>
+          Die Links zu Calendly enthalten eine Kennung, von welcher Stelle unserer Website Sie
+          kommen, zum Beispiel „Startseite, Preiskarte PRO“. Calendly speichert diese Kennung
+          zusammen mit Ihrer Buchung. So sehen wir, über welche Knöpfe Termine gebucht werden. Die
+          Kennung ist für alle Besucherinnen und Besucher gleich und enthält keine Angaben über Sie.
+          Rechtsgrundlage ist unser berechtigtes Interesse, unsere Website zu verbessern (Art. 6
+          Abs. 1 lit. f DSGVO).
+        </p>
 
         <h3>8. Kontaktaufnahme</h3>
         <p>
@@ -117,9 +125,11 @@ export default function Datenschutz() {
 
         <h3>9. Cookies und Tracking auf der Website</h3>
         <p>
-          Diese Website setzt keine Analyse- oder Marketing-Cookies und bindet kein Tracking ein. Es
-          werden ausschließlich technisch notwendige Daten im Rahmen des Hostings verarbeitet. Die
-          Website enthält kein Kontaktformular und keine Registrierung. Die Registrierung für das
+          Diese Website setzt keine Cookies zur Analyse oder Werbung und bindet keine Zähl- oder
+          Trackingdienste ein. Es werden nur technisch notwendige Daten im Rahmen des Hostings
+          verarbeitet. Die Links zu Calendly und zur Kassa enthalten eine Kennung der Stelle, von der
+          Sie kommen (siehe Punkt 7 und Punkt 14). Die Website enthält kein Kontaktformular und keine
+          Registrierung. Die Registrierung für das
           Produkt erfolgt in der App. Dafür gilt Teil C.
         </p>
 
@@ -241,6 +251,13 @@ export default function Datenschutz() {
           Vor- und Nachnamen und E-Mail-Adresse ein, je nach Tarif auch Ihre Anschrift (Straße, Ort,
           Postleitzahl, Land, Bundesland). Die Kassa setzt technisch notwendige Cookies für den Bestell- und
           Zahlungsvorgang.
+        </p>
+        <p>
+          <strong>Herkunft der Bestellung.</strong> Wenn Sie über einen Knopf unserer Website zur
+          Kassa kommen, enthält der Link eine Kennung dieser Stelle, zum Beispiel „Startseite,
+          Preiskarte Founding Member“. ThriveCart speichert sie mit der Bestellung. So sehen wir, über
+          welche Knöpfe gekauft wird. Die Kennung enthält keine Angaben über Sie. Rechtsgrundlage ist
+          unser berechtigtes Interesse, unsere Website zu verbessern (Art. 6 Abs. 1 lit. f DSGVO).
         </p>
         <p>
           <strong>Schutz vor automatisierten Bestellungen.</strong> Die Kassa nutzt den

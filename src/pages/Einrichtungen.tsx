@@ -21,6 +21,7 @@ import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Haekchenliste, HaeufigeFragen, UnterseiteH2 } from '../components/Unterseite'
 import { footer, links } from '../content/site'
+import { useKennung } from '../components/kennung'
 
 /** Unterseite für Krankenhäuser, Reha-Einrichtungen, Therapie- und Primärversorgungszentren (Sie-Form).
  *  Aussagen belegt am 15.10.2026:
@@ -356,6 +357,7 @@ function DatenschutzBild() {
 
 export default function Einrichtungen() {
   const a = footer.address
+  const kennung = useKennung()
   return (
     <main>
       {/* 1 · Kopf */}
@@ -372,7 +374,7 @@ export default function Einrichtungen() {
                 Konto und ohne App.
               </p>
               <div className="unterseite-knoepfe">
-                <Button href={links.calendly} external>
+                <Button href={kennung(links.calendly, 'kopfbereich')} external>
                   Erstgespräch buchen
                 </Button>
                 <Button href="#im-haus" variant="secondary">
@@ -511,7 +513,7 @@ export default function Einrichtungen() {
             Er richtet sich nach der Größe des Hauses.
           </p>
           <div className="unterseite-knoepfe" style={{ justifyContent: 'center' }}>
-            <Button href={links.calendly} variant="white" size="lg" external>
+            <Button href={kennung(links.calendly, 'schluss')} variant="white" size="lg" external>
               Erstgespräch buchen
             </Button>
           </div>

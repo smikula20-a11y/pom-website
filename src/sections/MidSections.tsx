@@ -14,6 +14,7 @@ import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { Umsatzrechner } from '../components/Umsatzrechner'
 import { KnopfPaar } from '../components/KnopfPaar'
+import { kurz, useKennung } from '../components/kennung'
 import {
   features,
   finalCta,
@@ -229,6 +230,7 @@ function TuerLink({ href, children }: { href: string; children: ReactNode }) {
 }
 
 export function Tueren() {
+  const kennung = useKennung()
   return (
     <section id="fuer-wen" style={{ background: 'var(--pom-stone-bg)' }}>
       <Container className="section">
@@ -239,7 +241,7 @@ export function Tueren() {
         <div className="grid-3 tueren-raster">
           {tueren.liste.map((t, i) => (
             <Reveal key={t.titel} delay={i * 0.08}>
-              <TuerLink href={t.link.href}>
+              <TuerLink href={kennung(t.link.href, `tuer-${kurz(t.titel)}`)}>
                 <h3 className="pom-h3 tuer__titel">{t.titel}</h3>
                 <p className="tuer__text">{t.text}</p>
                 <span className="tuer__link">
@@ -371,7 +373,7 @@ export function FinalCta() {
           >
             {finalCta.transparency}
           </p>
-          <KnopfPaar mitte aufOlive style={{ marginTop: 32 }} />
+          <KnopfPaar stelle="schluss" mitte aufOlive style={{ marginTop: 32 }} />
           <p className="final-reden">
             {finalCta.reden.frage}{' '}
             <a href={finalCta.reden.telHref}>{finalCta.reden.anrufen}</a> oder{' '}

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Container } from '../components/primitives'
 import { footer, nav } from '../content/site'
+import { useKennung } from '../components/kennung'
 
 export function Footer() {
   const a = footer.address
+  const kennung = useKennung()
   return (
     <footer id="kontakt" style={{ background: 'var(--pom-ink)', color: 'rgba(255,255,255,.75)' }}>
       <Container className="section" style={{ paddingBottom: 40 }}>
@@ -35,7 +37,7 @@ export function Footer() {
                   {l.label}
                 </Link>
               ))}
-              <a href={nav.cta.href} target="_blank" rel="noopener noreferrer">
+              <a href={kennung(nav.cta.href, 'fusszeile')} target="_blank" rel="noopener noreferrer">
                 {nav.cta.label}
               </a>
             </nav>

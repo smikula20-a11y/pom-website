@@ -85,7 +85,7 @@ export function Hero() {
             >
               {hero.subhead}
             </p>
-            <KnopfPaar />
+            <KnopfPaar stelle="kopfbereich" />
             <div
               style={{
                 display: 'flex',
