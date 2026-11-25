@@ -353,7 +353,10 @@ export interface PricePlan {
     yearly: { price: string; interval: string; note?: string; save?: string }
   }
   features: PriceFeature[]
-  cta: { label: string; href: string; variant: 'primary' | 'secondary'; external?: boolean }
+  /** zeile: optionale Zeile unter dem Knopf, was nach dem Klick passiert (wie bei cta oben). */
+  cta: { label: string; href: string; variant: 'primary' | 'secondary'; external?: boolean; zeile?: string }
+  /** Heller Hinweiskasten über den Knöpfen, steht mittig im freien Raum der Karte. */
+  hinweis?: { titel: string; text: string }
   featured?: boolean
   /** Verknappung: Gesamt-Plätze (durchgestrichen) + noch freie. */
   scarcity?: { total: number; left: number }
@@ -399,7 +402,8 @@ export const pricing: {
         { t: 'Verkauf & automatische Honorarnote', ok: false },
         { t: 'Dein Logo & Branding', ok: false },
       ],
-      cta: { label: 'Kostenlos starten', href: links.appRegister, variant: 'secondary', external: true },
+      // Zeile wie unter „Kostenlos BASIC starten" im Kopfbereich (cta.secondary.zeile, Stefan 22.11.2026).
+      cta: { label: 'Kostenlos starten', href: links.appRegister, variant: 'secondary', external: true, zeile: cta.secondary.zeile },
     },
     {
       name: 'Pro',
@@ -449,6 +453,11 @@ export const pricing: {
         { t: 'Direkter Draht zur Entwicklung', ok: true },
       ],
       cta: { label: 'Erstgespräch buchen', href: links.calendly, variant: 'secondary', external: true },
+      // Stefan 25.11.2026: Nach den letzten Plätzen gibt es Founding Member nicht mehr, nur noch PRO.
+      hinweis: {
+        titel: 'Nur solange Plätze frei sind.',
+        text: 'Sind die letzten Plätze vergeben, schließt Founding Member für immer. Danach gibt es nur noch PRO.',
+      },
       // Stefan 25.11.2026: Founding Member auch direkt kaufbar, bis die Plätze weg sind (ThriveCart
       // sperrt die Kasse danach selbst). scarcity.left oben nach jedem Kauf von Hand nachziehen.
       direkt: {

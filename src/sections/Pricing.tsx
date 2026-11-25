@@ -32,6 +32,10 @@ function PlanCard({
           {plan.badge}
         </span>
       )}
+      {/* Zwei Teile je Karte (Stefan 25.11.2026): oben Inhalt, unten Knöpfe. Über ein gemeinsames
+          Raster (subgrid) beginnen die Knöpfe aller drei Karten auf derselben Höhe, auch wenn eine
+          Karte nur einen Knopf hat. */}
+      <div className={`price-top${plan.hinweis ? ' price-top--hinweis' : ''}`}>
       <div className="price-name">{plan.name}</div>
 
       {plan.toggle && (
@@ -74,31 +78,43 @@ function PlanCard({
         ))}
       </ul>
 
-      <Button
-        href={plan.cta.href}
-        variant={plan.cta.variant}
-        external={plan.cta.external}
-        fullWidth
-        uppercase={false}
-      >
-        {plan.cta.label}
-      </Button>
-
-      {plan.direkt && (
-        <>
-          <Button
-            href={!yearly && plan.direkt.hrefMonatlich ? plan.direkt.hrefMonatlich : plan.direkt.href}
-            variant="secondary"
-            external
-            fullWidth
-            uppercase={false}
-            className="price-direkt"
-          >
-            {plan.direkt.label}
-          </Button>
-          <div className="price-direkt-zeile">{plan.direkt.zeile}</div>
-        </>
+      {plan.hinweis && (
+        <div className="price-hinweis">
+          <strong>{plan.hinweis.titel}</strong>
+          <br />
+          {plan.hinweis.text}
+        </div>
       )}
+      </div>
+
+      <div className="price-actions">
+        <Button
+          href={plan.cta.href}
+          variant={plan.cta.variant}
+          external={plan.cta.external}
+          fullWidth
+          uppercase={false}
+        >
+          {plan.cta.label}
+        </Button>
+        {plan.cta.zeile && <div className="price-direkt-zeile">{plan.cta.zeile}</div>}
+
+        {plan.direkt && (
+          <>
+            <Button
+              href={!yearly && plan.direkt.hrefMonatlich ? plan.direkt.hrefMonatlich : plan.direkt.href}
+              variant="secondary"
+              external
+              fullWidth
+              uppercase={false}
+              className="price-direkt"
+            >
+              {plan.direkt.label}
+            </Button>
+            <div className="price-direkt-zeile">{plan.direkt.zeile}</div>
+          </>
+        )}
+      </div>
     </div>
   )
 }
