@@ -477,8 +477,9 @@ section[id] { scroll-margin-top: 8px; }
   section[id] { scroll-margin-top: 40px; }
   .nav { padding: 14px 24px; }
   .nav__linkgroup { gap: 16px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-grid .hero-visual { justify-self: center; }
+  /* minmax(0, 1fr): das Handybild (300px) darf auf 320px-Handys schmäler werden (26.11.2026). */
+  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hero-grid .hero-visual { justify-self: center; min-width: 0; max-width: 100%; }
   .hero-annotation-mobile { display: block; }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
@@ -499,6 +500,13 @@ section[id] { scroll-margin-top: 8px; }
   .nav__linkgroup { gap: 6px; }
   .nav__burger { width: 38px; height: 38px; }
   .nav__cta-suffix { display: none; } /* "buchen" weg → nur "Erstgespräch" */
+}
+/* Sehr schmale Handys (Befund 12, 26.11.2026): Logo + Anmelden + Erstgespräch + Menü brauchen
+ * 374px, bei 360px ragte die Leiste hinaus. Unter 390px steht „Anmelden“ oben im Menü. */
+.nav__mobile-menu .nav__mobile-login { display: none; }
+@media (max-width: 389px) {
+  .nav .nav__login { display: none; }
+  .nav__mobile-menu .nav__mobile-login { display: block; }
 }
 /* ---- Footer (Brand · Produkt · Rechtliches · Kontakt) ---- */
 .footer-grid {
@@ -973,10 +981,16 @@ section[id] { scroll-margin-top: 8px; }
 }
 
 @media (max-width: 900px) {
-  .price-grid { grid-template-columns: 1fr; }
+  /* minmax(0, 1fr): Karten dürfen schmäler werden als ihr längster Knopf (320px-Handys). */
+  .price-grid { grid-template-columns: minmax(0, 1fr); }
   .price-card--featured { margin-top: 12px; }
   /* untereinander gibt es keinen freien Raum, also feste Abstände */
   .price-hinweis { margin: 18px 0 22px; }
+}
+/* Sehr schmale Handys (26.11.2026): „Direkt Founding Member werden“ ist breiter als die Karte,
+ * deshalb dürfen die Knöpfe in den Preiskarten dort zweizeilig werden. */
+@media (max-width: 359px) {
+  .price-actions .btn { white-space: normal; text-align: center; }
 }
 
 /* ============================================================
