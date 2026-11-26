@@ -471,7 +471,9 @@ export const pricing: {
 
 export const footer = {
   company: 'Place of Motion',
-  tagline: 'Digitale Trainingspläne für deine Praxis. Erstellen, teilen, verkaufen.',
+  /** Befund 12 (Stefan 26.11.2026): ohne Anrede, passt für Praxen und Einrichtungen; erster Satz wie die
+   *  grüne Zeile über der Startseiten-Überschrift. Empfehlung Fable-Agent, „Ohne App“ ist ein Kundenwort. */
+  tagline: 'Übungsplan-Software für Physio- und Ergotherapie. Ohne App für Patient:innen.',
   address: {
     name: 'Place of Motion',
     street: 'Feistritz 34',
