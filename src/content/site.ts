@@ -372,6 +372,8 @@ export const pricing: {
   /** Zeilen unter den Preisen, je Eintrag eine Zeile. */
   footnote: string[]
   toggleLabels: { monthly: string; yearly: string }
+  /** Überschrift vor den nicht enthaltenen Punkten einer Karte (Stefan 26.11.2026). */
+  nichtEnthalten: string
   plans: PricePlan[]
 } = {
   eyebrow: 'Preise',
@@ -384,6 +386,7 @@ export const pricing: {
     'Endpreise, keine Umsatzsteuer. Keine versteckten Kosten.',
   ],
   toggleLabels: { monthly: 'Monatlich', yearly: 'Jährlich' },
+  nichtEnthalten: 'Nur mit PRO',
   plans: [
     {
       name: 'Basic',

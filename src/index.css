@@ -910,8 +910,33 @@ section[id] { scroll-margin-top: 8px; }
   padding: 6px 0;
 }
 .price-features li.muted { color: var(--text-muted); }
-.price-check { color: var(--pom-olive); font-weight: 900; flex: none; }
-.price-cross { color: #848fa1; /* Kreuz „nicht enthalten“: mind. 3 : 1 auf Weiß (26.11.2026) */ font-weight: 900; flex: none; }
+/* Enthalten / nicht enthalten klar trennen (Stefan 26.11.2026, Variante 3): Häkchen im hellgrünen
+   Kreis, Kreuz schlicht grau, nicht enthaltene Punkte unter eigener Überschrift „Nur mit PRO“. */
+.price-check,
+.price-cross {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 1.5px;
+  border-radius: 999px;
+  line-height: 1;
+}
+.price-check { background: #eaf1d6; color: #5d7323; font-size: 11.5px; font-weight: 900; } /* 4,58 : 1 auf dem Kreis */
+.price-cross { color: #848fa1; font-size: 12px; font-weight: 700; } /* mind. 3 : 1 auf Weiß */
+.price-features li.price-features__gruppe {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pom-slate-600);
+  padding: 14px 0 4px;
+  margin-top: 8px;
+  border-top: 1px solid var(--pom-slate-200);
+}
 .price-feat-highlight { color: var(--pom-olive-hover); font-weight: 700; }
 
 /* toggle inside the Pro card */
