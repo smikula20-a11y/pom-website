@@ -321,7 +321,7 @@ export function Founder() {
           <p style={{ marginTop: 16, fontWeight: 600, color: '#1a1a1a' }}>{founder.signature}</p>
 
           <div style={{ marginTop: 28 }}>
-            <div className="pom-eyebrow" style={{ color: 'var(--pom-stone-500)', marginBottom: 14 }}>
+            <div className="pom-eyebrow" style={{ color: 'var(--text-muted-warm)', marginBottom: 14 }}>
               {founder.pressLabel}
             </div>
             <div className="press-bar">

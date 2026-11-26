@@ -36,7 +36,7 @@ export function Eyebrow({
       ? 'var(--pom-olive)'
       : tone === 'on-olive'
         ? 'rgba(255,255,255,.65)'
-        : 'var(--pom-stone-500)'
+        : 'var(--text-muted-warm)'
   return (
     <div className="pom-eyebrow" style={{ color, marginBottom: 16, ...style }}>
       {children}

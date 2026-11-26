@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Button } from '../components/Button'
 import { Container, Eyebrow, Reveal } from '../components/primitives'
 import { pricing } from '../content/site'
@@ -18,6 +18,8 @@ function PlanCard({
   // Kennung an Erstgespräch und Direktkauf (Befund 11): z. B. „preiskarte-pro“.
   const kennung = useKennung()
   const stelle = `preiskarte-${kurz(plan.name)}`
+
+  const ersteOhne = plan.features.findIndex((f) => !f.ok)
 
   let amount = plan.price
   let interval = plan.interval
@@ -72,13 +74,19 @@ function PlanCard({
       <hr className="price-hr" />
 
       <ul className="price-features">
-        {plan.features.map((f) => (
-          <li key={f.t} className={f.ok ? '' : 'muted'}>
-            <span className={f.ok ? 'price-check' : 'price-cross'} aria-hidden="true">
-              {f.ok ? '✓' : '✕'}
-            </span>
-            <span className={f.highlight ? 'price-feat-highlight' : ''}>{f.t}</span>
-          </li>
+        {plan.features.map((f, i) => (
+          <Fragment key={f.t}>
+            {/* Vor dem ersten nicht enthaltenen Punkt eine Überschrift (Stefan 26.11.2026). */}
+            {i > 0 && i === ersteOhne && (
+              <li className="price-features__gruppe">{pricing.nichtEnthalten}</li>
+            )}
+            <li className={f.ok ? '' : 'muted'}>
+              <span className={f.ok ? 'price-check' : 'price-cross'} aria-hidden="true">
+                {f.ok ? '✓' : '✕'}
+              </span>
+              <span className={f.highlight ? 'price-feat-highlight' : ''}>{f.t}</span>
+            </li>
+          </Fragment>
         ))}
       </ul>
 
@@ -145,7 +153,7 @@ export function Pricing() {
             >
               {pricing.heading}
             </h2>
-            <p style={{ marginTop: 12, fontSize: 16, color: 'var(--pom-slate-500)' }}>{pricing.sub}</p>
+            <p style={{ marginTop: 12, fontSize: 16, color: 'var(--text-muted)' }}>{pricing.sub}</p>
           </div>
         </Reveal>
 
@@ -155,7 +163,7 @@ export function Pricing() {
           ))}
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--pom-slate-400)' }}>
+        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--text-muted)' }}>
           {pricing.footnote.map((zeile, i) => (
             <span key={zeile}>
               {i > 0 && <br />}

@@ -240,7 +240,7 @@ export function HandyUebung() {
       fontSize: 9.5,
       fontWeight: 700,
       background: offen ? '#1a1a1a' : '#f0f0ed',
-      color: offen ? '#fff' : '#9a9a94',
+      color: offen ? '#fff' : 'var(--text-muted-warm)',
     }) as const
   const daumen = { width: 36, height: 36, borderRadius: 9, objectFit: 'cover', flex: 'none' } as const
   const titel = { fontSize: 12, fontWeight: 600, color: '#1a1a1a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } as const
@@ -284,7 +284,7 @@ export function HandyUebung() {
               <img src="/bilder/vorgebeugt-start.jpg" alt="" style={daumen} />
               <div style={{ ...titel, flex: 1, minWidth: 0 }}>Vorgebeugtes Y-Heben mit Kurzhanteln</div>
               <span style={pfeil(true)}>
-                <ChevronDown size={12} color="#9a9a94" style={{ transform: 'rotate(180deg)' }} />
+                <ChevronDown size={12} color="var(--text-muted-warm)" style={{ transform: 'rotate(180deg)' }} />
               </span>
             </div>
             <div style={{ padding: '0 10px 10px' }}>
@@ -326,7 +326,7 @@ export function HandyUebung() {
               </div>
             </div>
             <span style={pfeil(false)}>
-              <ChevronDown size={12} color="#9a9a94" />
+              <ChevronDown size={12} color="var(--text-muted-warm)" />
             </span>
           </div>
         </div>

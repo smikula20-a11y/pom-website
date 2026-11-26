@@ -78,7 +78,7 @@ export function Hero() {
               style={{
                 fontFamily: 'var(--font-sans)',
                 lineHeight: 1.65,
-                color: '#71716b',
+                color: 'var(--pom-stone-600)',
                 maxWidth: 540,
                 textWrap: 'pretty',
               }}
@@ -95,7 +95,7 @@ export function Hero() {
                 fontFamily: 'var(--font-sans)',
                 fontSize: 14,
                 fontWeight: 500,
-                color: '#9a9a94',
+                color: 'var(--text-muted-warm)',
               }}
             >
               <Check size={15} color="#8BA83A" strokeWidth={2.75} />
