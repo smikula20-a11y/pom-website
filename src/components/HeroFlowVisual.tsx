@@ -120,7 +120,7 @@ export function HeroFlowVisual() {
                 padding: '6px 13px',
                 borderRadius: 999,
                 background: '#f0f0ed',
-                color: '#71716b',
+                color: 'var(--pom-stone-600)',
               }}
             >
               {t}
@@ -173,7 +173,7 @@ export function HeroFlowVisual() {
                   fontFamily: 'var(--font-sans)',
                   fontSize: 11.5,
                   fontWeight: 500,
-                  color: '#9a9a94',
+                  color: 'var(--text-muted-warm)',
                   marginTop: 3,
                 }}
               >
@@ -209,7 +209,7 @@ export function HeroFlowVisual() {
                   fontFamily: 'var(--font-sans)',
                   fontSize: 11,
                   fontWeight: 500,
-                  color: '#9a9a94',
+                  color: 'var(--text-muted-warm)',
                 }}
               >
                 3×8 · Stand

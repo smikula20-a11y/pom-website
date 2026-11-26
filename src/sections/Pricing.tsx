@@ -145,7 +145,7 @@ export function Pricing() {
             >
               {pricing.heading}
             </h2>
-            <p style={{ marginTop: 12, fontSize: 16, color: 'var(--pom-slate-500)' }}>{pricing.sub}</p>
+            <p style={{ marginTop: 12, fontSize: 16, color: 'var(--text-muted)' }}>{pricing.sub}</p>
           </div>
         </Reveal>
 
@@ -155,7 +155,7 @@ export function Pricing() {
           ))}
         </div>
 
-        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--pom-slate-400)' }}>
+        <p style={{ textAlign: 'center', marginTop: 22, fontSize: 13.5, color: 'var(--text-muted)' }}>
           {pricing.footnote.map((zeile, i) => (
             <span key={zeile}>
               {i > 0 && <br />}

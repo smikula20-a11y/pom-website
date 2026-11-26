@@ -22,7 +22,7 @@
   --color-stone-200: #e8e8e4;
   --color-stone-300: #e5e5e0;
   --color-stone-500: #9a9a94;
-  --color-stone-600: #71716b;
+  --color-stone-600: #6b6b65;
 }
 
 /* ---- Full design-system variables (authoritative) ---- */
@@ -66,7 +66,7 @@
   --pom-stone-300: #e5e5e0;
   --pom-stone-400: #c4c4be;
   --pom-stone-500: #9a9a94;
-  --pom-stone-600: #71716b;
+  --pom-stone-600: #6b6b65; /* vorher #71716b = 4,498 : 1 auf #f5f5f3, knapp unter 4,5 (26.11.2026) */
 
   /* Pure */
   --pom-white: #ffffff;
@@ -83,7 +83,9 @@
   --color-primary-tint: var(--pom-olive-a10);
   --text-heading: var(--pom-slate-700);
   --text-body: var(--pom-slate-600);
-  --text-muted: var(--pom-slate-400);
+  /* Befund 12 Kontrast (26.11.2026): Kleinschrift mindestens 4,5 : 1 auf Weiß bis #f0f0ed.
+   * slate-400 (2,6 : 1) und stone-500 (2,8 : 1) waren zu hell. */
+  --text-muted: #5b687c;
   --text-on-dark: var(--pom-white);
   --surface-page: var(--pom-slate-50);
   --surface-card: var(--pom-white);
@@ -92,7 +94,7 @@
   --border-focus: var(--pom-olive);
   --surface-page-warm: var(--pom-stone-bg);
   --text-body-warm: var(--pom-stone-600);
-  --text-muted-warm: var(--pom-stone-500);
+  --text-muted-warm: #6b6b65;
 
   /* Fonts / weights */
   --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
@@ -341,7 +343,7 @@ img {
   font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: var(--pom-stone-500);
+  color: var(--text-muted-warm);
   transition: color 0.15s ease;
 }
 a.press-item:hover { color: var(--pom-ink); }
@@ -588,7 +590,7 @@ section[id] { scroll-margin-top: 8px; }
   background: var(--pom-olive-tint); border: 1px solid var(--pom-olive-tint-line); padding: 2px 7px; border-radius: 999px;
 }
 .ablauf__cta { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.ablauf__microcopy { font-family: var(--font-sans); font-size: 13px; color: var(--pom-stone-500); }
+.ablauf__microcopy { font-family: var(--font-sans); font-size: 13px; color: var(--text-muted-warm); }
 
 @media (max-width: 880px) {
   .ablauf-film { max-width: 440px; border-radius: 20px; }
@@ -668,13 +670,13 @@ section[id] { scroll-margin-top: 8px; }
   background: #f5f5f3; border-radius: 14px; padding: 14px 16px; margin-top: 4px;
   display: flex; flex-direction: column; gap: 8px;
 }
-.rechner__zeile { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; color: var(--pom-slate-500); }
+.rechner__zeile { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text-muted); }
 .rechner__zeile b { font-family: var(--font-display); font-size: 24px; font-weight: 800; color: #1a1a1a; font-variant-numeric: tabular-nums; }
 .rechner__pro {
   background: var(--pom-olive-tint); border-radius: 10px; padding: 10px 12px; margin: 12px 0 0;
   font-size: 13.5px; line-height: 1.5; color: #1a1a1a;
 }
-.rechner__fein { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: var(--pom-slate-500); }
+.rechner__fein { margin: 10px 0 0; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
 
 /* ============================================================
  * PROSE — legal pages (Impressum / Datenschutz / AGB / Auftragsverarbeitung)
@@ -856,7 +858,7 @@ section[id] { scroll-margin-top: 8px; }
   font-family: var(--font-sans);
   font-size: 12.5px;
   font-weight: 700;
-  color: var(--pom-slate-400);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 12px;
@@ -869,8 +871,8 @@ section[id] { scroll-margin-top: 8px; }
   color: #1a1a1a;
   line-height: 1;
 }
-.price-interval { font-size: 15px; font-weight: 400; color: var(--pom-slate-400); }
-.price-note { font-size: 13.5px; color: var(--pom-slate-400); margin-top: 6px; min-height: 18px; }
+.price-interval { font-size: 15px; font-weight: 400; color: var(--text-muted); }
+.price-note { font-size: 13.5px; color: var(--text-muted); margin-top: 6px; min-height: 18px; }
 .price-hr { border: none; border-top: 1px solid var(--pom-slate-100); margin: 20px 0; }
 .price-top { display: flex; flex-direction: column; }
 .price-actions { display: flex; flex-direction: column; }
@@ -907,9 +909,9 @@ section[id] { scroll-margin-top: 8px; }
   color: var(--pom-slate-700);
   padding: 6px 0;
 }
-.price-features li.muted { color: var(--pom-slate-400); }
+.price-features li.muted { color: var(--text-muted); }
 .price-check { color: var(--pom-olive); font-weight: 900; flex: none; }
-.price-cross { color: var(--pom-slate-300); font-weight: 900; flex: none; }
+.price-cross { color: #848fa1; /* Kreuz „nicht enthalten“: mind. 3 : 1 auf Weiß (26.11.2026) */ font-weight: 900; flex: none; }
 .price-feat-highlight { color: var(--pom-olive-hover); font-weight: 700; }
 
 /* toggle inside the Pro card */
@@ -929,7 +931,7 @@ section[id] { scroll-margin-top: 8px; }
   font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 700;
-  color: var(--pom-slate-500);
+  color: var(--text-muted);
   padding: 6px 12px;
   border-radius: 999px;
   white-space: nowrap;
@@ -968,7 +970,7 @@ section[id] { scroll-margin-top: 8px; }
   font-size: 12.5px;
 }
 .price-scarcity__total {
-  color: var(--pom-slate-400);
+  color: var(--text-muted);
   text-decoration: line-through;
 }
 .price-scarcity__left {
@@ -1024,7 +1026,7 @@ section[id] { scroll-margin-top: 8px; }
 }
 .unterseite-lead { font-size: 19px; line-height: 1.65; color: var(--pom-slate-600); margin: 20px 0 28px; max-width: 560px; }
 .unterseite-text { font-size: 17px; line-height: 1.7; color: var(--pom-slate-600); margin: 18px 0 0; max-width: 560px; }
-.unterseite-hinweis { font-size: 15px; color: var(--pom-slate-500); margin: 22px 0 0; }
+.unterseite-hinweis { font-size: 15px; color: var(--text-muted); margin: 22px 0 0; }
 .unterseite-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
 .unterseite-schritt {
   background: rgba(255,255,255,.12);

@@ -78,7 +78,7 @@ function NebeneinanderBild() {
         <ul>
           {bleibt.map(({ icon: Icon, label }) => (
             <li key={label}>
-              <Icon size={17} color="var(--pom-slate-400)" strokeWidth={2.2} />
+              <Icon size={17} color="var(--text-muted)" strokeWidth={2.2} />
               {label}
             </li>
           ))}

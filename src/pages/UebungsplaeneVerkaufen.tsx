@@ -105,7 +105,7 @@ const kleinLabel = {
   fontWeight: 900,
   letterSpacing: '.1em',
   textTransform: 'uppercase',
-  color: '#94a3b8',
+  color: 'var(--text-muted)',
 } as const
 
 /** Vergabe-Schritt: Kostenpflichtig, Betrag, Bezahlart, Knopf „Verkaufen & Honorarnote“. */
@@ -123,7 +123,7 @@ function VergabeBild() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, background: '#f5f5f3', borderRadius: 12, padding: 4, marginBottom: 16 }}>
-        <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 600, color: '#64748b', padding: '8px 0' }}>Kostenlos</div>
+        <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 600, color: 'var(--text-muted)', padding: '8px 0' }}>Kostenlos</div>
         <div style={{ textAlign: 'center', fontSize: 13, fontWeight: 700, color: '#fff', background: 'var(--pom-olive)', borderRadius: 9, padding: '8px 0' }}>
           Kostenpflichtig
         </div>
@@ -177,7 +177,7 @@ function BelegBild() {
         </div>
         <div style={{ lineHeight: 1.35 }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: '#1a1a1a' }}>Physiotherapie Muster</div>
-          <div style={{ fontSize: 11.5, color: '#94a3b8' }}>Musterweg 1 · 9020 Klagenfurt</div>
+          <div style={{ fontSize: 11.5, color: 'var(--text-muted)' }}>Musterweg 1 · 9020 Klagenfurt</div>
         </div>
       </div>
 
@@ -200,7 +200,7 @@ function BelegBild() {
       <div style={{ ...zeile, padding: '12px 0', borderTop: '1px solid #f1f5f9', borderBottom: '1px solid #f1f5f9', fontSize: 12.5, color: '#475569' }}>
         <span>
           Physiotherapeutische Beratung inkl. digitalem Heimübungsplan
-          <span style={{ display: 'block', fontSize: 11.5, color: '#94a3b8', marginTop: 3 }}>Zahlung: Kartenzahlung</span>
+          <span style={{ display: 'block', fontSize: 11.5, color: 'var(--text-muted)', marginTop: 3 }}>Zahlung: Kartenzahlung</span>
         </span>
         <span style={{ fontWeight: 600, color: '#1a1a1a', whiteSpace: 'nowrap' }}>39,00 €</span>
       </div>
@@ -211,7 +211,7 @@ function BelegBild() {
           39,00 €
         </span>
       </div>
-      <div style={{ fontSize: 11, color: '#94a3b8' }}>Umsatzsteuerbefreit gemäß § 6 Abs 1 Z 19 UStG.</div>
+      <div style={{ fontSize: 11, color: 'var(--text-muted)' }}>Umsatzsteuerbefreit gemäß § 6 Abs 1 Z 19 UStG.</div>
     </div>
   )
 }
@@ -239,7 +239,7 @@ function VerkaeufeBild() {
           <div key={z.nr} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', alignItems: 'center', gap: 10, padding: '10px 2px', borderBottom: '1px solid #f1f5f9', fontSize: 12.5 }}>
             <div style={{ lineHeight: 1.35, minWidth: 0 }}>
               <div style={{ fontWeight: 600, color: '#1a1a1a' }}>{z.name}</div>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: '#94a3b8' }}>{z.nr}</div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>{z.nr}</div>
             </div>
             <span style={{ fontWeight: 600, color: '#1a1a1a' }}>39,00 €</span>
             <span
@@ -386,7 +386,7 @@ export default function UebungsplaeneVerkaufen() {
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, margin: '22px 0 4px' }}>
                 <span className="unterseite-pro">PRO</span>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: 44, fontWeight: 900, letterSpacing: '-0.03em', color: '#1a1a1a' }}>49 €</span>
-                <span style={{ fontSize: 16, color: 'var(--pom-slate-500)' }}>/ Monat</span>
+                <span style={{ fontSize: 16, color: 'var(--text-muted)' }}>/ Monat</span>
               </div>
               <p className="unterseite-text" style={{ textAlign: 'center', margin: '10px auto 24px' }}>
                 Verkaufen ist im Tarif PRO enthalten: 49 € im Monat oder 490 € im Jahr. Mit BASIC
