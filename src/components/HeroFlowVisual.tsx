@@ -6,7 +6,7 @@
 
 export function HeroFlowVisual() {
   return (
-    <div style={{ position: 'relative', justifySelf: 'start' }}>
+    <div style={{ position: 'relative', justifySelf: 'start', maxWidth: '100%' }}>
       {/* Mobile-only: „Dein Logo. Dein Name." mit Pfeil ÜBER dem Phone (Design 3a). */}
       <div className="hero-annotation-mobile" aria-hidden="true">
         <div className="hero-annotation-mobile__text">

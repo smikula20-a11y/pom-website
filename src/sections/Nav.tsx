@@ -51,7 +51,8 @@ export function Nav() {
         </div>
 
         {/* Aktions-Buttons bleiben immer im Header sichtbar (nicht im Burger). */}
-        <Button href={nav.login.href} variant="secondary" size="sm" external>
+        {/* Unter 390px wandert „Anmelden“ ins Menü (CSS .nav__login), sonst ragt die Leiste hinaus. */}
+        <Button href={nav.login.href} variant="secondary" size="sm" external className="nav__login">
           {nav.login.label}
         </Button>
         <Button href={kennung(nav.cta.href, 'kopfleiste')} variant="primary" size="sm" external>
@@ -74,6 +75,16 @@ export function Nav() {
 
       {/* Mobiles Dropdown mit den Sektionslinks. */}
       <div id="nav-mobile-menu" className="nav__mobile-menu" data-open={open}>
+        {/* Nur auf sehr schmalen Handys sichtbar, dort fehlt der Knopf in der Leiste. */}
+        <a
+          className="nav__mobile-login"
+          href={nav.login.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setOpen(false)}
+        >
+          {nav.login.label}
+        </a>
         {nav.links.map((l) => (
           <Link key={l.href} to={`/${l.href}`} onClick={() => setOpen(false)}>
             {l.label}
