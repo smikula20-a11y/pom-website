@@ -15,7 +15,7 @@ export function Footer() {
             <img
               src="/logos/pom-white.svg"
               alt="place of motion"
-              style={{ height: 40, marginBottom: 16 }} // 40 wie in der Kopfleiste (Stefan 26.11.2026)
+              style={{ height: 56, marginBottom: 16 }} // 56 px (Stefan 26.11.2026, Vergleich 40/48/56)
             />
             <p style={{ margin: 0, fontSize: 15, lineHeight: 1.65, maxWidth: 260, color: 'rgba(255,255,255,.6)' }}>
               {footer.tagline}
